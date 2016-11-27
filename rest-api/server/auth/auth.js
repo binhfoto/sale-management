@@ -39,6 +39,10 @@ exports.verifyUser = function(){
 
 exports.decodeToken = function(){
     return function(req, res, next){
+
+        // disable authentication in dev/test env
+        if(config.auth === false) next();
+
         // make it optional to place token on query string
         // if it is, place it on the headers where it should be, so checkToken can see it.
         // See follow the 'Bearer 034930493' format so checkToken can see it and decode it
@@ -56,6 +60,10 @@ exports.decodeToken = function(){
 
 exports.getFreshUser = function(){
     return function(req, res, next){
+
+        // disable authentication in dev/test env
+        if(config.auth === false) next();
+
         // we'll have access to req.user here
         // because we'll use decodeToken in before this function in the middleware stack.
         // req.user will just be an object with the user id on it
