@@ -1,0 +1,45 @@
+[
+    {
+        "maSP": "AL",
+        "ten": "Cồn 90 độ (Chai Co - Chai 60ml)",
+        "quyCach": "Thùng/100",
+        "donVi": "Chai",
+        "donGia": 2205,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "ALOPC",
+        "ten": "Cồn OPC (Chai 18ml)",
+        "quyCach": "Thùng/100",
+        "donVi": "Chai",
+        "donGia": 2520,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "AL70",
+        "ten": "Cồn 70 OPC (Chai 18ml)",
+        "quyCach": "Thùng/100",
+        "donVi": "Chai",
+        "donGia": 2310,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "O",
+        "ten": "Oxy già 10 TT (Chai Co - Chai 60ml)",
+        "quyCach": "Thùng/100",
+        "donVi": "Chai",
+        "donGia": 1260,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "O-OPC",
+        "ten": "Oxy già OPC (Chai Co - Chai 60ml)",
+        "quyCach": "Thùng/100",
+        "donVi": "Chai",
+        "donGia": 1470,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "BSI",
+        "ten": "BSI (Chai 18ml)",
+        "quyCach": "Thùng/200",
+        "donVi": "Chai",
+        "donGia": 7000,
+        "nhom": "Thuốc Dùng Ngoài"
+    }
+]

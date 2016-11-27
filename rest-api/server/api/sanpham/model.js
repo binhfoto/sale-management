@@ -11,8 +11,9 @@ var sanphamSchema = new Schema({
         required: true
     },
     quyCach: String,
-    donVi: Number,
-    donGia: Number
+    donVi: String,
+    donGia: Number,
+    nhom: String
 });
 
 module.exports = mongoose.model('sanpham', sanphamSchema);
