@@ -1,8 +1,9 @@
 module.exports = {
     // enable logging for development
     logging: true,
-    seed: false,
+    seed: true,
+    auth: false,
     db: {
-        url: 'mongodb://localhost/namviet'
+        url: 'mongodb://localhost/company'
     }
 }
