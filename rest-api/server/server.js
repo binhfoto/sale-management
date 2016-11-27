@@ -7,9 +7,11 @@ var logger = require('./util/logger');
 var mongoose = require('mongoose');
 
 // 
+mongoose.Promise = global.Promise;
 mongoose.connect(config.db.url);
 if(config.seed){
-    require('./util/seed');
+    //require('./util/seed');
+    require('./create-data');
 }
 
 // setup the global middleware 
