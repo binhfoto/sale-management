@@ -5,8 +5,9 @@ var khachhang = require('./khachhang');
 var sanpham = require('./sanpham');
 var sanphamtonkho = require('./sanphamtonkho');
 var sanphamnhap = require('./sanphamnhap');
+var donhang = require('./donhang');
 
-var MODELS = [user.model, khachhang.model, sanpham.model, sanphamtonkho.model, sanphamnhap.model];
+var MODELS = [user.model, khachhang.model, sanpham.model, sanphamtonkho.model, sanphamnhap.model, donhang.model];
 
 var cleanDB = function(){
     var cleanPromises = MODELS.map(function(model){
@@ -21,6 +22,7 @@ cleanDB() // pass data to next function
     .then(sanpham.create)
     .then(sanphamtonkho.create)
     .then(sanphamnhap.create)
+    .then(donhang.create)
     .then(logger.log.bind(logger))
     .catch(function(err){
         logger.log(err);

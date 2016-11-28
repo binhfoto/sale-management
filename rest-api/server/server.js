@@ -6,7 +6,11 @@ var config = require('./config/config');
 var logger = require('./util/logger');
 var mongoose = require('mongoose');
 
-// 
+/*
+cd home/new-path/project/sale-management/
+cd /Users/binhnguyen/home/new-path/tool/mongodb-osx-x86_64-3.2.11/bin
+./mongod --dbpath data/db
+*/
 mongoose.Promise = global.Promise;
 mongoose.connect(config.db.url);
 if(config.seed){
