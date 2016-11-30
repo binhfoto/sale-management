@@ -2,7 +2,7 @@ module.exports = {
     // enable logging for development
     logging: true,
     seed: true,
-    auth: false,
+    auth: true,
     db: {
         url: 'mongodb://localhost/company'
     }

@@ -64,9 +64,9 @@ controller.post = function(req, res, next) {
     
     newUser.save(function(err, user){
         if(err) return next(err);
-
-        var token = signToken(user._id);
-        res.json({token: token});
+        else next();
+        //var token = signToken(user._id);
+        //res.json({token: token});
     });
 
     /*var newUser = req.body;

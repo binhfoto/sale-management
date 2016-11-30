@@ -1,6 +1,7 @@
 node_modules/
 */server/api/category
 */server/api/post
+temp/
 
 */.vscode/*
 !.vscode/settings.json

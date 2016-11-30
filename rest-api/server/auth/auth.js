@@ -52,7 +52,7 @@ exports.decodeToken = function(){
         }  
 
         // this will call next if token is valid and send error if its error.
-        // It will attach the ddecoded token to req.user
+        // It will attach the decoded token to req.user
         checkToken(req, res, next);
     };
 };
