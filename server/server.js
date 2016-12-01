@@ -29,6 +29,15 @@ var auth = require('./auth/route');
 app.use('/api', api);
 app.use('/auth', auth);
 
+// public router
+    // bootstrap
+    app.use('/', express.static(__dirname + '/../public'));
+    app.use('/bootstrap', express.static(__dirname + '/../node_modules/bootstrap/dist'));
+    //jquery
+    app.use('/jquery', express.static(__dirname + '/../node_modules/jquery/dist'));
+
+
+
 // error handler
 app.use(function(err, req, res, next){
     if(err.name === 'UnauthorizedError'){
