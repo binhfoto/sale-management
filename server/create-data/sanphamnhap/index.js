@@ -11,6 +11,8 @@ var model = require('../../api/' + MODEL_NAME + '/model');
 
 var create = function(params) {
     
+    logger.log('Mongo - Creating', 10, MODEL_NAME + '(s)');
+
     var min = 0;
     var max = params.sanphams.length-1;
 
