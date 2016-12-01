@@ -1,11 +1,11 @@
 {
-  "name": "rest-api",
+  "name": "sale-management",
   "version": "1.0.0",
   "description": "rest-api",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "binhnguyen",
   "license": "ISC",
@@ -21,5 +21,10 @@
     "method-override": "^2.3.6",
     "mongoose": "^4.6.3",
     "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0"
   }
 }
