@@ -11,6 +11,8 @@ var model = require('../../api/' + MODEL_NAME + '/model');
 
 var create = function(params) {
     
+    logger.log('Mongo - Creating', 20, MODEL_NAME + '(s)');
+
     var khachhangs = params.khachhangs;
     var sanphams = params.sanphams;
 

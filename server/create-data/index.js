@@ -23,7 +23,8 @@ cleanDB() // pass data to next function
     .then(sanphamtonkho.create)
     .then(sanphamnhap.create)
     .then(donhang.create)
-    .then(logger.log.bind(logger))
+    // log fake data to console
+    //.then(logger.log.bind(logger))
     .catch(function(err){
         logger.log(err);
     });
