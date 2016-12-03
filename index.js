@@ -12,3 +12,5 @@ var logger = require('./server/util/logger');
 
 // start server
 server.listen(config.port);
+
+module.exports = server
