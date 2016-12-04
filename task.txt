@@ -1,7 +1,14 @@
-2016-12-01
+
+- study react router
+- basic layout for homepage
+- setup sign-in page
+
+2016-12-02
     ui-setup
-        - study react router
-        - apply react-bootstrap to ui
-        - TBD: use cdn for (react,react-dom,react-bootrap) or webpack to build to bundle.js
-        - basic layout for homepage
-        - setup sign-in page
+        - use material ui
+        - setup webpack for react
+        - setup to run webpack before debug in vs code
+
+2016-12-03
+    ui-setup
+        -         
