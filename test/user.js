@@ -19,17 +19,29 @@ describe('User', () => {
             done();
         })
     });
-    describe('Create user', () => {
+    describe('Create a user', () => {
         let user = {
             username: 'admin',
             password: 'changeit'
         }
 
-        it('create user', (done) => {
+        it('normal', (done) => {
             chai.request(server).post('/api/users').send(user).end((req, res) => {
                 res.should.have.status(200);
                 done();
             });
+        });
+    });
+    describe('Get users', () => {
+        it('normal', (done) => {
+            chai.request(server)
+                .get('/api/users')
+                .end((req, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    res.body.length.should.be.eql(1);
+                    done();
+                });
         });
     });
 });
