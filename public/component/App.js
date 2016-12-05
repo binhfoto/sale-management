@@ -4,22 +4,15 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import {jsonServerRestClient, Admin, Resource} from 'admin-on-rest';
-import withProps from 'admin-on-rest/lib/withProps';
+import {SanPhamList, SanPhamCreate, SanPhamEdit} from './SanPham';
 
-import MyLayout from './admin-on-rest/mui/layout/MyLayout';
-
-const theme = {};
-const title = "Tên công ty";
-const children = () => {
-    <div>TaB</div>
-};
+const Test = () => <span>&lt;Resource&gt; elements are for configuration only and should not be rendered</span>;
 
 ReactDOM.render(
-    <Admin appLayout={withProps({ title, theme })(MyLayout)} restClient={jsonServerRestClient('http://jsonplaceholder.typicode.com')}>
-        <Resource name="noname" options={{label: "Chưa có"}}>
-            <h1>abc</h1>
-        </Resource>
+    <Admin title="Tên Công Ty" restClient={jsonServerRestClient('http://localhost:3000/api')}>
+        <Resource name="sanphams" list={SanPhamList} edit={SanPhamEdit} create={SanPhamCreate} options={{label: "Sản Phẩm"}}/>
+            
     </Admin>
-    , 
+    ,   
     document.getElementsByClassName('container')[0]
 );

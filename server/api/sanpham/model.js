@@ -16,4 +16,14 @@ var sanphamSchema = new Schema({
     nhom: String
 });
 
+// Duplicate the ID field.
+sanphamSchema.virtual('id').get(function(){
+    return this._id.toHexString();
+});
+
+// Ensure virtual fields are serialised.
+sanphamSchema.set('toJSON', {
+    virtuals: true
+});
+
 module.exports = mongoose.model('sanpham', sanphamSchema);
