@@ -18,9 +18,11 @@ if(config.seed){
     require('./create-data');
 }
 
+
 // setup the global middleware 
 var globalMiddleware = require('./middleware/applicationMiddleware');
 globalMiddleware(app);
+
 
 // api router
 var api = require('./api');
@@ -31,11 +33,8 @@ app.use('/auth', auth);
 
 
 // public resource
-    // bootstrap
-    app.use('/', express.static(__dirname + '/../public'));
-    app.use('/bootstrap', express.static(__dirname + '/../node_modules/bootstrap/dist'));
-    //jquery
-    app.use('/jquery', express.static(__dirname + '/../node_modules/jquery/dist'));
+app.use('/', express.static(__dirname + '/../public'));
+app.use('/dist', express.static(__dirname + '/../dist'));
 
 
 // error handler
