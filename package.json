@@ -11,6 +11,7 @@
     "test": "mocha"
   },
   "author": "binhnguyen",
+  "contributor": "letrungkien",
   "license": "ISC",
   "dependencies": {
     "admin-on-rest": "^0.5.4",
