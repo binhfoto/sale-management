@@ -1,3 +1,5 @@
 node_modules/
-.vscode/
 temp/
+dist/*
+
+npm-debug.log

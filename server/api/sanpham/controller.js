@@ -26,6 +26,8 @@ controller.get = function(req, res, next) {
         .find({})
         .then(
             function(items){
+                //res.header("Access-Control-Expose-Headers", "x-total-count");
+                res.header("X-Total-Count", items.length);
                 res.json(items);
             }, 
             function(err){
