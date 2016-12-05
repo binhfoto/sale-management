@@ -1,3 +1,4 @@
+'use strict'
 var MODEL_NAME = 'donhang';
 
 var fs = require('fs');
@@ -11,6 +12,8 @@ var model = require('../../api/' + MODEL_NAME + '/model');
 
 var create = function(params) {
     
+    logger.log('Mongo - Creating', 20, MODEL_NAME + '(s)');
+
     var khachhangs = params.khachhangs;
     var sanphams = params.sanphams;
 
@@ -32,6 +35,8 @@ var create = function(params) {
         })
     }
 
+    logger.log('Mongo - Creating', data.length, MODEL_NAME + '(s)');
+    
     var promises = data.map(function(item){
         return createDoc(model, item);
     });

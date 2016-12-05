@@ -1,5 +1,5 @@
 {
-  "name": "rest-api",
+  "name": "sale-management",
   "version": "1.0.0",
   "description": "rest-api",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "build": "webpack",
     "watch": "webpack -d --watch",
     "serve": "serve ./dist/js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "binhnguyen",
   "license": "ISC",
@@ -48,6 +48,10 @@
     "imports-loader": "^0.6.5",
     "serve": "^1.4.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "morgan": "^1.7.0",
+    "mocha": "^3.2.0",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0"
   }
 }
