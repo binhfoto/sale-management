@@ -1,8 +1,9 @@
 var router = require('express').Router();
 var controller = require('./controller.js');
 var auth = require('../../auth/auth');
+var config = require('../../config/config');
 
-var checkUser = [auth.decodeToken(), auth.getFreshUser()];
+var checkUser = config.auth === false ? [] : [auth.decodeToken(), auth.getFreshUser()];
 
 router.param('id', controller.params);
 
