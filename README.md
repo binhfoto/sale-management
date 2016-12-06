@@ -1,0 +1,1 @@
+Sale Management app for Pharmacy Caompany

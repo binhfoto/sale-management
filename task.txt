@@ -1,0 +1,20 @@
+
+- basic layout for homepage
+- setup sign-in page
+
+2016-12-02
+    ui-setup
+        - use material ui
+        - setup webpack for react
+        - setup to run webpack before debug in vs code
+
+2016-12-03/04
+    ui-setup
+        - study react router
+        - study admin-on-rest
+
+2016-12-05
+    ui-setup
+        - setup webpack for @import css, use 'css-raw-loader'
+        - mongoose: use 'virtual' to alias 'id' from '_id'
+        - config to display Sanpham table on UI     
