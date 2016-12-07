@@ -1,6 +1,6 @@
 module.exports = {
     logging: false,
     db: {
-        url: 'mongodb://localhost/namviet-test'
+        url: 'mongodb://localhost:27017/namviet-test'
     }
 };

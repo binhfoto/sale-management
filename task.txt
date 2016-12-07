@@ -19,7 +19,7 @@
     ui-setup
         - setup webpack for @import css, use 'css-raw-loader'
         - mongoose: use 'virtual' to alias 'id' from '_id'
-        - config to display Sanpham table on UI     
+        - config to display Sanpham table on UI
 
 2016-12-06
     ui-setup
@@ -27,3 +27,4 @@
         - add Delete action
         - group props, increase font size
         - use ChipField
+        - config to display Sanpham table on UI
