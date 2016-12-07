@@ -5,7 +5,7 @@ process.env.NODE_ENV = 'testing';
 let mongoose = require("mongoose");
 let User = require('../server/api/user/model');
 
-//Require the dev-dependencies - edited
+//Require the dev-dependencies - edited 2
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../index');
