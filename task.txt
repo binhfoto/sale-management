@@ -1,6 +1,8 @@
 
 - basic layout for homepage
 - setup sign-in page
+- define style in separate module to use globally
+- try to apply Dashboard in Admin element
 
 2016-12-02
     ui-setup
@@ -18,3 +20,10 @@
         - setup webpack for @import css, use 'css-raw-loader'
         - mongoose: use 'virtual' to alias 'id' from '_id'
         - config to display Sanpham table on UI     
+
+2016-12-06
+    ui-setup
+        - disable auth when config.auth === false
+        - add Delete action
+        - group props, increase font size
+        - use ChipField

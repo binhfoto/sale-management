@@ -40,6 +40,7 @@ exports.verifyUser = function(){
 exports.decodeToken = function(){
     return function(req, res, next){
 
+        //double check, first check in route.js
         if(config.auth === false) next();
 
         // make it optional to place token on query string
@@ -60,6 +61,7 @@ exports.decodeToken = function(){
 exports.getFreshUser = function(){
     return function(req, res, next){
 
+        //double check, first check in route.js
         if(config.auth === false) next();
         
         // we'll have access to req.user here
