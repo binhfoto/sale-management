@@ -93,14 +93,14 @@ describe('User', () => {
                 });
         });
         it("Update a user by userid - change password", (done) => {
-            let fullURL = `/api/users/${userID}`;
+            let fullURL = `/api/users/${userID}?access_token=${jwt.token}`;
             let userUpdated = {
                 username: 'admin',
                 password: 'changeit123'
             }
 
             chai.request(server)
-                .get(fullURL)
+                .put(fullURL)
                 .send(userUpdated)
                 .end( (req, res) => {
                     res.should.have.status(200);
