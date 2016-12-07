@@ -1,9 +1,10 @@
-
 import React from 'react';
-import { List, Edit, Create, Datagrid, TextField, EditButton, DisabledInput, LongTextInput, TextInput, ChipField } from 'admin-on-rest/lib/mui';
-
-// TODO: define style in separate module to use globally 
-const STYLE = {fontSize: "1.3em"};
+import {List, Datagrid} from 'admin-on-rest/lib/mui/list';
+import {Edit, Create} from 'admin-on-rest/lib/mui/detail';
+import {TextField, LongTextInput, ChipField} from 'admin-on-rest/lib/mui/field';
+import {DisabledInput, TextInput} from 'admin-on-rest/lib/mui/input';
+import {EditButton} from 'admin-on-rest/lib/mui/button';
+import {GridStyle} from '../style/default';
 
 const MA_SP = {source:"maSP", label: "Mã"};
 const TEN = {source:"ten", label: "Tên"};
@@ -13,21 +14,21 @@ const DON_GIA = {source:"donGia", label: "Đơn Giá"};
 const NHOM = {source:"nhom", label: "Nhóm"};
 
 export const SanPhamList = (props) => (
-    <List {...props} title="Danh Sách">
+    <List {...props} title="Danh sách">
         <Datagrid>
-            <TextField {...MA_SP} style={STYLE}/>
-            <TextField {...TEN} style={STYLE}/>
-            <TextField {...QUY_CACH} style={STYLE}/>
-            <TextField {...DON_VI} style={STYLE}/>
-            <TextField {...DON_GIA} style={STYLE}/>
-            <ChipField {...NHOM} style={STYLE}/>
+            <TextField {...MA_SP} style={GridStyle}/>
+            <TextField {...TEN} style={GridStyle}/>
+            <TextField {...QUY_CACH} style={GridStyle}/>
+            <TextField {...DON_VI} style={GridStyle}/>
+            <TextField {...DON_GIA} style={GridStyle}/>
+            <ChipField {...NHOM} style={GridStyle}/>
             <EditButton />
         </Datagrid>
     </List>
 );
 
 export const SanPhamEdit = (props) => (
-    <Edit {...props} title="Sửa Sản Phẩm">
+    <Edit {...props} title="Cập nhật sản phẩm">
         <TextInput {...MA_SP}/>
         <LongTextInput {...TEN}/>
         <TextInput {...QUY_CACH}/>
