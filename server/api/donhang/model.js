@@ -42,6 +42,15 @@ var donhangSchema = new Schema({
     duNo: Number //dư nợ
 });
 
+// Duplicate the ID field.
+donhangSchema.virtual('id').get(function(){
+    return this._id.toHexString();
+});
+
+// Ensure virtual fields are serialised.
+donhangSchema.set('toJSON', {
+    virtuals: true
+});
 
 var formatNumber = {
     "1": "000", // 0001
@@ -50,17 +59,20 @@ var formatNumber = {
     "4": ""     // 4000
 }
 
-donhangSchema.statics.today = new Date();
-donhangSchema.statics.number = 0;
-donhangSchema.statics.getNextId = function(){
-    var curDate = new Date();
-    if(curDate.getDate() != this.today.getDate()/* || curDate.getMonth() == today.getMonth() || curDate.getFullYear() == today.getFullYear()*/){
-        this.number = 0;
-        this.today = curDate;
+donhangSchema.statics = {
+    today: new Date(),
+    number: 0,
+    getNextId: function() {
+        var curDate = new Date();
+        if(curDate.getDate() != this.today.getDate()/* || curDate.getMonth() == today.getMonth() || curDate.getFullYear() == today.getFullYear()*/){
+            this.number = 0;
+            this.today = curDate;
+        }
+        this.number += 1;
+        // HD0001/2/3/2016
+        return 'HD' + formatNumber[('' + this.number).length] + this.number + '/' + this.today.getDate() + '/' + this.today.getMonth() + '/' + this.today.getFullYear();
     }
-    this.number += 1;
-    // HD0001/2/3/2016
-    return 'HD' + formatNumber[('' + this.number).length] + this.number + '/' + this.today.getDate() + '/' + this.today.getMonth() + '/' + this.today.getFullYear();
 };
+
 
 module.exports = mongoose.model('donhang', donhangSchema);

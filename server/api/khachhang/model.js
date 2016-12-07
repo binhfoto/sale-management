@@ -10,4 +10,14 @@ var khachhangSchema = new Schema({
     soDienThoai: String
 });
 
+// Duplicate the ID field.
+khachhangSchema.virtual('id').get(function(){
+    return this._id.toHexString();
+});
+
+// Ensure virtual fields are serialised.
+khachhangSchema.set('toJSON', {
+    virtuals: true
+});
+
 module.exports = mongoose.model('khachhang', khachhangSchema);

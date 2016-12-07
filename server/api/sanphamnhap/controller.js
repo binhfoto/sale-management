@@ -30,6 +30,7 @@ controller.get = function(req, res, next) {
         .exec()
         .then(
             function(items){
+                res.header("X-Total-Count", items.length);
                 res.json(items);
             }, 
             function(err){
