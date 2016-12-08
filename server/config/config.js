@@ -7,6 +7,7 @@ var config = {
     dev: 'development', // same name as development.js
     test: 'tesing', // same name as testing.js
     prod: 'production', // same name as production.js 
+    url: process.env.SERVER_URI || 'http://localhost:3000',
     port: process.env.PORT || 3000,
     // 10 days in minute
     expireTime: 24*60*10,
