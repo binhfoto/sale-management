@@ -36,4 +36,14 @@ sanphamnhap.pre('save', function(next) {
     });
 });
 
+// Duplicate the ID field.
+sanphamnhap.virtual('id').get(function(){
+    return this._id.toHexString();
+});
+
+// Ensure virtual fields are serialised.
+sanphamnhap.set('toJSON', {
+    virtuals: true
+});
+
 module.exports = mongoose.model('sanphamnhap', sanphamnhap);

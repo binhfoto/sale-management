@@ -1,8 +1,10 @@
 
 - basic layout for homepage
 - setup sign-in page
-- define style in separate module to use globally
+- implement NumberInput, NumberField
 - try to apply Dashboard in Admin element
+- add filter and default filter at 1st time 
+- paging and sorting
 
 2016-12-02
     ui-setup
@@ -26,4 +28,9 @@
         - disable auth when config.auth === false
         - add Delete action
         - group props, increase font size
-        - use ChipField
+        - use ChipField 
+
+2016-12-07
+    ui-setup    
+        - define style in separate module to use globally
+        - add KhachHang, SanPhamNhap resource (all crud ops)
