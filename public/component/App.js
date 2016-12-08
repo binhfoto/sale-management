@@ -22,4 +22,4 @@ ReactDOM.render(
     </Admin>
     ,
     document.getElementsByClassName('container')[0]
-);
+); 
