@@ -1,5 +1,7 @@
 import '../css/reset.css';
 
+import 'whatwg-fetch';
+
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
