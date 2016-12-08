@@ -4,6 +4,7 @@
   "description": "ui and rest-api",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npm run build",
     "start": "node index.js",
     "build": "webpack",
     "test": "mocha"

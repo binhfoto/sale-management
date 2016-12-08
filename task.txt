@@ -4,7 +4,7 @@
 - implement NumberInput, NumberField
 - try to apply Dashboard in Admin element
 - add filter and default filter at 1st time 
-- paging and sorting
+- paging and sorting, khachhangs?_sort=id&_order=DESC&_start=0&_end=9
 
 2016-12-02
     ui-setup
