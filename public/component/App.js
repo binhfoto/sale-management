@@ -13,7 +13,7 @@ import config from '../../server/config/config';
 const Test = () => <span>&lt;Resource&gt; elements are for configuration only and should not be rendered</span>;
 
 ReactDOM.render(
-    <Admin title="Tên Công Ty" restClient={jsonServerRestClient(config.url) + '/api'}>
+    <Admin title="Tên Công Ty" restClient={jsonServerRestClient(config.url + '/api')}>
         <Resource name="sanphams" list={SanPhamList} edit={SanPhamEdit} create={SanPhamCreate} remove={Delete} options={{label: "Sản Phẩm"}}/>
         <Resource name="khachhangs" list={KhachHangList} edit={KhachHangEdit} create={KhachHangCreate} remove={Delete} options={{label: "Khách Hàng"}}/>
         <Resource name="sanphamnhaps" list={NhapHangList} edit={NhapHangEdit} create={NhapHangCreate} remove={Delete} options={{label: "Nhập Hàng"}}/>
