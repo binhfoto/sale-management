@@ -12,8 +12,6 @@ import {KhachHangList, KhachHangCreate, KhachHangEdit} from './KhachHang';
 import {NhapHangList, NhapHangCreate, NhapHangEdit} from './NhapHang';
 import config from '../../server/config/config';
 
-const Test = () => <span>&lt;Resource&gt; elements are for configuration only and should not be rendered</span>;
-
 ReactDOM.render(
     <Admin title="Tên Công Ty" restClient={jsonServerRestClient('/api')}>
         <Resource name="sanphams" list={SanPhamList} edit={SanPhamEdit} create={SanPhamCreate} remove={Delete} options={{label: "Sản Phẩm"}}/>
