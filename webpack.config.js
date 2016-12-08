@@ -1,5 +1,4 @@
 var path = require('path');
-var autoprefixer = require('autoprefixer');
 
 module.exports = {
      entry: path.join(__dirname, 'public/component/App.js'),
