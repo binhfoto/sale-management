@@ -1,5 +1,7 @@
 import '../css/reset.css';
 
+import 'whatwg-fetch';
+
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
@@ -20,4 +22,4 @@ ReactDOM.render(
     </Admin>
     ,
     document.getElementsByClassName('container')[0]
-);
+); 
