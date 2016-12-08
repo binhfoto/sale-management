@@ -1,8 +1,8 @@
 import React from 'react';
 import {List, Datagrid} from 'admin-on-rest/lib/mui/list';
 import {Edit, Create} from 'admin-on-rest/lib/mui/detail';
-import {TextField, LongTextInput, ChipField} from 'admin-on-rest/lib/mui/field';
-import {DisabledInput, TextInput} from 'admin-on-rest/lib/mui/input';
+import {TextField, ChipField} from 'admin-on-rest/lib/mui/field';
+import {DisabledInput, TextInput, LongTextInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton} from 'admin-on-rest/lib/mui/button';
 import {GridStyle} from '../style/default';
 
