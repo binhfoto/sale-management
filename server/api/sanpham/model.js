@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var _super = require('../abstract/model');
 
-var sanphamSchema = new Schema({
+var _schema = new Schema({
     maSP: {
         type: String,
         unique: true
@@ -16,14 +17,6 @@ var sanphamSchema = new Schema({
     nhom: String
 });
 
-// Duplicate the ID field.
-sanphamSchema.virtual('id').get(function(){
-    return this._id.toHexString();
-});
+_super(_schema);
 
-// Ensure virtual fields are serialised.
-sanphamSchema.set('toJSON', {
-    virtuals: true
-});
-
-module.exports = mongoose.model('sanpham', sanphamSchema);
+module.exports = mongoose.model('sanpham', _schema);

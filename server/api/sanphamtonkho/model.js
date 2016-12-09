@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var _super = require('../abstract/model');
 
-var spTonKhoSchema = new Schema({
+var _schema = new Schema({
     maSP: {
         type: Schema.Types.ObjectId,
         ref: 'sanpham',
@@ -10,14 +11,6 @@ var spTonKhoSchema = new Schema({
     soLuong: Number /* ton kho */
 });
 
-// Duplicate the ID field.
-spTonKhoSchema.virtual('id').get(function(){
-    return this._id.toHexString();
-});
+_super(_schema);
 
-// Ensure virtual fields are serialised.
-spTonKhoSchema.set('toJSON', {
-    virtuals: true
-});
-
-module.exports = mongoose.model('sanphamtonkho', spTonKhoSchema);
+module.exports = mongoose.model('sanphamtonkho', _schema);

@@ -1,11 +1,12 @@
-var User = require('./model.js');
+var Model = require('./model.js');
 var signToken = require('../../auth/auth').signToken;
 var _ = require('lodash');
+var _super = require('../abstract/controller');
 
 var controller = {};
 
 controller.params = function(req, res, next, id){
-    User
+    Model
         .findById(id)
         .select('-password') // '-' means exclude this property from querying
         .exec()
@@ -25,8 +26,8 @@ controller.params = function(req, res, next, id){
         );
 };
 
-controller.get = function(req, res, next){
-    User
+controller.get = function(req, res, next) {
+    Model
         .find()
         .select('-password') // '-' means exclude this property from querying
         .exec()
@@ -45,41 +46,29 @@ controller.getOne = function(req, res, next) {
 };
 
 controller.put = function(req, res, next) {
-    var newUser = req.body;
-    var curUser = req.user; // mongoose object 
+    var newuser = req.body;
+    var curuser = req.user; // mongoose object 
 
-    _.merge(curUser, newUser);
+    _.merge(curuser, newuser);
 
-    curUser.save(function(err, savedUser){
+    curuser.save(function(err, saveduser){
         if(err){
             next(err);
         }else{
-            res.json(savedUser.toJson());
+            res.json(saveduser.toJson());
         }
     });
 };
 
 controller.post = function(req, res, next) {
-    var newUser = new User(req.body);
+    var newuser = new Model(req.body);
     
-    newUser.save(function(err, user){
+    newuser.save(function(err, user){
         if(err) return next(err);
 
         var token = signToken(user._id);
         res.json({token: token});
     });
-
-    /*var newUser = req.body;
-    User
-        .create(newUser)
-        .then(
-            function(user){
-                res.json(user);
-            },
-            function(err){
-                next(err);
-            }
-        );*/
 };
 
 controller.delete = function(req, res, next) {
@@ -92,11 +81,6 @@ controller.delete = function(req, res, next) {
         }
 
     });
-
-    /*
-    User.remove(user, function(err){
-
-    });*/
 };
 
 controller.me = function(req, res, next){
