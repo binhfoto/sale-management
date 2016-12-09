@@ -1,10 +1,18 @@
+Pending tasks:
+    * UI
+        - basic layout for homepage
+            - remove grid margin
+        - setup sign-in/sign-out page
+        - try to apply Dashboard in Admin element
 
-- basic layout for homepage
-- setup sign-in page
-- implement NumberInput, NumberField
-- try to apply Dashboard in Admin element
-- add filter and default filter at 1st time 
-- paging and sorting, khachhangs?_sort=id&_order=DESC&_start=0&_end=9
+    * admin-on-rest lib    
+        - implement NumberInput, NumberField
+        - add filter and default filter at 1st time 
+        - paging and sorting, khachhangs?_sort=id&_order=DESC&_start=0&_end=9
+        - validate input(number) at edit and create
+
+    * general
+        - remove commented code snippet
 
 2016-12-02
     ui-setup
@@ -34,3 +42,13 @@
     ui-setup    
         - define style in separate module to use globally
         - add KhachHang, SanPhamNhap resource (all crud ops)
+
+2016-12-08
+    ui-setup
+        - fix import wrong component (LongTextInput)
+        - setup heroku
+
+2016-12-09
+    ui-setup
+        - refactor code for controller
+        - 

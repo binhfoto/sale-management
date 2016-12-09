@@ -1,8 +1,16 @@
-var SanPham = require('./model');
+var Model = require('./model');
 var _ = require('lodash');
-var controller = {};
+var abstract = require('../abstract/controller');
 
-controller.params = function(req, res, next, id) {
+var controller = {};
+controller.params = abstract.params(Model);
+controller.get = abstract.get(Model);
+controller.getOne = abstract.getOne();
+controller.put = abstract.put();
+controller.post = abstract.post(Model);
+controller.delete = abstract.delete();
+
+/*controller.params = function(req, res, next, id) {
     // use the id to find object from DB and attach to req
     SanPham
         .findById(id)
@@ -80,5 +88,5 @@ controller.delete = function(req, res, next) {
         }
     });
 };
-
+*/
 module.exports = controller;

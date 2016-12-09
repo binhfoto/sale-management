@@ -1,8 +1,16 @@
-var SanPhamNhap = require('./model');
+var Model = require('./model');
 var _ = require('lodash');
-var controller = {};
+var abstract = require('../abstract/controller');
 
-controller.params = function(req, res, next, id) {
+var controller = {};
+controller.params = abstract.params(Model, 'sanpham');
+controller.get = abstract.get(Model, 'sanpham');
+controller.getOne = abstract.getOne();
+controller.put = abstract.put();
+controller.post = abstract.post(Model);
+controller.delete = abstract.delete();
+
+/*controller.params = function(req, res, next, id) {
     // use the id to find object from DB and attach to req
     SanPhamNhap
         .findById(id)
@@ -11,9 +19,9 @@ controller.params = function(req, res, next, id) {
         .then(
             function(item){
                 if(!item){
-                    next(new Error('Khong co san pham voi id=' + id));
+                    next(new Error('Cannot found with id=' + id));
                 }else{
-                    req.sanphamnhap = item;
+                    req.item = item;
                     next();
                 }
             }, 
@@ -82,6 +90,6 @@ controller.delete = function(req, res, next) {
             res.json(item);
         }
     });
-};
+};*/
 
 module.exports = controller;
