@@ -11,12 +11,12 @@ controller.params = function(req, res, next, id){
         .select('-password') // '-' means exclude this property from querying
         .exec()
         .then(
-            function(item){
-                if(!item){
-                    next(new Error('No item with ' + id));
+            function(user){
+                if(!user){
+                    next(new Error('No user with ' + id));
                 }
                 else {
-                    req.item = item;
+                    req.user = user;
                     next();
                 }
             },
@@ -32,8 +32,8 @@ controller.get = function(req, res, next) {
         .select('-password') // '-' means exclude this property from querying
         .exec()
         .then(
-            function(items){
-                res.json(items);
+            function(users){
+                res.json(users);
             },
             function(err){
                 next(err);
@@ -42,54 +42,49 @@ controller.get = function(req, res, next) {
 };
 
 controller.getOne = function(req, res, next) {
-    res.json(req.item.toJson());
+    res.json(req.user.toJson());
 };
 
+controller.put = function(req, res, next) {
+    var newuser = req.body;
+    var curuser = req.user; // mongoose object 
 
-controller.put = _super.put();
-controller.post = _super.post(Model);
-controller.delete = _super.delete();
+    _.merge(curuser, newuser);
 
-/*controller.put = function(req, res, next) {
-    var newitem = req.body;
-    var curitem = req.item; // mongoose object 
-
-    _.merge(curitem, newitem);
-
-    curitem.save(function(err, saveditem){
+    curuser.save(function(err, saveduser){
         if(err){
             next(err);
         }else{
-            res.json(saveditem.toJson());
+            res.json(saveduser.toJson());
         }
     });
 };
 
 controller.post = function(req, res, next) {
-    var newitem = new Model(req.body);
+    var newuser = new Model(req.body);
     
-    newitem.save(function(err, item){
+    newuser.save(function(err, user){
         if(err) return next(err);
 
-        var token = signToken(item._id);
+        var token = signToken(user._id);
         res.json({token: token});
     });
 };
 
 controller.delete = function(req, res, next) {
-    var item = req.item;
-    item.remove(function(err, item){
+    var user = req.user;
+    user.remove(function(err, user){
         if(err){
             next(err);
         } else{
-            res.json(item.toJson());
+            res.json(user.toJson());
         }
 
     });
-};*/
+};
 
 controller.me = function(req, res, next){
-    res.json(req.item.toJson());
+    res.json(req.user.toJson());
 };
 
 module.exports = controller;
