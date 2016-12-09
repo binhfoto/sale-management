@@ -1,5 +1,11 @@
 var router = require('express').Router();
 var controller = require('./controller.js');
+var _super = require('../abstract/route');
+
+_super(router, controller);
+
+/*var router = require('express').Router();
+var controller = require('./controller.js');
 var auth = require('../../auth/auth');
 var config = require('../../config/config');
 
@@ -15,5 +21,5 @@ router.route('/:id')
     .get(controller.getOne)
     .put(checkUser, controller.put)
     .delete(checkUser, controller.delete);
-
+*/
 module.exports = router;

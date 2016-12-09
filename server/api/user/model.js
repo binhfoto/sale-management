@@ -2,7 +2,7 @@ var bcrypt = require('bcrypt-nodejs'); // npm install bcrypt
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var customerSchema = new Schema({
+var _schema = new Schema({
     username: {
         type: String,
         unique: true,
@@ -15,13 +15,13 @@ var customerSchema = new Schema({
 });
 
 // middleware that will run before a document is created
-customerSchema.pre('save', function(next){
+_schema.pre('save', function(next){
     if(!this.isModified('password')) return next();
     this.password = this.encryptPassword(this.password);
     next();
 });
 
-customerSchema.methods = {
+_schema.methods = {
     // check the password on sign in
     authenticate: function(plainTextPass){
         return bcrypt.compareSync(plainTextPass, this.password);
@@ -44,4 +44,4 @@ customerSchema.methods = {
     }
 };
 
-module.exports = mongoose.model('user', customerSchema);
+module.exports = mongoose.model('user', _schema);

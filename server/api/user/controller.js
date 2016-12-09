@@ -1,21 +1,22 @@
-var User = require('./model.js');
+var Model = require('./model.js');
 var signToken = require('../../auth/auth').signToken;
 var _ = require('lodash');
+var _super = require('../abstract/controller');
 
 var controller = {};
 
 controller.params = function(req, res, next, id){
-    User
+    Model
         .findById(id)
         .select('-password') // '-' means exclude this property from querying
         .exec()
         .then(
-            function(user){
-                if(!user){
-                    next(new Error('No user with ' + id));
+            function(item){
+                if(!item){
+                    next(new Error('No item with ' + id));
                 }
                 else {
-                    req.user = user;
+                    req.item = item;
                     next();
                 }
             },
@@ -25,14 +26,14 @@ controller.params = function(req, res, next, id){
         );
 };
 
-controller.get = function(req, res, next){
-    User
+controller.get = function(req, res, next) {
+    Model
         .find()
         .select('-password') // '-' means exclude this property from querying
         .exec()
         .then(
-            function(users){
-                res.json(users);
+            function(items){
+                res.json(items);
             },
             function(err){
                 next(err);
@@ -41,66 +42,54 @@ controller.get = function(req, res, next){
 };
 
 controller.getOne = function(req, res, next) {
-    res.json(req.user.toJson());
+    res.json(req.item.toJson());
 };
 
-controller.put = function(req, res, next) {
-    var newUser = req.body;
-    var curUser = req.user; // mongoose object 
 
-    _.merge(curUser, newUser);
+controller.put = _super.put();
+controller.post = _super.post(Model);
+controller.delete = _super.delete();
 
-    curUser.save(function(err, savedUser){
+/*controller.put = function(req, res, next) {
+    var newitem = req.body;
+    var curitem = req.item; // mongoose object 
+
+    _.merge(curitem, newitem);
+
+    curitem.save(function(err, saveditem){
         if(err){
             next(err);
         }else{
-            res.json(savedUser.toJson());
+            res.json(saveditem.toJson());
         }
     });
 };
 
 controller.post = function(req, res, next) {
-    var newUser = new User(req.body);
+    var newitem = new Model(req.body);
     
-    newUser.save(function(err, user){
+    newitem.save(function(err, item){
         if(err) return next(err);
 
-        var token = signToken(user._id);
+        var token = signToken(item._id);
         res.json({token: token});
     });
-
-    /*var newUser = req.body;
-    User
-        .create(newUser)
-        .then(
-            function(user){
-                res.json(user);
-            },
-            function(err){
-                next(err);
-            }
-        );*/
 };
 
 controller.delete = function(req, res, next) {
-    var user = req.user;
-    user.remove(function(err, user){
+    var item = req.item;
+    item.remove(function(err, item){
         if(err){
             next(err);
         } else{
-            res.json(user.toJson());
+            res.json(item.toJson());
         }
 
     });
-
-    /*
-    User.remove(user, function(err){
-
-    });*/
-};
+};*/
 
 controller.me = function(req, res, next){
-    res.json(req.user.toJson());
+    res.json(req.item.toJson());
 };
 
 module.exports = controller;
