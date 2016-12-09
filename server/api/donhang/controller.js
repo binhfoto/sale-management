@@ -1,7 +1,16 @@
-var DonHang = require('./model');
+var Model = require('./model');
 var _ = require('lodash');
-var controller = {};
+var abstract = require('../abstract/controller');
 
+var controller = {};
+controller.params = abstract.params(Model, 'khachhang sanpham');
+controller.get = abstract.get(Model, 'khachhang sanpham');
+controller.getOne = abstract.getOne();
+controller.put = abstract.put();
+controller.post = abstract.post(Model);
+controller.delete = abstract.delete();
+
+/*
 controller.params = function(req, res, next, id) {
     // use the id to find object from DB and attach to req
     DonHang
@@ -82,6 +91,6 @@ controller.delete = function(req, res, next) {
             res.json(item);
         }
     });
-};
+};*/
 
 module.exports = controller;
