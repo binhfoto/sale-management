@@ -1,4 +1,4 @@
 
 export const GridStyle = {
-    fontSize: "1.2em"
+    fontSize: "1em"
 };
