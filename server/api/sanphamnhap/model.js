@@ -2,8 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var SanPhamTonKho = require('../sanphamtonkho/model');
+var _super = require('../abstract/model');
 
-var sanphamnhap = new Schema({
+var _schema = new Schema({
     maSP: {
         type: Schema.Types.ObjectId,
         ref: 'sanpham',
@@ -20,7 +21,7 @@ var sanphamnhap = new Schema({
     }
 });
 
-sanphamnhap.pre('save', function(next) {
+_schema.pre('save', function(next) {
     var maSP = this.maSP;
     var soLuongNhap = this.soLuongNhap;
 
@@ -36,14 +37,6 @@ sanphamnhap.pre('save', function(next) {
     });
 });
 
-// Duplicate the ID field.
-sanphamnhap.virtual('id').get(function(){
-    return this._id.toHexString();
-});
+_super(_schema);
 
-// Ensure virtual fields are serialised.
-sanphamnhap.set('toJSON', {
-    virtuals: true
-});
-
-module.exports = mongoose.model('sanphamnhap', sanphamnhap);
+module.exports = mongoose.model('sanphamnhap', _schema);

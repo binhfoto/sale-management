@@ -1,14 +1,14 @@
 var Model = require('./model');
 var _ = require('lodash');
-var abstract = require('../abstract/controller');
+var _super = require('../abstract/controller');
 
 var controller = {};
-controller.params = abstract.params(Model);
-controller.get = abstract.get(Model);
-controller.getOne = abstract.getOne();
-controller.put = abstract.put();
-controller.post = abstract.post(Model);
-controller.delete = abstract.delete();
+controller.params = _super.params(Model);
+controller.get = _super.get(Model);
+controller.getOne = _super.getOne();
+controller.put = _super.put();
+controller.post = _super.post(Model);
+controller.delete = _super.delete();
 
 /*controller.params = function(req, res, next, id) {
     // use the id to find object from DB and attach to req

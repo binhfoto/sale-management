@@ -1,14 +1,14 @@
 var Model = require('./model');
 var _ = require('lodash');
-var abstract = require('../abstract/controller');
+var _super = require('../abstract/controller');
 
 var controller = {};
-controller.params = abstract.params(Model, 'khachhang sanpham');
-controller.get = abstract.get(Model, 'khachhang sanpham');
-controller.getOne = abstract.getOne();
-controller.put = abstract.put();
-controller.post = abstract.post(Model);
-controller.delete = abstract.delete();
+controller.params = _super.params(Model, 'khachhang sanpham');
+controller.get = _super.get(Model, 'khachhang sanpham');
+controller.getOne = _super.getOne();
+controller.put = _super.put();
+controller.post = _super.post(Model);
+controller.delete = _super.delete();
 
 /*
 controller.params = function(req, res, next, id) {

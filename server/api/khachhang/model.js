@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var _super = require('../abstract/model');
 
-var khachhangSchema = new Schema({
+var _schema = new Schema({
     ten: {
         type: String,
         required: true
@@ -10,14 +11,6 @@ var khachhangSchema = new Schema({
     soDienThoai: String
 });
 
-// Duplicate the ID field.
-khachhangSchema.virtual('id').get(function(){
-    return this._id.toHexString();
-});
+_super(_schema);
 
-// Ensure virtual fields are serialised.
-khachhangSchema.set('toJSON', {
-    virtuals: true
-});
-
-module.exports = mongoose.model('khachhang', khachhangSchema);
+module.exports = mongoose.model('khachhang', _schema);

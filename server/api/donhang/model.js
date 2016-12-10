@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var _super = require('../abstract/model');
 
-var donhangSchema = new Schema({
+var _schema = new Schema({
     // mã đơn hàng
     maDH: {
         type: String,
@@ -42,15 +43,7 @@ var donhangSchema = new Schema({
     duNo: Number //dư nợ
 });
 
-// Duplicate the ID field.
-donhangSchema.virtual('id').get(function(){
-    return this._id.toHexString();
-});
-
-// Ensure virtual fields are serialised.
-donhangSchema.set('toJSON', {
-    virtuals: true
-});
+_super(_schema);
 
 var formatNumber = {
     "1": "000", // 0001
@@ -59,7 +52,7 @@ var formatNumber = {
     "4": ""     // 4000
 }
 
-donhangSchema.statics = {
+_schema.statics = {
     today: new Date(),
     number: 0,
     getNextId: function() {
@@ -75,4 +68,4 @@ donhangSchema.statics = {
 };
 
 
-module.exports = mongoose.model('donhang', donhangSchema);
+module.exports = mongoose.model('donhang', _schema);

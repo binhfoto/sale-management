@@ -10,45 +10,46 @@ import {GridStyle} from '../style/default';
 //var DateField = require('../adminonrest/mui/field');
 
 /*
- * NhapHang is for 'sanphamnhap' table
+ * KhoHang is for 'sanphamtonkho' table
+
+<ReferenceField label="Đơn Vị" source="maSP" reference="sanphams">
+                <TextField source="donVi"  style={GridStyle}/>
+            </ReferenceField>
+            <ReferenceField label="Đơn Giá" source="maSP" reference="sanphams">
+                <TextField source="donGia"  style={GridStyle}/>
+            </ReferenceField>
+ 
+
  */
 
-const SO_LUONG_NHAP = {source:"soLuongNhap", label: "Số Lượng"};
-const MA_PHIEU_NHAP = {source:"maPhieuNhap", label: "Mã Phiếu"};
-const NGAY_NHAP = {source:"ngayNhap", label: "Ngày Nhập"};
+const SO_LUONG = {source:"soLuong", label: "Số Lượng"};
 
-export const NhapHangList = (props) => (
+export const KhoHangList = (props) => (
     <List {...props} title="Danh sách">
-        <Datagrid>
-            <ReferenceField label="Sản Phẩm" source="maSP" reference="sanphams">
+        <Datagrid>            
+            <ReferenceField label="Tên" source="maSP" reference="sanphams">
                 <TextField source="ten"  style={GridStyle}/>
-            </ReferenceField>
-            <TextField {...SO_LUONG_NHAP} style={GridStyle}/>
-            <TextField {...MA_PHIEU_NHAP} style={GridStyle}/>
-            <DateField {...NGAY_NHAP} style={GridStyle}/>
+            </ReferenceField>          
+            <TextField {...SO_LUONG} style={GridStyle}/>
             <EditButton />
         </Datagrid>
     </List>
 );
 
-export const NhapHangEdit = (props) => (
+export const KhoHangEdit = (props) => (
     <Edit {...props} title="Cập nhật">
         <ReferenceInput label="Sản Phẩm" source="maSP" reference="sanphams">
             <SelectInput optionText="ten" />
         </ReferenceInput>
-        <TextInput {...SO_LUONG_NHAP} />
-        <TextInput {...MA_PHIEU_NHAP} />
-        <DateInput {...NGAY_NHAP} />
+        <TextInput {...SO_LUONG} />
     </Edit>
 );
 
-export const NhapHangCreate = (props) => (
+export const KhoHangCreate = (props) => (
     <Create {...props} title="Tạo mới">
         <ReferenceInput label="Sản Phẩm" source="maSP" reference="sanphams" allowEmpty>
             <SelectInput optionText="ten"/>
         </ReferenceInput>
-        <TextInput {...SO_LUONG_NHAP} />
-        <TextInput {...MA_PHIEU_NHAP} />
-        <DateInput {...NGAY_NHAP} />
+        <TextInput {...SO_LUONG} />
     </Create>
 );

@@ -1,6 +1,10 @@
 var router = require('express').Router();
 var controller = require('./controller.js');
-var auth = require('../../auth/auth');
+var _super = require('../abstract/route');
+
+_super(router, controller);
+
+/*var auth = require('../../auth/auth');
 var config = require('../../config/config');
 
 var checkUser = config.auth === false ? [] : [auth.decodeToken(), auth.getFreshUser()];
@@ -14,6 +18,6 @@ router.route('/')
 router.route('/:id')
     .get(controller.getOne)
     .put(checkUser, controller.put)
-    .delete(checkUser, controller.delete);
+    .delete(checkUser, controller.delete);*/
 
 module.exports = router;
