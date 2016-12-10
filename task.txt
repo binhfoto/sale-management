@@ -50,5 +50,5 @@ Pending tasks:
 
 2016-12-09
     ui-setup
-        - refactor code for controller
+        - refactor code for controller, model, router
         - 
