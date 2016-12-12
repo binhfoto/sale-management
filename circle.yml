@@ -1,3 +1,6 @@
+machine:
+  node:
+    version: 6.9.2
 deployment:
   staging:
     branch: make_tests
