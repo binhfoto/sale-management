@@ -11,6 +11,7 @@ var server = require('./server/server');
 var logger = require('./server/util/logger');
 
 // start server
+console.log(`Server is listened on port ${config.port}`);
 server.listen(config.port);
 
 module.exports = server
