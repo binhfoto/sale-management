@@ -1,0 +1,5 @@
+deployment:
+  staging:
+    branch: make_tests
+    heroku:
+      appname: nab-sale-management

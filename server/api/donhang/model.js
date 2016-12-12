@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var _super = require('../abstract/model');
 
-var donhangSchema = new Schema({
+var _schema = new Schema({
     // mã đơn hàng
     maDH: {
         type: String,
@@ -42,6 +43,7 @@ var donhangSchema = new Schema({
     duNo: Number //dư nợ
 });
 
+_super(_schema);
 
 var formatNumber = {
     "1": "000", // 0001
@@ -50,17 +52,20 @@ var formatNumber = {
     "4": ""     // 4000
 }
 
-donhangSchema.statics.today = new Date();
-donhangSchema.statics.number = 0;
-donhangSchema.statics.getNextId = function(){
-    var curDate = new Date();
-    if(curDate.getDate() != this.today.getDate()/* || curDate.getMonth() == today.getMonth() || curDate.getFullYear() == today.getFullYear()*/){
-        this.number = 0;
-        this.today = curDate;
+_schema.statics = {
+    today: new Date(),
+    number: 0,
+    getNextId: function() {
+        var curDate = new Date();
+        if(curDate.getDate() != this.today.getDate()/* || curDate.getMonth() == today.getMonth() || curDate.getFullYear() == today.getFullYear()*/){
+            this.number = 0;
+            this.today = curDate;
+        }
+        this.number += 1;
+        // HD0001/2/3/2016
+        return 'HD' + formatNumber[('' + this.number).length] + this.number + '/' + this.today.getDate() + '/' + this.today.getMonth() + '/' + this.today.getFullYear();
     }
-    this.number += 1;
-    // HD0001/2/3/2016
-    return 'HD' + formatNumber[('' + this.number).length] + this.number + '/' + this.today.getDate() + '/' + this.today.getMonth() + '/' + this.today.getFullYear();
 };
 
-module.exports = mongoose.model('donhang', donhangSchema);
+
+module.exports = mongoose.model('donhang', _schema);

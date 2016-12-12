@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var _super = require('../abstract/model');
 
-var spTonKhoSchema = new Schema({
+var _schema = new Schema({
     maSP: {
         type: Schema.Types.ObjectId,
         ref: 'sanpham',
@@ -10,4 +11,6 @@ var spTonKhoSchema = new Schema({
     soLuong: Number /* ton kho */
 });
 
-module.exports = mongoose.model('sanphamtonkho', spTonKhoSchema);
+_super(_schema);
+
+module.exports = mongoose.model('sanphamtonkho', _schema);

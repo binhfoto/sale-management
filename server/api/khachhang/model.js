@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var _super = require('../abstract/model');
 
-var khachhangSchema = new Schema({
+var _schema = new Schema({
     ten: {
         type: String,
         required: true
@@ -10,4 +11,6 @@ var khachhangSchema = new Schema({
     soDienThoai: String
 });
 
-module.exports = mongoose.model('khachhang', khachhangSchema);
+_super(_schema);
+
+module.exports = mongoose.model('khachhang', _schema);

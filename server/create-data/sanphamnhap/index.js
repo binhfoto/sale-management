@@ -11,13 +11,13 @@ var model = require('../../api/' + MODEL_NAME + '/model');
 
 var create = function(params) {
     
-    logger.log('Mongo - Creating', 10, MODEL_NAME + '(s)');
+    logger.log('Mongo - Creating', 25, MODEL_NAME + '(s)');
 
     var min = 0;
     var max = params.sanphams.length-1;
 
     var data = [];
-    for(var i=0; i<10; i++){
+    for(var i=0; i<25; i++){
         var randomIndex = random(min, max);
         data.push({
             "maSP": params.sanphams[randomIndex]._id,

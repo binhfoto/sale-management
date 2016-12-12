@@ -1,7 +1,16 @@
-var DonHang = require('./model');
+var Model = require('./model');
 var _ = require('lodash');
-var controller = {};
+var _super = require('../abstract/controller');
 
+var controller = {};
+controller.params = _super.params(Model, 'khachhang sanpham');
+controller.get = _super.get(Model, 'khachhang sanpham');
+controller.getOne = _super.getOne();
+controller.put = _super.put();
+controller.post = _super.post(Model);
+controller.delete = _super.delete();
+
+/*
 controller.params = function(req, res, next, id) {
     // use the id to find object from DB and attach to req
     DonHang
@@ -30,6 +39,7 @@ controller.get = function(req, res, next) {
         .exec()
         .then(
             function(items){
+                res.header("X-Total-Count", items.length);
                 res.json(items);
             }, 
             function(err){
@@ -81,6 +91,6 @@ controller.delete = function(req, res, next) {
             res.json(item);
         }
     });
-};
+};*/
 
 module.exports = controller;

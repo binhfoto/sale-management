@@ -4,28 +4,28 @@ process.env.NODE_ENV = 'testing';
 
 let mongoose = require("mongoose");
 let User = require('../server/api/user/model');
-
-//Require the dev-dependencies - edited 2
+//Require the dev-dependencies
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../index');
 let should = chai.should();
-
-chai.use(chaiHttp);
-
 let user = {
     username: 'admin',
     password: 'changeit'
     };
-
 let jwt = '';
-
-describe('User', () => {
-    before((done) => {
-        User.remove({}, (err) => {
+const cleanData = (done) => {
+    User.remove({}, (err) => {
             done();
         })
-    });
+};
+
+
+chai.use(chaiHttp);
+
+describe('User', () => {
+    before(cleanData);
+    after(cleanData);
     describe('Create a user', () => {      
         it('normal', (done) => {
             chai.request(server)
