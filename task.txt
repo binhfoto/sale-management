@@ -51,4 +51,7 @@ Pending tasks:
 2016-12-09
     ui-setup
         - refactor code for controller, model, router
-        - 
+
+2016-12-12
+    ui-setup
+        - filtering, paging, sorting
