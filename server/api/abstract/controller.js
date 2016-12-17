@@ -1,3 +1,4 @@
+var moment = require('moment');
 var _ = require('lodash');
 var controller = {};
 
@@ -26,13 +27,45 @@ controller.params = (Model, populate = '') => function(req, res, next, id) {
         );
 };
 
+/*
+var re = new RegExp(req.params.search, 'i');
+
+app.User.find().or([{ 'firstName': { $regex: re }}, { 'lastName': { $regex: re }}]).sort('title', 1).exec(function(err, users) {
+    res.json(JSON.stringify(users));
+});
+*/
+
 controller.get = (Model, populate = '', select = '', sort = '') => function(req, res, next) {
 
+    // filter
+    var filter = _.pickBy(req.query, function(value, key){
+        return !_.startsWith(key, "_");
+    });
+    var findCondition = {};
+    if(_.keys(filter).length > 0){
+        _.map(filter, function(value, key) {
+            switch (Model.schema.path(key).instance) {
+                case "String":
+                    findCondition[key] = { $regex: value, $options: 'i' };
+                    break;
+                case "Number":
+                    findCondition[key] = value;
+                    break;
+                case "Date":
+                    var date = moment(value);
+                    var nextDate = moment(date).add(1, 'days');
+                    findCondition[key] = {$gte: date.toDate(), $lt: nextDate.toDate()};
+                    break;
+                default:
+                    findCondition[key] = { $regex: value, $options: 'i' };
+            }
+        });
+    }
+    
     // count all the records
-    var count = Model.count({});
+    var count = Model.count(findCondition);
 
-    // only get records between _start and _end
-    var query = Model.find();
+    var query = Model.find(findCondition);
     
     if(populate.length > 0 ) {
         query = query.populate(populate);
@@ -40,6 +73,7 @@ controller.get = (Model, populate = '', select = '', sort = '') => function(req,
     if(select.length > 0) {
         query = query.select(select);
     }
+    // only get records between _start and _end
     if(req.query._start && req.query._end) {
         query = query.skip(parseInt(req.query._start)).limit(parseInt(req.query._end));
     }
@@ -50,14 +84,14 @@ controller.get = (Model, populate = '', select = '', sort = '') => function(req,
     }
 
     return Promise.all([count.exec(), query.exec()]).then(
-        function(items){
+        function(items) {
             var number = items[0];
             var records = items[1];
             //res.header("Access-Control-Expose-Headers", "x-total-count"); // for cors
             res.header("X-Total-Count", Math.max(number, records.length)); // number of all records
             res.json(records); // records on paging
         },
-        function(err){
+        function(err) {
             next(err);
         }
     );

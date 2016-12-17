@@ -1,8 +1,8 @@
 import React from 'react';
-import {List, Datagrid} from 'admin-on-rest/lib/mui/list';
+import {List, Filter, Datagrid} from 'admin-on-rest/lib/mui/list';
 import {Edit, Create} from 'admin-on-rest/lib/mui/detail';
 import {TextField, ChipField} from 'admin-on-rest/lib/mui/field';
-import {DisabledInput, TextInput, LongTextInput} from 'admin-on-rest/lib/mui/input';
+import {DisabledInput, TextInput, LongTextInput, SelectInput, ReferenceInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton} from 'admin-on-rest/lib/mui/button';
 import {GridStyle} from '../style/default';
 
@@ -13,8 +13,24 @@ const DON_VI = {source:"donVi", label: "Đơn Vị"};
 const DON_GIA = {source:"donGia", label: "Đơn Giá"};
 const NHOM = {source:"nhom", label: "Nhóm"};
 
+/*
+Full text search
+    <TextInput label="Tìm kiếm" source="q" alwaysOn />
+    <SelectInput optionText="nhom" />
+*/
+const SanPhamFilter = (props) => (
+    <Filter {...props}>
+        <TextInput {...MA_SP} alwaysOn/>
+        <TextInput {...TEN}/>
+        <TextInput {...QUY_CACH}/>
+        <TextInput {...DON_VI} />
+        <TextInput {...DON_GIA} />
+        <TextInput {...NHOM} />
+    </Filter>
+);
+
 export const SanPhamList = (props) => (
-    <List {...props} title="Danh sách">
+    <List {...props} title="Danh sách" filter={SanPhamFilter}>
         <Datagrid>
             <TextField {...MA_SP} style={GridStyle}/>
             <TextField {...TEN} style={GridStyle}/>

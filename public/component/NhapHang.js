@@ -1,5 +1,5 @@
 import React from 'react';
-import {List, Datagrid} from 'admin-on-rest/lib/mui/list';
+import {List, Filter, Datagrid} from 'admin-on-rest/lib/mui/list';
 import {Edit, Create} from 'admin-on-rest/lib/mui/detail';
 import {TextField, ChipField, ReferenceField, DateField} from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, LongTextInput, TextInput, DateInput, ReferenceInput, SelectInput} from 'admin-on-rest/lib/mui/input';
@@ -17,8 +17,16 @@ const SO_LUONG_NHAP = {source:"soLuongNhap", label: "Số Lượng"};
 const MA_PHIEU_NHAP = {source:"maPhieuNhap", label: "Mã Phiếu"};
 const NGAY_NHAP = {source:"ngayNhap", label: "Ngày Nhập"};
 
+const NhapHangFilter = (props) => (
+    <Filter {...props}>
+        <TextInput {...SO_LUONG_NHAP} />
+        <TextInput {...MA_PHIEU_NHAP} />
+        <DateInput {...NGAY_NHAP}/>
+    </Filter>
+);
+
 export const NhapHangList = (props) => (
-    <List {...props} title="Danh sách">
+    <List {...props} title="Danh sách" filter={NhapHangFilter}>
         <Datagrid>
             <ReferenceField label="Sản Phẩm" source="maSP" reference="sanphams">
                 <TextField source="ten"  style={GridStyle}/>
