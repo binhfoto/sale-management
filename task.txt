@@ -7,8 +7,7 @@ Pending tasks:
 
     * admin-on-rest lib    
         - implement NumberInput, NumberField
-        - add filter and default filter at 1st time 
-        - paging and sorting, khachhangs?_sort=id&_order=DESC&_start=0&_end=9
+        - add default filter at 1st time 
         - validate input(number) at edit and create
 
     * general
@@ -55,3 +54,7 @@ Pending tasks:
 2016-12-12
     ui-setup
         - filtering, paging, sorting
+
+2016-12-19
+    ui-setup
+        - tabs
