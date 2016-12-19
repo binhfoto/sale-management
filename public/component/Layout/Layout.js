@@ -7,17 +7,11 @@ import AppBar from 'material-ui/AppBar';
 import CircularProgress from 'material-ui/CircularProgress';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Menu, Notification} from 'admin-on-rest/lib/mui/layout';
+import { Tabs , Tab } from 'material-ui/Tabs';
 
-import MyTab from './MyTab';
 
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
-
-
-/*<div className="body" style={{ display: 'flex', flex: '1', backgroundColor: '#edecec' }}>
-                        <div style={{ flex: 1 }}>{children}</div>
-                        <Menu resources={route.resources} />
-                    </div>*/
 
 
 const Layout = ({ isLoading, children, route, title, theme }) => {
@@ -26,18 +20,32 @@ const Layout = ({ isLoading, children, route, title, theme }) => {
     const RightElement = isLoading ? <CircularProgress color="#fff" size={30} thickness={2} style={{ margin: 8 }} /> : <span />;
     const muiTheme = getMuiTheme(theme);
 
- // console.log("route: ", route);
- // console.log("route.resources: ", route.resources);
-
     return (
-        <MuiThemeProvider muiTheme={muiTheme}>
+        <MuiThemeProvider muiTheme={ muiTheme }>
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-                <AppBar title={'Title'} />
-                <MyTab resources={route.resources}/>
-                <div className="body" style={{ display: 'flex', flex: '1', backgroundColor: '#edecec' }}>
-                    <div style={{ flex: 1 }}>{children}</div>
-                    <Menu resources={route.resources} />
-                </div>
+                <AppBar title={Title} />
+                <Tabs>
+                    {route.resources.map(resource => {
+                            var linkTo = (resource.name === 'wrapper' && resource.children) ? resource.children[0].props.name : resource.name;
+                            var MyMenu = <span/>;
+                            if(resource.children && resource.children.length > 0){
+                                MyMenu = <Menu resources={React.Children.map(resource.children, ({props}) => props)} />
+                            }
+
+                            return (
+                                <Tab key={resource.name} 
+                                    label={resource.options.label || inflection.humanize(inflection.pluralize(resource.name))} 
+                                    icon={<resource.icon />}
+                                    containerElement={<Link to={`/${linkTo}`}/>}>
+                                        <div className="body" style={{ display: 'flex', flex: '1', backgroundColor: '#edecec' }}>
+                                            <div style={{ flex: 1 }}>{children}</div>
+                                            {MyMenu}
+                                        </div>
+                                </Tab>
+                            );
+                        }
+                    )}
+                </Tabs>
                 <Notification />
             </div>
         </MuiThemeProvider>
