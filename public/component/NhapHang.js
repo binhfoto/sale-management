@@ -22,6 +22,9 @@ const NGAY_NHAP = {source:"ngayNhap", label: "Ngày Nhập"};
 
 const NhapHangFilter = (props) => (
     <Filter {...props}>
+        <ReferenceInput label="Sản Phẩm" source="ten" reference="sanphams" allowEmpty>
+            <SelectInput optionText="ten" />
+        </ReferenceInput>
         <TextInput {...SO_LUONG_NHAP} />
         <TextInput {...MA_PHIEU_NHAP} />
         <DateInput {...NGAY_NHAP}/>
