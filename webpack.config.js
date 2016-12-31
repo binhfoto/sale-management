@@ -1,7 +1,8 @@
 var path = require('path');
+var DefinePlugin = require('webpack').DefinePlugin;
 
 module.exports = {
-     entry: path.join(__dirname, 'public/component/App.js'),
+     entry: ['babel-register', 'babel-polyfill', path.join(__dirname, 'public/component/App.js')],
      output: {
          path: path.join(__dirname, 'dist/js'),
          filename: 'bundle.js',
@@ -13,7 +14,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'react']
+                    presets: ['es2015', 'react', 'stage-2']
                 }
             },
             {
@@ -25,5 +26,10 @@ module.exports = {
                 loader : 'file-loader'
             }
         ]
-     }
+     },
+     plugins: [
+        new DefinePlugin({
+            ADMIN_API_URL: JSON.stringify('/api')
+        })
+     ]
  }

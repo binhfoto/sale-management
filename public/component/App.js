@@ -20,8 +20,16 @@ import Admin from './Layout/Admin';
 
 import config from '../../server/config/config';
 
+/*require("babel-core/register");
+require("babel-polyfill");
+
+*/
+//const ADMIN_API_URL = '/api';
+
+/*restClient={jsonServerRestClient('/api')}*/
+
 ReactDOM.render(
-    <Admin appLayout={Layout} restClient={jsonServerRestClient('/api')}>
+    <Admin appLayout={Layout}>
         <Resource name="wrapper" options={{label: "Kho Hàng"}}>
             <Resource name="sanphamnhaps" list={NhapHangList} edit={NhapHangEdit} create={NhapHangCreate} remove={Delete} options={{label: "Hàng Nhập"}}/>
             <Resource name="sanphamtonkhos" list={KhoHangList} edit={KhoHangEdit} remove={Delete} options={{label: "Hàng Tồn"}}/>
