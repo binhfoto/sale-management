@@ -45,9 +45,9 @@ export default (apiUrl, jwtSelector, logout) => {
             const query = {
                 ...params.filter,
                 _sort: field,
-                _sortDir: order,
-                _offset: (page - 1) * perPage,
-                _limit: perPage,
+                _order: order,
+                _start: (page - 1) * perPage,
+                _end: perPage,
             };
             url = `${apiUrl}/${resource}?${queryParameters(query)}`;
             break;
@@ -97,6 +97,7 @@ export default (apiUrl, jwtSelector, logout) => {
      * @returns {Object} REST response
      */
     const convertHTTPResponseToREST = (response, type, resource, params) => {
+    console.log(response);
         const { headers, json } = response;
         switch (type) {
         case GET_LIST:

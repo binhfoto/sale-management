@@ -5,8 +5,9 @@ import { Router, IndexRoute, Route, Redirect, hashHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware, routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import createSagaMiddleware from 'redux-saga';
+import { fork } from 'redux-saga/effects';
 
-
+import {jsonServerRestClient} from 'admin-on-rest';
 import adminReducer from 'admin-on-rest/lib/reducer';
 import crudSaga from 'admin-on-rest/lib/sideEffect/saga';
 import CrudRoute from 'admin-on-rest/lib/CrudRoute';
@@ -52,16 +53,17 @@ const Admin = ({ /*restClient,*/ dashboard, children, title = 'Admin on REST', t
         window.devToolsExtension ? window.devToolsExtension() : f => f,
     ));
 
+
     const redirectIfNotAuthenticated = redirectIfNotAuthenticatedFactory(store);
-
     const restClient = restClientFactory(ADMIN_API_URL, () => window.localStorage.getItem('token'), () => store.dispatch(signOut.request()));
-
-    sagaMiddleware.run(function* () { // eslint-disable-line func-names
+    sagaMiddleware.run(function* () {
         yield fork(crudSaga(restClient));
         yield fork(userSagas);
     });
 
-    //sagaMiddleware.run(crudSaga(restClient));
+
+    /*const restClient = jsonServerRestClient(ADMIN_API_URL);
+    sagaMiddleware.run(crudSaga(restClient));*/
 
     const history = syncHistoryWithStore(hashHistory, store);
 
@@ -78,6 +80,18 @@ const Admin = ({ /*restClient,*/ dashboard, children, title = 'Admin on REST', t
         }
     );
 
+    /*return (
+        <Provider store={store}>
+            <Router history={history}>
+                {dashboard ? undefined : <Redirect from="/" to={`/${firstResource}`} />}
+                <Route path="/" component={appLayout} resources={treeResources}>
+                    {dashboard && <IndexRoute component={dashboard} restClient={restClient} />}
+                    {crudRoutes}
+                </Route>
+            </Router>
+        </Provider>
+    );*/
+
     return (
         <Provider store={store}>
             <Router history={history}>
@@ -93,6 +107,7 @@ const Admin = ({ /*restClient,*/ dashboard, children, title = 'Admin on REST', t
         </Provider>
     );
 };
+
 
 const componentPropType = PropTypes.oneOfType([PropTypes.func, PropTypes.string]);
 

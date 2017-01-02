@@ -9,6 +9,10 @@ Pending tasks:
         - implement NumberInput, NumberField
         - add default filter at 1st time 
         - validate input(number) at edit and create
+    
+    * javascript-boilerplate
+        - sagas: dispath action
+        - redux-form
 
     * general
         - remove commented code snippet

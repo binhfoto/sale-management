@@ -1,13 +1,12 @@
 import '../css/reset.css';
 
-import 'whatwg-fetch';
+//import 'whatwg-fetch';
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import withProps from 'admin-on-rest/lib/withProps';
-import {jsonServerRestClient, Resource} from 'admin-on-rest';
-//import {Admin} from 'admin-on-rest';
+import {Resource} from 'admin-on-rest/lib';
 import {Delete} from 'admin-on-rest/lib/mui';
 
 import {SanPhamList, SanPhamCreate, SanPhamEdit} from './SanPham';

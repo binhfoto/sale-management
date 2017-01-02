@@ -55,7 +55,7 @@ class SignIn extends Component {
                                 component={renderInput}
                                 floatingLabelText="username"
                                 type="username"
-                                hintText="john@doe.me"
+                                hintText="username"
                             />
                         </div>
                         <div>
