@@ -1,4 +1,6 @@
-import { queryParameters, fetchJson } from 'admin-on-rest/lib/util/fetch';
+import { queryParameters/*, fetchJson*/ } from 'admin-on-rest/lib/util/fetch';
+import {fetchJson} from './fetchClient';
+
 import {
     GET_LIST,
     GET_MATCHING,
@@ -59,13 +61,13 @@ export default (apiUrl, jwtSelector, logout) => {
         case GET_ONE:
             url = `${apiUrl}/${resource}/${params.id}`;
             break;
-        case GET_MANY: {
+        /*case GET_MANY: {
             const query = {
                 filter: JSON.stringify({ id: params.ids }),
             };
             url = `${apiUrl}/${resource}?${queryParameters(query)}`;
             break;
-        }
+        }*/
         case GET_MANY_REFERENCE:
             url = `${apiUrl}/${resource}?${queryParameters({ [params.target]: params.id })}`;
             break;
@@ -97,7 +99,7 @@ export default (apiUrl, jwtSelector, logout) => {
      * @returns {Object} REST response
      */
     const convertHTTPResponseToREST = (response, type, resource, params) => {
-    console.log(response);
+    
         const { headers, json } = response;
         switch (type) {
         case GET_LIST:
@@ -119,9 +121,18 @@ export default (apiUrl, jwtSelector, logout) => {
      * @returns {Promise} the Promise for a REST response
      */
     return (type, resource, params) => {
+        // json-server doesn't handle WHERE IN requests, so we fallback to calling GET_ONE n times instead        
+        if (type === GET_MANY) {
+            return Promise.all(params.ids.map(id => fetchJson(`${apiUrl}/${resource}/${id}`)))
+                .then(responses => responses.map(response => response.json));
+        }
+
         const { url, options } = convertRESTRequestToHTTP(type, resource, params);
         return fetchJson(url, options)
-            .then(response => convertHTTPResponseToREST(response, type, resource, params))
+            //.then(response => convertHTTPResponseToREST(response, type, resource, params))
+            .then(function(response){
+                return convertHTTPResponseToREST(response, type, resource, params);
+            })
             .catch((error) => {
                 if (error.message === 'Unauthorized') {
                     logout();
