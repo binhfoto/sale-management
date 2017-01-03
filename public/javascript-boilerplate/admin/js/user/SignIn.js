@@ -44,7 +44,7 @@ class SignIn extends Component {
 
         return (
             <Card className="sign-in" style={{ margin: '2em' }}>
-                <CardTitle title="Sign in" />
+                <CardTitle title="Tên Công Ty" />
                 {signInError && <Snackbar open autoHideDuration={4000} message={signInError.message} />}
 
                 <form onSubmit={handleSubmit(this.signIn)}>
@@ -53,30 +53,23 @@ class SignIn extends Component {
                             <Field
                                 name="username"
                                 component={renderInput}
-                                floatingLabelText="username"
+                                floatingLabelText="Tên Đăng Nhập"
                                 type="username"
-                                hintText="username"
+                                hintText="abcxyz"
                             />
                         </div>
                         <div>
                             <Field
                                 name="password"
                                 component={renderInput}
-                                floatingLabelText="Password"
+                                floatingLabelText="Mật Khẩu"
                                 type="password"
-                                hintText="5upa_dupa_pwd"
+                                hintText="123456"
                             />
                         </div>
                     </div>
                     <CardActions>
-                        <RaisedButton type="submit" primary disabled={submitting} label="Sign in" />
-
-                        <FlatButton
-                            containerElement={<Link to="/forgot-password" />}
-                            href="#"
-                            disabled={submitting}
-                            label="Forgot your password?"
-                        />
+                        <RaisedButton type="submit" primary disabled={submitting} label="Đăng Nhập" />
                     </CardActions>
                 </form>
             </Card>
