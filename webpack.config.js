@@ -43,7 +43,7 @@ var webpackConfig = {
 }
 
 if (config.env === 'development') {
-    webpackConfig.devtool = 'source-map';
+    //webpackConfig.devtool = 'source-map';
 }
 
 module.exports = webpackConfig;

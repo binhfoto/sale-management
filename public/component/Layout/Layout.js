@@ -8,11 +8,22 @@ import CircularProgress from 'material-ui/CircularProgress';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Menu, Notification} from 'admin-on-rest/lib/mui/layout';
 import { Tabs , Tab } from 'material-ui/Tabs';
-
+import Paper from 'material-ui/Paper';
+import { List, ListItem } from 'material-ui/List';
 
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 
+
+const showMenu = (menuId) => {
+    let menus = document.getElementsByClassName("menuInTab");
+    for(let i=0; i<menus.length; i++) {
+        let menu = menus[i];
+        if(menu && menu.style) {
+            menu.style.display = (menu.id === menuId) ? 'block' : 'none';
+        }
+    }
+};
 
 const Layout = ({ isLoading, children, route, title, theme }) => {
 
@@ -23,29 +34,52 @@ const Layout = ({ isLoading, children, route, title, theme }) => {
     return (
         <MuiThemeProvider muiTheme={ muiTheme }>
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-                <AppBar title={Title} />
+                <AppBar title={Title} iconElementRight={RightElement}/>
                 <Tabs>
                     {route.resources.map(resource => {
-                            var linkTo = (resource.name === 'wrapper' && resource.children) ? resource.children[0].props.name : resource.name;
-                            var MyMenu = <span/>;
-                            if(resource.children && resource.children.length > 0){
-                                MyMenu = <Menu resources={React.Children.map(resource.children, ({props}) => props)} />
-                            }
-
+                            var linkTo = (resource.name.startsWith('wrapper') && resource.children) ? resource.children[0].props.name : resource.name;
                             return (
                                 <Tab key={resource.name} 
+                                    id={resource.name} 
                                     label={resource.options.label || inflection.humanize(inflection.pluralize(resource.name))} 
                                     icon={<resource.icon />}
-                                    containerElement={<Link to={`/${linkTo}`}/>}>
-                                        <div className="body" style={{ display: 'flex', flex: '1', backgroundColor: '#edecec' }}>
-                                            <div style={{ flex: 1 }}>{children}</div>
-                                            {MyMenu}
-                                        </div>
+                                    containerElement={<Link to={`/${linkTo}`}/>}
+                                    onActive={ (tab) => {
+                                        let menuId = "menu_".concat(tab.props.id);
+                                        showMenu(menuId);
+                                    }}>
                                 </Tab>
                             );
                         }
                     )}
                 </Tabs>
+                
+                <div className="body" style={{ display: 'flex', flex: '1', backgroundColor: '#edecec' }}>
+                    <div style={{ flex: 1 }}>
+                        {children}
+                    </div>
+                    {
+                        route.resources.map( (resource, index) => {
+                            if(resource.children && resource.children.length > 0) {
+                                let menuStyle = { flex: '0 0 15em', order: -1 };
+                                if(index > 0) {
+                                    menuStyle.display = 'none';
+                                }
+                                return (
+                                    <div key={"key_menu_" + resource.name} style={menuStyle} id={"menu_" + resource.name} className="menuInTab">
+                                        <Paper style={{height: '100%'}}>
+                                            <List>
+                                                {React.Children.map(resource.children, ({props}) => {
+                                                    return <ListItem key={props.name} containerElement={<Link to={`/${props.name}`} />} primaryText={props.options.label || inflection.humanize(inflection.pluralize(props.name))} leftIcon={<props.icon />} />
+                                                })}
+                                            </List>
+                                        </Paper>
+                                    </div>
+                                );
+                            }
+                        })
+                    }
+                </div>
                 <Notification />
             </div>
         </MuiThemeProvider>

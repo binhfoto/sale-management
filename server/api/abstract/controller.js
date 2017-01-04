@@ -89,7 +89,6 @@ controller.get = (Model, populate = '', select = '', sort = '') => function(req,
             var records = items[1];
             //res.header("Access-Control-Expose-Headers", "x-total-count"); // for cors
             res.header("X-Total-Count", Math.max(number, records.length)); // number of all records
-            res.header('Access-Control-Expose-Headers', 'X-Total-Count');
             res.json(records); // records on paging
         },
         function(err) {

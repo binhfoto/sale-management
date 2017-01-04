@@ -21,15 +21,12 @@ import config from '../../server/config/config';
 
 /*require("babel-core/register");
 require("babel-polyfill");
-
 */
-//const ADMIN_API_URL = '/api';
 
-/*restClient={jsonServerRestClient('/api')}*/
 
 ReactDOM.render(
     <Admin appLayout={Layout}>
-        <Resource name="wrapper" options={{label: "Kho Hàng"}}>
+        <Resource name="wrapper_kho_hang" options={{label: "Kho Hàng"}}>
             <Resource name="sanphamnhaps" list={NhapHangList} edit={NhapHangEdit} create={NhapHangCreate} remove={Delete} options={{label: "Hàng Nhập"}}/>
             <Resource name="sanphamtonkhos" list={KhoHangList} edit={KhoHangEdit} remove={Delete} options={{label: "Hàng Tồn"}}/>
         </Resource>

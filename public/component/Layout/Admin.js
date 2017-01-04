@@ -30,7 +30,7 @@ const Admin = ({ /*restClient,*/ dashboard, children, title = 'Admin on REST', t
     var flatResources = [];
     React.Children.map(children, ({ props }) => {
         treeResources.push(props);
-        if(props.name === 'wrapper' && props.children){
+        if(props.name.startsWith('wrapper') && props.children){
             React.Children.map(props.children, ({props}) => {
                 flatResources.push(props);
             });
@@ -41,6 +41,7 @@ const Admin = ({ /*restClient,*/ dashboard, children, title = 'Admin on REST', t
     });
 
     const firstResource = flatResources[0].name;
+    
     const sagaMiddleware = createSagaMiddleware();
     const reducer = combineReducers({
         admin: adminReducer(flatResources),
