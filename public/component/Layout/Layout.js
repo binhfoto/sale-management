@@ -6,7 +6,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import CircularProgress from 'material-ui/CircularProgress';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {Menu, Notification} from 'admin-on-rest/lib/mui/layout';
+import {Notification} from 'admin-on-rest/lib/mui/layout';
+import Menu from './Menu';
 import { Tabs , Tab } from 'material-ui/Tabs';
 import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
@@ -55,27 +56,12 @@ const Layout = ({ isLoading, children, route, title, theme }) => {
                 </Tabs>
                 
                 <div className="body" style={{ display: 'flex', flex: '1', backgroundColor: '#edecec' }}>
-                    <div style={{ flex: 1 }}>
-                        {children}
-                    </div>
+                    <div style={{ flex: 1 }}>{children}</div>
                     {
                         route.resources.map( (resource, index) => {
                             if(resource.children && resource.children.length > 0) {
-                                let menuStyle = { flex: '0 0 15em', order: -1 };
-                                if(index > 0) {
-                                    menuStyle.display = 'none';
-                                }
-                                return (
-                                    <div key={"key_menu_" + resource.name} style={menuStyle} id={"menu_" + resource.name} className="menuInTab">
-                                        <Paper style={{height: '100%'}}>
-                                            <List>
-                                                {React.Children.map(resource.children, ({props}) => {
-                                                    return <ListItem key={props.name} containerElement={<Link to={`/${props.name}`} />} primaryText={props.options.label || inflection.humanize(inflection.pluralize(props.name))} leftIcon={<props.icon />} />
-                                                })}
-                                            </List>
-                                        </Paper>
-                                    </div>
-                                );
+                                if(index > 0) menuStyle.display = 'none';
+                                return <Menu key={"key_menu_" + resource.name} resource={resource}/>;
                             }
                         })
                     }
