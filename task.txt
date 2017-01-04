@@ -2,13 +2,16 @@ Pending tasks:
     * UI
         - basic layout for homepage
             - remove grid margin
-        - setup sign-in/sign-out page
         - try to apply Dashboard in Admin element
 
     * admin-on-rest lib    
         - implement NumberInput, NumberField
         - add default filter at 1st time 
         - validate input(number) at edit and create
+    
+    * javascript-boilerplate
+        - sagas: dispath action
+        - redux-form
 
     * general
         - remove commented code snippet
@@ -58,3 +61,8 @@ Pending tasks:
 2016-12-19
     ui-setup
         - tabs
+
+2016-12-19
+    ui-setup
+        - setup sign-in/sign-out page (from javascript-boilerplate)
+        - restructuring layout, put side-menu outside tab

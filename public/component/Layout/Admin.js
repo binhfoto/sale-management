@@ -5,20 +5,32 @@ import { Router, IndexRoute, Route, Redirect, hashHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware, routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import createSagaMiddleware from 'redux-saga';
+import { fork } from 'redux-saga/effects';
 
+import {jsonServerRestClient} from 'admin-on-rest';
 import adminReducer from 'admin-on-rest/lib/reducer';
 import crudSaga from 'admin-on-rest/lib/sideEffect/saga';
 import CrudRoute from 'admin-on-rest/lib/CrudRoute';
 import Layout from 'admin-on-rest/lib/mui/layout/Layout';
 import withProps from 'admin-on-rest/lib/withProps';
 
-const Admin = ({ restClient, dashboard, children, title = 'Admin on REST', theme = {}, appLayout = withProps({ title, theme })(Layout) }) => {
+
+import restClientFactory from '../../javascript-boilerplate/admin/js/restClient';
+import SignIn from '../../javascript-boilerplate/admin/js/user/SignIn';
+import userSagas from '../../javascript-boilerplate/admin/js/user/sagas';
+import userReducer from '../../javascript-boilerplate/admin/js/user/reducer';
+import { signOut } from '../../javascript-boilerplate/admin/js/user/actions';
+import redirectIfNotAuthenticatedFactory from '../../javascript-boilerplate/admin/js/user/redirectIfNotAuthenticated';
+
+import SignInLayout from './SignInLayout';
+
+const Admin = ({ /*restClient,*/ dashboard, children, title = 'Admin on REST', theme = {}, appLayout = withProps({ title, theme })(Layout) }) => {
   
     var treeResources = [];
     var flatResources = [];
     React.Children.map(children, ({ props }) => {
         treeResources.push(props);
-        if(props.name === 'wrapper' && props.children){
+        if(props.name.startsWith('wrapper') && props.children){
             React.Children.map(props.children, ({props}) => {
                 flatResources.push(props);
             });
@@ -29,17 +41,26 @@ const Admin = ({ restClient, dashboard, children, title = 'Admin on REST', theme
     });
 
     const firstResource = flatResources[0].name;
+    
     const sagaMiddleware = createSagaMiddleware();
     const reducer = combineReducers({
         admin: adminReducer(flatResources),
         form: formReducer,
         routing: routerReducer,
+        user: userReducer(window.localStorage)
     });
     const store = createStore(reducer, undefined, compose(
         applyMiddleware(routerMiddleware(hashHistory), sagaMiddleware),
         window.devToolsExtension ? window.devToolsExtension() : f => f,
     ));
-    sagaMiddleware.run(crudSaga(restClient));
+
+
+    const redirectIfNotAuthenticated = redirectIfNotAuthenticatedFactory(store);
+    const restClient = restClientFactory(ADMIN_API_URL, () => window.localStorage.getItem('token'), () => store.dispatch(signOut.request()));
+    sagaMiddleware.run(function* () {
+        yield fork(crudSaga(restClient));
+        yield fork(userSagas);
+    });
 
     const history = syncHistoryWithStore(hashHistory, store);
 
@@ -60,7 +81,10 @@ const Admin = ({ restClient, dashboard, children, title = 'Admin on REST', theme
         <Provider store={store}>
             <Router history={history}>
                 {dashboard ? undefined : <Redirect from="/" to={`/${firstResource}`} />}
-                <Route path="/" component={appLayout} resources={treeResources}>
+                <Route path="/auth/signin" component={SignInLayout}>
+                    <IndexRoute component={SignIn} />
+                </Route>
+                <Route path="/" component={appLayout} resources={treeResources} onEnter={redirectIfNotAuthenticated}>
                     {dashboard && <IndexRoute component={dashboard} restClient={restClient} />}
                     {crudRoutes}
                 </Route>
@@ -69,10 +93,11 @@ const Admin = ({ restClient, dashboard, children, title = 'Admin on REST', theme
     );
 };
 
+
 const componentPropType = PropTypes.oneOfType([PropTypes.func, PropTypes.string]);
 
 Admin.propTypes = {
-    restClient: PropTypes.func.isRequired,
+    //restClient: PropTypes.func.isRequired,
     appLayout: componentPropType,
     dashboard: componentPropType,
     children: PropTypes.node,

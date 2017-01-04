@@ -82,9 +82,12 @@ exports.getFreshUser = function(){
     };
 }
 
-exports.signToken = function(id){
+exports.signToken = function(user){
     return jwt.sign(
-        {_id: id},
+        {
+            id: user._id,
+            username: user.username
+        },
         config.secrets.jwt,
         {expiresIn: config.expireTime}
     );
