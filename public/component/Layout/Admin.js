@@ -62,10 +62,6 @@ const Admin = ({ /*restClient,*/ dashboard, children, title = 'Admin on REST', t
         yield fork(userSagas);
     });
 
-
-    /*const restClient = jsonServerRestClient(ADMIN_API_URL);
-    sagaMiddleware.run(crudSaga(restClient));*/
-
     const history = syncHistoryWithStore(hashHistory, store);
 
     var crudRoutes = [];
@@ -80,18 +76,6 @@ const Admin = ({ /*restClient,*/ dashboard, children, title = 'Admin on REST', t
                             options={resource.options} />);
         }
     );
-
-    /*return (
-        <Provider store={store}>
-            <Router history={history}>
-                {dashboard ? undefined : <Redirect from="/" to={`/${firstResource}`} />}
-                <Route path="/" component={appLayout} resources={treeResources}>
-                    {dashboard && <IndexRoute component={dashboard} restClient={restClient} />}
-                    {crudRoutes}
-                </Route>
-            </Router>
-        </Provider>
-    );*/
 
     return (
         <Provider store={store}>

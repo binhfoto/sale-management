@@ -1,11 +1,14 @@
-
 import React from 'react';
-import {List, Datagrid} from 'admin-on-rest/lib/mui/list';
-import {Edit, Create} from 'admin-on-rest/lib/mui/detail';
+import {Datagrid} from 'admin-on-rest/lib/mui/list';
 import {TextField } from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, LongTextInput, TextInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton} from 'admin-on-rest/lib/mui/button';
-import {GridStyle} from '../style/default';
+// customize
+import List from '../admin-on-rest/mui/list/List';
+import Edit from '../admin-on-rest/mui/detail/Edit';
+import Create from '../admin-on-rest/mui/detail/Create';
+
+import {FieldStyle} from '../style/default';
 
 const TEN = {source:"ten", label: "Tên"};
 const DIA_CHI = {source:"diaChi", label: "Địa Chỉ"};
@@ -14,9 +17,9 @@ const SO_DIEN_THOAI = {source:"soDienThoai", label: "Số Điện Thoại"};
 export const KhachHangList = (props) => (
     <List {...props} title="Danh Sách">
         <Datagrid>
-            <TextField {...TEN} style={GridStyle}/>
-            <TextField {...DIA_CHI} style={GridStyle}/>
-            <TextField {...SO_DIEN_THOAI} style={GridStyle}/>
+            <TextField {...TEN} style={FieldStyle}/>
+            <TextField {...DIA_CHI} style={FieldStyle}/>
+            <TextField {...SO_DIEN_THOAI} style={FieldStyle}/>
             <EditButton />
         </Datagrid>
     </List>

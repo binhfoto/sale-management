@@ -4,8 +4,8 @@ import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
 import { Link } from 'react-router';
 
-const Menu = ({ resource }) => (
-    <div style={{ flex: '0 0 15em', order: -1 }} id={"menu_" + resource.name} className="menuInTab">
+const Menu = ({ resource, menuStyle = { flex: '0 0 15em', order: -1 } }) => (
+    <div style={menuStyle} id={"menu_" + resource.name} className="menuInTab">
         <Paper style={{height: '100%'}}>
             <List>
                 {React.Children.map(resource.children, ({props}) => {
@@ -18,6 +18,7 @@ const Menu = ({ resource }) => (
 
 Menu.propTypes = {
     resource: PropTypes.object.isRequired,
+    menuStyle: PropTypes.object
 };
 
 export default Menu;

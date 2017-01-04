@@ -1,4 +1,3 @@
-
-export const GridStyle = {
-    fontSize: "1em"
+export const FieldStyle = {
+    fontSize: "1.2em"
 };

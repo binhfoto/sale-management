@@ -8,7 +8,7 @@ const SignInLayout = ({ isLoading, children }) => {
     return (
         <MuiThemeProvider>
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-                <div className="body" style={{ display: 'flex', flex: '1', backgroundColor: '#edecec' }}>
+                <div className="body" style={{ display: 'flex', flex: '1'}}>
                     <div style={{ flex: 1 }}>{children}</div>
                 </div>
                 <Notification />

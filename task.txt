@@ -2,7 +2,6 @@ Pending tasks:
     * UI
         - basic layout for homepage
             - remove grid margin
-        - setup sign-in/sign-out page
         - try to apply Dashboard in Admin element
 
     * admin-on-rest lib    
@@ -62,3 +61,8 @@ Pending tasks:
 2016-12-19
     ui-setup
         - tabs
+
+2016-12-19
+    ui-setup
+        - setup sign-in/sign-out page (from javascript-boilerplate)
+        - restructuring layout, put side-menu outside tab

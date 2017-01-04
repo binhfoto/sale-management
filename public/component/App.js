@@ -19,19 +19,14 @@ import Admin from './Layout/Admin';
 
 import config from '../../server/config/config';
 
-/*require("babel-core/register");
-require("babel-polyfill");
-*/
-
-
 ReactDOM.render(
     <Admin appLayout={Layout}>
+        <Resource name="sanphams" list={SanPhamList} edit={SanPhamEdit} create={SanPhamCreate} remove={Delete} options={{label: "Sản Phẩm"}}/>
+        <Resource name="khachhangs" list={KhachHangList} edit={KhachHangEdit} create={KhachHangCreate} remove={Delete} options={{label: "Khách Hàng"}}/>
         <Resource name="wrapper_kho_hang" options={{label: "Kho Hàng"}}>
             <Resource name="sanphamnhaps" list={NhapHangList} edit={NhapHangEdit} create={NhapHangCreate} remove={Delete} options={{label: "Hàng Nhập"}}/>
             <Resource name="sanphamtonkhos" list={KhoHangList} edit={KhoHangEdit} remove={Delete} options={{label: "Hàng Tồn"}}/>
         </Resource>
-        <Resource name="sanphams" list={SanPhamList} edit={SanPhamEdit} create={SanPhamCreate} remove={Delete} options={{label: "Sản Phẩm"}}/>
-        <Resource name="khachhangs" list={KhachHangList} edit={KhachHangEdit} create={KhachHangCreate} remove={Delete} options={{label: "Khách Hàng"}}/>
     </Admin>
     ,
     document.getElementsByClassName('container')[0]
