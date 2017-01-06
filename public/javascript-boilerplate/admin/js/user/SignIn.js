@@ -6,14 +6,17 @@ import { propTypes, reduxForm, Field } from 'redux-form';
 import buildSchema from 'redux-form-schema';
 import { Link } from 'react-router';
 
-import { Card, CardActions, CardTitle } from 'material-ui/Card';
+import { Card, CardActions, CardTitle, CardHeader } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import TextField from 'material-ui/TextField';
+import Avatar from 'material-ui/Avatar';
 
 import { signIn as signInActions } from './actions';
 import { getPreviousRoute } from './reducer';
+
+import FontIcon from 'material-ui/FontIcon';
 
 const signInSchema = buildSchema({
     username: {
@@ -25,6 +28,16 @@ const signInSchema = buildSchema({
         required: true,
     },
 });
+
+const formStyles = {
+    fieldGroup: {
+        display: 'flex',
+        alignItems: 'flex-end'
+    },
+    icon: {
+        margin: '0 10px 10px 0'
+    }
+}
 
 const renderInput = ({ meta: { touched, error } = {}, input: { ...inputProps }, ...props }) =>
     <TextField
@@ -41,15 +54,22 @@ class SignIn extends Component {
 
     render() {
         const { signInError, handleSubmit, submitting } = this.props;
-
+        const headerIcon = <Avatar src="/icon/pill_100.png" backgroundColor="#fff" size={50} style={{padding: '3px', border: '2px solid rgb(0, 188, 212)'}}/>;
         return (
-            <Card className="sign-in" style={{ margin: '2em' }}>
-                <CardTitle title="Tên Công Ty" />
+            <Card style={{ minWidth: '300px'}}>
+                
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '10px'}}>
+                    {headerIcon}
+                    <br/>
+                    <span style={{fontSize: '1.2em'}}>Tên Công Ty</span>
+                </div>
+                
                 {signInError && <Snackbar open autoHideDuration={4000} message={signInError.message} />}
 
                 <form onSubmit={handleSubmit(this.signIn)}>
                     <div style={{ padding: '0 1em 1em 1em' }}>
-                        <div>
+                        <div style={formStyles.fieldGroup}>
+                            <FontIcon className="material-icons" style={formStyles.icon}>face</FontIcon>
                             <Field
                                 name="username"
                                 component={renderInput}
@@ -58,7 +78,8 @@ class SignIn extends Component {
                                 hintText="abcxyz"
                             />
                         </div>
-                        <div>
+                        <div style={formStyles.fieldGroup}>
+                            <FontIcon className="material-icons" style={formStyles.icon}>lock_open</FontIcon>
                             <Field
                                 name="password"
                                 component={renderInput}
@@ -68,11 +89,13 @@ class SignIn extends Component {
                             />
                         </div>
                     </div>
+                    <br/><br/>
                     <CardActions>
-                        <RaisedButton type="submit" primary disabled={submitting} label="Đăng Nhập" />
+                        <RaisedButton type="submit" secondary={true} disabled={submitting} label="Đăng Nhập" fullWidth={true}/>
                     </CardActions>
                 </form>
             </Card>
+            
         );
     }
 }

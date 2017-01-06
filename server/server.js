@@ -34,6 +34,7 @@ app.use('/auth', auth);
 
 // public resource
 app.use('/', express.static(__dirname + '/../public'));
+app.use('/icon', express.static(__dirname + '/../public/icon'));
 app.use('/dist', express.static(__dirname + '/../dist'));
 
 

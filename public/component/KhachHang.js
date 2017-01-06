@@ -10,12 +10,13 @@ import Create from '../admin-on-rest/mui/detail/Create';
 
 import {FieldStyle} from '../style/default';
 
+const TITLE = "Danh Sách Khách Hàng";
 const TEN = {source:"ten", label: "Tên"};
 const DIA_CHI = {source:"diaChi", label: "Địa Chỉ"};
 const SO_DIEN_THOAI = {source:"soDienThoai", label: "Số Điện Thoại"};
 
 export const KhachHangList = (props) => (
-    <List {...props} title="Danh Sách">
+    <List {...props} title={TITLE}>
         <Datagrid>
             <TextField {...TEN} style={FieldStyle}/>
             <TextField {...DIA_CHI} style={FieldStyle}/>
