@@ -10,6 +10,7 @@ import Create from '../admin-on-rest/mui/detail/Create';
 
 import {FieldStyle} from '../style/default';
 
+const TITLE = "Danh Sách Sản Phẩm";
 const MA_SP = {source:"maSP", label: "Mã"};
 const TEN = {source:"ten", label: "Tên"};
 const QUY_CACH = {source:"quyCach", label: "Quy Cách"};
@@ -34,7 +35,7 @@ const SanPhamFilter = (props) => (
 );
 
 export const SanPhamList = (props) => (
-    <List {...props} title="Danh sách Sản Phẩm" filter={SanPhamFilter}>
+    <List {...props} title={TITLE} filter={SanPhamFilter}>
         <Datagrid>
             <TextField {...MA_SP} style={FieldStyle}/>
             <TextField {...TEN} style={FieldStyle}/>

@@ -16,13 +16,14 @@ import {FieldStyle} from '../style/default';
  * NhapHang is for 'sanphamnhap' table
  */
 
+const TITLE = "Danh Sách Nhập Hàng";
 const SO_LUONG_NHAP = {source:"soLuongNhap", label: "Số Lượng"};
 const MA_PHIEU_NHAP = {source:"maPhieuNhap", label: "Mã Phiếu"};
 const NGAY_NHAP = {source:"ngayNhap", label: "Ngày Nhập"};
 
 const NhapHangFilter = (props) => (
     <Filter {...props}>
-        <ReferenceInput label="Sản Phẩm" source="ten" reference="sanphams" allowEmpty>
+        <ReferenceInput label="Tên" source="ten" reference="sanphams" allowEmpty>
             <SelectInput optionText="ten" />
         </ReferenceInput>
         <TextInput {...SO_LUONG_NHAP} />
@@ -32,9 +33,9 @@ const NhapHangFilter = (props) => (
 );
 
 export const NhapHangList = (props) => (
-    <List {...props} title="Danh sách" filter={NhapHangFilter}>
+    <List {...props} title={TITLE} filter={NhapHangFilter}>
         <Datagrid>
-            <ReferenceField label="Sản Phẩm" source="maSP" reference="sanphams">
+            <ReferenceField label="Tên" source="maSP" reference="sanphams">
                 <TextField source="ten"  style={FieldStyle}/>
             </ReferenceField>
             <TextField {...SO_LUONG_NHAP} style={FieldStyle}/>
@@ -47,7 +48,7 @@ export const NhapHangList = (props) => (
 
 export const NhapHangEdit = (props) => (
     <Edit {...props} title="Cập nhật">
-        <ReferenceInput label="Sản Phẩm" source="maSP" reference="sanphams">
+        <ReferenceInput label="Tên" source="maSP" reference="sanphams">
             <SelectInput optionText="ten" />
         </ReferenceInput>
         <TextInput {...SO_LUONG_NHAP} />
@@ -58,7 +59,7 @@ export const NhapHangEdit = (props) => (
 
 export const NhapHangCreate = (props) => (
     <Create {...props} title="Tạo mới">
-        <ReferenceInput label="Sản Phẩm" source="maSP" reference="sanphams" allowEmpty>
+        <ReferenceInput label="Tên" source="maSP" reference="sanphams" allowEmpty>
             <SelectInput optionText="ten"/>
         </ReferenceInput>
         <TextInput {...SO_LUONG_NHAP} />

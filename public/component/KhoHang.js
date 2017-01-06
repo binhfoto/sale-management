@@ -24,15 +24,15 @@ import {FieldStyle} from '../style/default';
  
 
  */
-
+const TITLE = "Danh Sách Hàng Tồn";
 const SO_LUONG = {source:"soLuong", label: "Số Lượng"};
 
 export const KhoHangList = (props) => (
-    <List {...props} title="Danh sách">
+    <List {...props} title={TITLE}>
         <Datagrid>            
             <ReferenceField label="Tên" source="maSP" reference="sanphams">
                 <TextField source="ten"  style={FieldStyle}/>
-            </ReferenceField>          
+            </ReferenceField>
             <TextField {...SO_LUONG} style={FieldStyle}/>
             <EditButton />
         </Datagrid>
@@ -41,7 +41,7 @@ export const KhoHangList = (props) => (
 
 export const KhoHangEdit = (props) => (
     <Edit {...props} title="Cập nhật">
-        <ReferenceInput label="Sản Phẩm" source="maSP" reference="sanphams">
+        <ReferenceInput label="Tên" source="maSP" reference="sanphams">
             <SelectInput optionText="ten" />
         </ReferenceInput>
         <TextInput {...SO_LUONG} />
@@ -50,7 +50,7 @@ export const KhoHangEdit = (props) => (
 
 export const KhoHangCreate = (props) => (
     <Create {...props} title="Tạo mới">
-        <ReferenceInput label="Sản Phẩm" source="maSP" reference="sanphams" allowEmpty>
+        <ReferenceInput label="Tên" source="maSP" reference="sanphams" allowEmpty>
             <SelectInput optionText="ten"/>
         </ReferenceInput>
         <TextInput {...SO_LUONG} />

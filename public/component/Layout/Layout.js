@@ -6,18 +6,16 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import CircularProgress from 'material-ui/CircularProgress';
 import FlatButton from 'material-ui/FlatButton';
+import { Tabs , Tab } from 'material-ui/Tabs';
 import ActionExit from 'material-ui/svg-icons/action/exit-to-app';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {Notification} from 'admin-on-rest/lib/mui/layout';
-import Menu from './Menu';
-import { Tabs , Tab } from 'material-ui/Tabs';
-import Paper from 'material-ui/Paper';
-import { List, ListItem } from 'material-ui/List';
-
+import { Notification } from 'admin-on-rest/lib/mui/layout';
 import FontIcon from 'material-ui/FontIcon';
-import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
+import {white} from 'material-ui/styles/colors';
+import Menu from './Menu';
 
 import { signOut as signOutAction } from '../../javascript-boilerplate/admin/js/user/actions';
+import {MenuStyle, FlexDisplay, IconAppBar} from '../../style/default';
 
 const showMenu = (menuId) => {
     let menus = document.getElementsByClassName("menuInTab");
@@ -34,15 +32,22 @@ const Layout = ({ isLoading, children, route, title, theme, signOut }) => {
     const LoadingIcon = isLoading
         ? <CircularProgress color="#fff" size={30} thickness={2} style={{ margin: 8 }} />
         : <ActionExit />;
-    const RightElement = <FlatButton label="Đăng Xuất" onClick={signOut} icon={LoadingIcon} />;
 
-    const Title = <Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>{'Tên Công Ty'}</Link>;
+    const LeftElement = <FontIcon color={white} className="material-icons" style={{paddingTop: '8px', fontSize: '2em'}}>bubble_chart</FontIcon>;
+    const RightElement = <FlatButton label="Đăng Xuất" onClick={signOut} icon={LoadingIcon} hoverColor="rgb(255, 64, 129)" />;
+
+    
+    const Title = 'Tên Công Ty';
     const muiTheme = getMuiTheme(theme);
 
     return (
         <MuiThemeProvider muiTheme={ muiTheme }>
-            <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-                <AppBar title={Title} iconElementRight={RightElement}/>
+            <div style={FlexDisplay}>
+                <AppBar 
+                    title={Title}
+                    iconElementLeft={LeftElement}
+                    iconElementRight={RightElement}
+                />
                 <Tabs>
                     {route.resources.map(resource => {
                             var linkTo = (resource.name.startsWith('wrapper') && resource.children) ? resource.children[0].props.name : resource.name;
@@ -67,7 +72,7 @@ const Layout = ({ isLoading, children, route, title, theme, signOut }) => {
                     {
                         route.resources.map( (resource, index) => {
                             if(resource.children && resource.children.length > 0) {
-                                let menuStyle = { flex: '0 0 15em', order: -1 };
+                                let menuStyle = MenuStyle;
                                 if(index > 0) menuStyle.display = 'none';
                                 return <Menu key={"key_menu_" + resource.name} resource={resource} menuStyle={menuStyle}/>;
                             }

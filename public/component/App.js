@@ -5,6 +5,12 @@ import '../css/reset.css';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
+import SanPhamIcon from 'material-ui/svg-icons/places/kitchen';
+import KhachHangIcon from 'material-ui/svg-icons/social/person-outline';
+import KhoHangIcon from 'material-ui/svg-icons/action/store';
+import HangNhapIcon from 'material-ui/svg-icons/action/system-update-alt';
+import HangTonIcon from 'material-ui/svg-icons/action/tab';
+
 import withProps from 'admin-on-rest/lib/withProps';
 import {Resource} from 'admin-on-rest/lib';
 import {Delete} from 'admin-on-rest/lib/mui';
@@ -21,11 +27,11 @@ import config from '../../server/config/config';
 
 ReactDOM.render(
     <Admin appLayout={Layout}>
-        <Resource name="sanphams" list={SanPhamList} edit={SanPhamEdit} create={SanPhamCreate} remove={Delete} options={{label: "Sản Phẩm"}}/>
-        <Resource name="khachhangs" list={KhachHangList} edit={KhachHangEdit} create={KhachHangCreate} remove={Delete} options={{label: "Khách Hàng"}}/>
-        <Resource name="wrapper_kho_hang" options={{label: "Kho Hàng"}}>
-            <Resource name="sanphamnhaps" list={NhapHangList} edit={NhapHangEdit} create={NhapHangCreate} remove={Delete} options={{label: "Hàng Nhập"}}/>
-            <Resource name="sanphamtonkhos" list={KhoHangList} edit={KhoHangEdit} remove={Delete} options={{label: "Hàng Tồn"}}/>
+        <Resource icon={SanPhamIcon} name="sanphams" list={SanPhamList} edit={SanPhamEdit} create={SanPhamCreate} remove={Delete} options={{label: "Sản Phẩm"}}/>
+        <Resource icon={KhachHangIcon} name="khachhangs" list={KhachHangList} edit={KhachHangEdit} create={KhachHangCreate} remove={Delete} options={{label: "Khách Hàng"}}/>
+        <Resource icon={KhoHangIcon} name="wrapper_kho_hang" options={{label: "Kho Hàng"}}>
+            <Resource icon={HangNhapIcon} name="sanphamnhaps" list={NhapHangList} edit={NhapHangEdit} create={NhapHangCreate} remove={Delete} options={{label: "Hàng Nhập"}}/>
+            <Resource icon={HangTonIcon} name="sanphamtonkhos" list={KhoHangList} edit={KhoHangEdit} remove={Delete} options={{label: "Hàng Tồn"}}/>
         </Resource>
     </Admin>
     ,
