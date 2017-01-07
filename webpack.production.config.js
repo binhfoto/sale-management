@@ -38,7 +38,10 @@ var webpackConfig = {
     },
     plugins: [
         new DefinePlugin({
-            ADMIN_API_URL: JSON.stringify('/api')
+            ADMIN_API_URL: JSON.stringify('/api'),
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
         })
     ]
 }

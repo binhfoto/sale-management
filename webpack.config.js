@@ -1,10 +1,9 @@
-var webpack = require('webpack');
 var path = require('path');
 var config = require('./server/config/config');
 var DefinePlugin = require('webpack').DefinePlugin;
 
 var webpackConfig = {
-
+    //devtool: 'source-map',
     entry: ['babel-register', 'babel-polyfill', path.join(__dirname, 'public/component/App.js')],
     output: {
         path: path.join(__dirname, 'dist/js'),
@@ -38,24 +37,9 @@ var webpackConfig = {
     },
     plugins: [
         new DefinePlugin({
-            ADMIN_API_URL: JSON.stringify('/api'),
-            //'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+            ADMIN_API_URL: JSON.stringify('/api')
         })
     ]
 }
-
-if (config.env === 'development') {
-    //webpackConfig.devtool = 'source-map';
-}
-
-/*if (config.env === 'production') {
-    let plugins = [
-        new webpack.optimize.CommonsChunkPlugin('common.js'),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
-        new webpack.optimize.AggressiveMergingPlugin()
-    ];
-    webpackConfig.plugins.join(plugins);
-}*/
 
 module.exports = webpackConfig;
