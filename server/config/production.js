@@ -1,6 +1,6 @@
 module.exports = {
     logging: true,
-    auth: false,
+    auth: true,
     seed: true,
     db: {
         url: process.env.MONGODB_URI
