@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var path = require('path');
 var config = require('./server/config/config');
 var DefinePlugin = require('webpack').DefinePlugin;
@@ -44,6 +45,10 @@ var webpackConfig = {
 
 if (config.env === 'development') {
     //webpackConfig.devtool = 'source-map';
+}
+
+if (config.env === 'production') {
+    webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
 module.exports = webpackConfig;
