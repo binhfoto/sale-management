@@ -30,7 +30,7 @@ const showMenu = (menuId) => {
 const Layout = ({ isLoading, children, route, title, theme, signOut }) => {
 
     const LoadingIcon = isLoading
-        ? <CircularProgress color="#fff" size={30} thickness={2} style={{ margin: 8 }} />
+        ? <CircularProgress color="#fff" size={20} thickness={2} style={{ margin: 8 }} />
         : <ActionExit />;
 
     const LeftElement = <FontIcon color={white} className="material-icons" style={{paddingTop: '8px', fontSize: '2em'}}>bubble_chart</FontIcon>;
