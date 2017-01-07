@@ -40,16 +40,22 @@ exports.verifyUser = function(){
 exports.decodeToken = function(){
     return function(req, res, next){
 
+        // must have white space after
+        const jwtValue = 'Bearer ';
+
         //double check, first check in route.js
         if(config.auth === false) next();
-
+        
         // make it optional to place token on query string
         // if it is, place it on the headers where it should be, so checkToken can see it.
         // See follow the 'Bearer 034930493' format so checkToken can see it and decode it
-        if(req.query && req.query.hasOwnProperty('access_token')){
+        if(req.query && req.query.hasOwnProperty('access_token')) {
             // 'Bearer' is cruel value for jwt, it's not any value can be input.
             // 'Bearer' is something like namespace of jwt
-            req.headers.authorization = 'Bearer ' + req.query.access_token;
+            req.headers.authorization = jwtValue + req.query.access_token;
+        }
+        if(req.headers.authorization && req.headers.authorization.indexOf(jwtValue) < 0) {
+            req.headers.authorization = jwtValue.concat(req.headers.authorization);
         }  
 
         // this will call next if token is valid and send error if its error.
@@ -68,7 +74,7 @@ exports.getFreshUser = function(){
         // because we'll use decodeToken in before this function in the middleware stack.
         // req.user will just be an object with the user id on it
         // NOTE that 'req.user' object is not from /api/users/:id, checkToken will create/add 'user' to req, this 'user' represents the user in browser 
-        User.findById(req.user._id)
+        User.findById(req.user.id)
             .then(function(user){
                 if(!user){
                     res.status(401).send('Unauthorized');

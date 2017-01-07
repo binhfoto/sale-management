@@ -18,14 +18,18 @@ import { getPreviousRoute } from './reducer';
 
 import FontIcon from 'material-ui/FontIcon';
 
+const TITLE = 'Tên Công Ty';
+
 const signInSchema = buildSchema({
     username: {
-        label: 'username',
-        required: true
+        label: 'Tên Đăng Nhập',
+        required: true,
+        error: 'Yêu cầu nhập tên'
     },
     password: {
-        label: 'password',
+        label: 'Mật Khẩu',
         required: true,
+        error: 'Yêu cầu nhập mật khẩu'
     },
 });
 
@@ -61,7 +65,7 @@ class SignIn extends Component {
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: '10px'}}>
                     {headerIcon}
                     <br/>
-                    <span style={{fontSize: '1.2em'}}>Tên Công Ty</span>
+                    <span style={{fontSize: '1.2em'}}>{TITLE}</span>
                 </div>
                 
                 {signInError && <Snackbar open autoHideDuration={4000} message={signInError.message} />}
@@ -116,5 +120,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({ signIn: signInAction
 export default reduxForm({
     form: 'signIn',
     validate: signInSchema.validate,
-    destroyOnUnmount: false,
+    destroyOnUnmount: true,
 })(connect(mapStateToProps, mapDispatchToProps)(SignIn));
