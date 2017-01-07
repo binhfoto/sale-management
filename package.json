@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npm run build",
     "start": "node index.js",
-    "build": "webpack",
+    "build": "webpack -p --config webpack.production.config.js",
     "test": "mocha"
   },
   "author": "binhnguyen",
@@ -39,8 +39,7 @@
     "redux-actions": "^1.2.0",
     "redux-form": "^6.4.3",
     "redux-form-schema": "0.0.3",
-    "redux-saga": "^0.14.0",
-    "whatwg-fetch": "^2.0.1"
+    "redux-saga": "^0.14.0"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",

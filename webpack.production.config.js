@@ -38,14 +38,9 @@ var webpackConfig = {
     },
     plugins: [
         new DefinePlugin({
-            ADMIN_API_URL: JSON.stringify('/api'),
-            //'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+            ADMIN_API_URL: JSON.stringify('/api')
         })
     ]
-}
-
-if (config.env === 'development') {
-    //webpackConfig.devtool = 'source-map';
 }
 
 /*if (config.env === 'production') {
