@@ -11,7 +11,7 @@ import ActionExit from 'material-ui/svg-icons/action/exit-to-app';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Notification } from 'admin-on-rest/lib/mui/layout';
 import FontIcon from 'material-ui/FontIcon';
-import {white} from 'material-ui/styles/colors';
+import {white, pinkA200} from 'material-ui/styles/colors';
 import Menu from './Menu';
 
 import { signOut as signOutAction } from '../../javascript-boilerplate/admin/js/user/actions';
@@ -34,17 +34,17 @@ const Layout = ({ isLoading, children, route, title, theme, signOut }) => {
         : <ActionExit />;
 
     const LeftElement = <FontIcon color={white} className="material-icons" style={{paddingTop: '8px', fontSize: '2em'}}>bubble_chart</FontIcon>;
-    const RightElement = <FlatButton label="Đăng Xuất" onClick={signOut} icon={LoadingIcon} hoverColor="rgb(255, 64, 129)" />;
+    const RightElement = <FlatButton label="Đăng Xuất" onClick={signOut} icon={LoadingIcon} hoverColor={pinkA200} />;
 
     
-    const Title = 'Tên Công Ty';
+    const TITLE = 'Tên Công Ty';
     const muiTheme = getMuiTheme(theme);
 
     return (
         <MuiThemeProvider muiTheme={ muiTheme }>
             <div style={FlexDisplay}>
                 <AppBar 
-                    title={Title}
+                    title={TITLE}
                     iconElementLeft={LeftElement}
                     iconElementRight={RightElement}
                 />

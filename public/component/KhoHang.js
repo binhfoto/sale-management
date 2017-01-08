@@ -1,12 +1,9 @@
 import React from 'react';
-import {Datagrid} from 'admin-on-rest/lib/mui/list';
+import {List, Filter, Datagrid} from 'admin-on-rest/lib/mui/list';
+import {Create, Edit} from 'admin-on-rest/lib/mui/detail';
 import {TextField, ChipField, ReferenceField, DateField} from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, LongTextInput, TextInput, DateInput, ReferenceInput, SelectInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton} from 'admin-on-rest/lib/mui/button';
-// customize
-import List from '../admin-on-rest/mui/list/List';
-import Edit from '../admin-on-rest/mui/detail/Edit';
-import Create from '../admin-on-rest/mui/detail/Create';
 
 import {FieldStyle} from '../style/default';
 //import {DateField} from './../adminonrest/mui/field/DateField';

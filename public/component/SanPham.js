@@ -1,12 +1,9 @@
 import React from 'react';
-import {Filter, Datagrid} from 'admin-on-rest/lib/mui/list';
-import {TextField, ChipField} from 'admin-on-rest/lib/mui/field';
+import {List, Filter, Datagrid} from 'admin-on-rest/lib/mui/list';
+import {Create, Edit} from 'admin-on-rest/lib/mui/detail';
+import {TextField, ChipField, NumberField} from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, TextInput, LongTextInput, SelectInput, ReferenceInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton} from 'admin-on-rest/lib/mui/button';
-// customize
-import List from '../admin-on-rest/mui/list/List';
-import Edit from '../admin-on-rest/mui/detail/Edit';
-import Create from '../admin-on-rest/mui/detail/Create';
 
 import {FieldStyle} from '../style/default';
 
@@ -35,13 +32,13 @@ const SanPhamFilter = (props) => (
 );
 
 export const SanPhamList = (props) => (
-    <List {...props} title={TITLE} filter={SanPhamFilter}>
+    <List {...props} title={TITLE} filter={<SanPhamFilter/>}>
         <Datagrid>
             <TextField {...MA_SP} style={FieldStyle}/>
             <TextField {...TEN} style={FieldStyle}/>
             <TextField {...QUY_CACH} style={FieldStyle}/>
             <TextField {...DON_VI} style={FieldStyle}/>
-            <TextField {...DON_GIA} style={FieldStyle}/>
+            <NumberField {...DON_GIA} style={FieldStyle}/>
             <ChipField {...NHOM} style={FieldStyle}/>
             <EditButton />
         </Datagrid>

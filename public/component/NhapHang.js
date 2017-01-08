@@ -1,12 +1,13 @@
 import React from 'react';
-import {Filter, Datagrid} from 'admin-on-rest/lib/mui/list';
+import {List, Filter, Datagrid} from 'admin-on-rest/lib/mui/list';
+import {Create, Edit} from 'admin-on-rest/lib/mui/detail';
 import {TextField, ChipField, ReferenceField, DateField} from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, LongTextInput, TextInput, DateInput, ReferenceInput, SelectInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton} from 'admin-on-rest/lib/mui/button';
 // customize
-import List from '../admin-on-rest/mui/list/List';
+/*import List from '../admin-on-rest/mui/list/List';
 import Edit from '../admin-on-rest/mui/detail/Edit';
-import Create from '../admin-on-rest/mui/detail/Create';
+import Create from '../admin-on-rest/mui/detail/Create';*/
 
 import {FieldStyle} from '../style/default';
 //import {DateField} from './../adminonrest/mui/field/DateField';
@@ -33,7 +34,7 @@ const NhapHangFilter = (props) => (
 );
 
 export const NhapHangList = (props) => (
-    <List {...props} title={TITLE} filter={NhapHangFilter}>
+    <List {...props} title={TITLE} filter={<NhapHangFilter/>}>
         <Datagrid>
             <ReferenceField label="Tên" source="maSP" reference="sanphams">
                 <TextField source="ten"  style={FieldStyle}/>

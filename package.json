@@ -13,7 +13,7 @@
   "contributor": "letrungkien",
   "license": "ISC",
   "dependencies": {
-    "admin-on-rest": "^0.5.4",
+    "admin-on-rest": "^0.6.2",
     "async": "^2.1.4",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",

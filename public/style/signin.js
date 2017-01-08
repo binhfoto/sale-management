@@ -1,8 +1,12 @@
-export default {
+import {cyan500} from 'material-ui/styles/colors';
+
+let style = {
     display: 'flex', 
     flexDirection: 'column', 
     minHeight: '100vh', 
     alignItems: 'center', 
     justifyContent: 'center', 
-    backgroundColor: '#00bcd4' 
+    backgroundColor: cyan500
 };
+
+export default style;

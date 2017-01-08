@@ -3,8 +3,10 @@ Pending tasks:
         - basic layout for homepage
             - remove grid margin
         - try to apply Dashboard in Admin element
+        - use defined colors in mat-ui
 
-    * admin-on-rest lib    
+    * admin-on-rest lib
+        - filter unicode
         - implement NumberInput, NumberField
         - add default filter at 1st time 
         - validate input(number) at edit and create
@@ -62,7 +64,12 @@ Pending tasks:
     ui-setup
         - tabs
 
-2016-12-19
+2017-01-03
     ui-setup
         - setup sign-in/sign-out page (from javascript-boilerplate)
         - restructuring layout, put side-menu outside tab
+
+2017-01-07
+    ux
+        - upgrade admin-on-rest to use NumberField
+        - 
