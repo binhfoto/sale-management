@@ -16,32 +16,20 @@ const async = require('async');
 
 let should = chai.should();
 let assert = chai.assert;
-let user = {
-    username: 'customer02',
-    password: 'changeit'
-};
-let khachhang = {
-    ten: 'Lê Trung Kiên',
-    diaChi: '76, Cách Mạng Tháng 18, phường 3, quận 5, thành phố Hồ Chí Minh',
-    soDienThoai: '0987123456'
-}
+let donhang_data_test = require("./data_test/data").donhang_testsuite;
+const user = donhang_data_test.user;
+let khachhang = donhang_data_test.khachhang;
 let sanphams = [];
 let sanphamDonHang = [];
 let donhang = {};
 let temp = [];
 
 let jwt = '';
-const URLs = {
-    apiKhachHang: '/api/khachhangs/',
-    authenticateion: '/auth/signin',
-    apiUser: '/api/users',
-    apiDonHang: '/api/donhangs',
-    apiSanPham: '/api/sanphams/'
-};
+const URLs = require('./data_test/apis');
 
 chai.use(chaiHttp);
 
-describe('KhachHang', () => {
+describe('Donhang', () => {
     before((done) => {
         async.waterfall([
             callback => {
@@ -117,24 +105,22 @@ describe('KhachHang', () => {
                 callback();
             }
         ], function(err, results) {
-            if (err) done(err);
+            if (err) return done(err);
             done();
         });
-
-
     });
     after((done) => {
         SanPham.remove({})
             .then(
                 () => {
-                    KhachHang.remove({}).exec();
+                    User.remove({}).exec();
                 },
                 (err) => {
                     throw err;
                 }
             ).then(
                 () => {
-                    User.remove({}).exec();
+                    KhachHang.remove({}).exec();
                 },
                 (err) => {
                     throw err;
@@ -160,9 +146,10 @@ describe('KhachHang', () => {
                 .end((req, res) => {
                     if (res.error) {
                         console.log(res.error);
-                        done(res.error);
+                        return done(res.error);
                     }
-                    donhang = res.body
+                    donhang = res.body;
+                    res.should.have.status(200);
                     done();
                 });
         });
@@ -174,8 +161,9 @@ describe('KhachHang', () => {
                 .end((req, res) => {
                     if (res.error) {
                         console.log(res.error);
-                        done(res.error);
+                        return done(res.error);
                     }
+                    res.should.have.status(200);
                     done();
                 });
         })
@@ -189,8 +177,9 @@ describe('KhachHang', () => {
                 .end((req, res) => {
                     if (res.error) {
                         console.log(res.error);
-                        done(res.error);
+                        return done(res.error);
                     }
+                    res.should.have.status(200);
                     done();
                 });
         });
@@ -214,9 +203,9 @@ describe('KhachHang', () => {
                 .end((req, res) => {
                     if (res.error) {
                         console.log(res.error);
-                        done(res.error);
+                        return done(res.error);
                     }
-                    // console.log(res.body);
+                    res.should.have.status(200);
                     done();
                 });
         });
@@ -228,8 +217,9 @@ describe('KhachHang', () => {
                 .end((req, res) => {
                     if (res.error) {
                         console.log(res.error);
-                        done(res.error);
+                        return done(res.error);
                     }
+                    res.should.have.status(200);
                     done();
                 });
         });
