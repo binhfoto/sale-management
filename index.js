@@ -11,7 +11,6 @@ var logger = require('./server/util/logger');
 
 // start server
 console.log(`Server is listened on port ${config.port}`);
-console.log(`Enviroment ${process.env.NODE_ENV}`);
 server.listen(config.port);
 
 module.exports = server
