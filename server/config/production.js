@@ -1,8 +1,8 @@
 module.exports = {
     logging: true,
     auth: true,
-    seed: false,
+    seed: true,
     db: {
-        url: 'mongodb://localhost:27017/company-test'
+        url: process.env.MONGODB_URI
     }
 };
