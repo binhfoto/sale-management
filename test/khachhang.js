@@ -11,45 +11,34 @@ let chaiHttp = require('chai-http');
 let server = require('../index');
 let should = chai.should();
 let assert = chai.assert;
-let user = {
-    username: 'customer01',
-    password: 'changeit'
-    };
-let khachhang = {
-    ten: 'Lê Trung Kiên',
-    diaChi: '76, Cách Mạng Tháng 18, phường 3, quận 5, thành phố Hồ Chí Minh',
-    soDienThoai: '0987123456'
-}
+const khachhang_data_test = require("./data_test/data").khachhang_testsuite;
+const user = khachhang_data_test.user;
+let khachhang = khachhang_data_test.khachhang;
 let jwt = '';
-const URLs = {
-    apiKhachHang: '/api/khachhangs/',
-    authenticateion: '/auth/signin',
-    apiUser: '/api/users'
-};
+const URLs = require('./data_test/apis');
 
 chai.use(chaiHttp);
 
 describe('KhachHang', () => {
-    before( (done) => {
+    before((done) => {
         //create user to authentica
         chai.request(server)
             .post(URLs.apiUser)
             .send(user)
-            .end( (req, res) => {
+            .end((req, res) => {
                 res.should.have.status(200);
-
                 jwt = res.body;
                 done();
             });
-        
+
     });
-    after( (done) => {
+    after((done) => {
         KhachHang.remove({}, (err) => {
             //show error message when err not null
             User.remove({}, (err) => {
                 //show error message when err not null
                 done()
-            });    
+            });
         })
     });
 
@@ -60,7 +49,7 @@ describe('KhachHang', () => {
             chai.request(server)
                 .post(url)
                 .send(khachhang)
-                .end( (req, res) => {
+                .end((req, res) => {
                     res.should.have.status(200);
                     assert.equal(khachhang.ten, res.body.ten);
                     assert.equal(khachhang.diaChi, res.body.diaChi);
@@ -74,7 +63,7 @@ describe('KhachHang', () => {
 
             chai.request(server)
                 .get(url)
-                .end( (req, res) => {
+                .end((req, res) => {
                     res.should.have.status(200);
                     assert.equal(1, res.body.length);
                     done();
@@ -82,13 +71,13 @@ describe('KhachHang', () => {
         });
     });
     describe("/api/khachhangs/:id", () => {
-        
+
 
         it("Get a khachhangs", (done) => {
             let url = `${URLs.apiKhachHang}${khachhang.id}?access_token=${jwt.token}`;
             chai.request(server)
                 .get(url)
-                .end( (req, res) => {
+                .end((req, res) => {
                     res.should.have.status(200);
                     assert.equal(khachhang.id, res.body.id);
                     assert.equal(khachhang.ten, res.body.ten);
@@ -108,7 +97,7 @@ describe('KhachHang', () => {
             chai.request(server)
                 .put(url)
                 .send(khachhang_edit)
-                .end( (req, res) => {
+                .end((req, res) => {
                     res.should.have.status(200);
                     assert.equal(khachhang.id, res.body.id);
                     assert.equal(khachhang_edit.ten, res.body.ten);
@@ -121,12 +110,12 @@ describe('KhachHang', () => {
             let url = `${URLs.apiKhachHang}${khachhang.id}?access_token=${jwt.token}`;
             chai.request(server)
                 .delete(url)
-                .end( (req, res) => {
+                .end((req, res) => {
                     res.should.have.status(200);
-                    
+
                     chai.request(server)
                         .get(url)
-                        .end( (req, res) => {
+                        .end((req, res) => {
                             res.should.have.status(500);
                             assert.equal(`Cannot found with id=${khachhang.id}`, res.text);
                             done();

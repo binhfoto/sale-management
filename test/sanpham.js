@@ -10,49 +10,36 @@ let chaiHttp = require('chai-http');
 let server = require('../index');
 let should = chai.should();
 let assert = chai.assert;
-const user = {
-    username: 'customer02',
-    password: 'changeit'
-    };
-const sanpham = {
-    maSP: "sp01",
-    ten: "Sản phẩm A",
-    quyCach: "Quy cach",
-    donVi: "Chai",
-    donGia: 10,
-    nhom: "Khang sinh"
-}
+let sanpham_data_test = require("./data_test/data").sanpham_testsuite;
+const user = sanpham_data_test.user;
+let sanpham = sanpham_data_test.sanpham;
 
 let jwt = '';
-const URLs = {
-    apiSanPham: '/api/sanphams/',
-    authenticateion: '/auth/signin',
-    apiUser: '/api/users'
-};
+const URLs = require('./data_test/apis');
 
 chai.use(chaiHttp);
 
 describe('SanPham', () => {
-    before( (done) => {
+    before((done) => {
         //create user to authentica
         chai.request(server)
             .post(URLs.apiUser)
             .send(user)
-            .end( (req, res) => {
+            .end((req, res) => {
                 res.should.have.status(200);
 
                 jwt = res.body;
                 done();
             });
-        
+
     });
-    after( (done) => {
+    after((done) => {
         SanPham.remove({}, (err) => {
             //show error message when err not null
             User.remove({}, (err) => {
                 //show error message when err not null
                 done()
-            });    
+            });
         })
     });
 
@@ -63,7 +50,7 @@ describe('SanPham', () => {
             chai.request(server)
                 .post(url)
                 .send(sanpham)
-                .end( (req, res) => {
+                .end((req, res) => {
                     res.should.have.status(200);
                     assert.equal(sanpham.ten, res.body.ten);
                     assert.equal(sanpham.maSP, res.body.maSP);
@@ -80,7 +67,7 @@ describe('SanPham', () => {
 
             chai.request(server)
                 .get(url)
-                .end( (req, res) => {
+                .end((req, res) => {
                     res.should.have.status(200);
                     assert.equal(1, res.body.length);
                     done();
@@ -92,7 +79,7 @@ describe('SanPham', () => {
             let url = `${URLs.apiSanPham}${sanpham.id}?access_token=${jwt.token}`;
             chai.request(server)
                 .get(url)
-                .end( (req, res) => {
+                .end((req, res) => {
                     res.should.have.status(200);
                     assert.equal(sanpham.ten, res.body.ten);
                     assert.equal(sanpham.maSP, res.body.maSP);
@@ -117,7 +104,7 @@ describe('SanPham', () => {
             chai.request(server)
                 .put(url)
                 .send(sanpham_edited)
-                .end( (req, res) => {
+                .end((req, res) => {
                     res.should.have.status(200);
                     assert.equal(sanpham_edited.ten, res.body.ten);
                     assert.equal(sanpham_edited.maSP, res.body.maSP);
@@ -132,12 +119,12 @@ describe('SanPham', () => {
             let url = `${URLs.apiSanPham}${sanpham.id}?access_token=${jwt.token}`;
             chai.request(server)
                 .delete(url)
-                .end( (req, res) => {
+                .end((req, res) => {
                     res.should.have.status(200);
-                    
+
                     chai.request(server)
                         .get(url)
-                        .end( (req, res) => {
+                        .end((req, res) => {
                             res.should.have.status(500);
                             assert.equal(`Cannot found with id=${sanpham.id}`, res.text);
                             done();
