@@ -47,6 +47,8 @@ controller.get = (Model, populate = '', select = '', sort = '') => function(req,
             switch (Model.schema.path(key).instance) {
                 case "String":
                     findCondition[key] = { $regex: value, $options: 'i' };
+                    //let newVal = '\\u' + [...value].map(cp => cp.codePointAt(0).toString(16)).join('\\u');
+                    //findCondition[key] = new RegExp(value, 'i');
                     break;
                 case "Number":
                     findCondition[key] = value;

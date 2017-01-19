@@ -6,10 +6,13 @@ Pending tasks:
         - use defined colors in mat-ui
 
     * admin-on-rest lib
-        - filter unicode
-        - implement NumberInput, NumberField
+        - datagrid styles={margin: 1em}
+        - filter unicode value
         - add default filter at 1st time 
+            filterValues={{"maSP": "AL"}}
         - validate input(number) at edit and create
+        - date format: DD-MM-YYYY
+            - Create your own components based on moment.js.
     
     * javascript-boilerplate
         - sagas: dispath action
@@ -71,5 +74,8 @@ Pending tasks:
 
 2017-01-07
     ux
+        - upgrade admin-on-rest to 0.7.0
         - upgrade admin-on-rest to use NumberField
-        - 
+        - row odd/even color
+        - Datetime as vi-VN locale
+        - add filter for KhachHang
