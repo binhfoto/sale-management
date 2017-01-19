@@ -1,5 +1,5 @@
 export const FieldStyle = {
-    fontSize: "1.2em"
+    fontSize: "1em"
 };
 
 export const IconAppBar = {

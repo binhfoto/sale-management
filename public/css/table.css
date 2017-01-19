@@ -1,0 +1,7 @@
+/*div table tbody tr:nth-child(even) {
+    background-color: #ffffff
+}*/
+
+div table tbody tr:nth-child(odd) {
+    background-color: #fafafa
+}

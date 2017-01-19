@@ -1,4 +1,5 @@
 import '../css/reset.css';
+import '../css/table.css';
 
 //import 'whatwg-fetch';
 
@@ -27,12 +28,12 @@ import config from '../../server/config/config';
 
 ReactDOM.render(
     <Admin appLayout={Layout}>
+        <Resource icon={KhoHangIcon} name="wrapper_kho_hang" options={{label: "Kho Hàng"}}>
+            <Resource icon={HangTonIcon} name="sanphamtonkhos" list={KhoHangList} edit={KhoHangEdit} remove={Delete} options={{label: "Tồn Kho"}}/>
+            <Resource icon={HangNhapIcon} name="sanphamnhaps" list={NhapHangList} edit={NhapHangEdit} create={NhapHangCreate} remove={Delete} options={{label: "Nhập Kho"}}/>
+        </Resource>
         <Resource icon={SanPhamIcon} name="sanphams" list={SanPhamList} edit={SanPhamEdit} create={SanPhamCreate} remove={Delete} options={{label: "Sản Phẩm"}}/>
         <Resource icon={KhachHangIcon} name="khachhangs" list={KhachHangList} edit={KhachHangEdit} create={KhachHangCreate} remove={Delete} options={{label: "Khách Hàng"}}/>
-        <Resource icon={KhoHangIcon} name="wrapper_kho_hang" options={{label: "Kho Hàng"}}>
-            <Resource icon={HangNhapIcon} name="sanphamnhaps" list={NhapHangList} edit={NhapHangEdit} create={NhapHangCreate} remove={Delete} options={{label: "Hàng Nhập"}}/>
-            <Resource icon={HangTonIcon} name="sanphamtonkhos" list={KhoHangList} edit={KhoHangEdit} remove={Delete} options={{label: "Hàng Tồn"}}/>
-        </Resource>
     </Admin>
     ,
     document.getElementsByClassName('container')[0]

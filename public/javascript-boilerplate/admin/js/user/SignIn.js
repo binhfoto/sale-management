@@ -12,6 +12,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import TextField from 'material-ui/TextField';
 import Avatar from 'material-ui/Avatar';
+import {white, cyan500} from 'material-ui/styles/colors';
 
 import { signIn as signInActions } from './actions';
 import { getPreviousRoute } from './reducer';
@@ -58,7 +59,7 @@ class SignIn extends Component {
 
     render() {
         const { signInError, handleSubmit, submitting } = this.props;
-        const headerIcon = <Avatar src="/icon/pill_100.png" backgroundColor="#fff" size={50} style={{padding: '3px', border: '2px solid rgb(0, 188, 212)'}}/>;
+        const headerIcon = <Avatar src="/icon/pill_100.png" backgroundColor={white} size={50} style={{padding: '3px', border: `2px solid ${cyan500}`}}/>;
         return (
             <Card style={{ minWidth: '300px'}}>
                 
