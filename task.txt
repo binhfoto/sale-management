@@ -79,3 +79,4 @@ Pending tasks:
         - row odd/even color
         - Datetime as vi-VN locale
         - add filter for KhachHang
+        - add default options in SanPham.js
