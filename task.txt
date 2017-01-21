@@ -80,3 +80,9 @@ Pending tasks:
         - Datetime as vi-VN locale
         - add filter for KhachHang
         - add default options in SanPham.js
+
+2017-01-21
+    logical business
+        - install 'cron'
+        - create 'sanphamtonkhohistory' table and fake data
+        - create job to backup 'sanphamtonkho' to 'sanphamtonkhohistory' everyday, except Sunday

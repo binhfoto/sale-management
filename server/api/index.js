@@ -14,5 +14,6 @@ router.use('/khachhangs', require('./khachhang/route'));
 router.use('/sanphams', require('./sanpham/route'));
 router.use('/sanphamnhaps', require('./sanphamnhap/route'));
 router.use('/sanphamtonkhos', require('./sanphamtonkho/route'));
+router.use('/sanphamtonkhobydates', require('./sanphamtonkhobydate/route'));
 
 module.exports = router;
