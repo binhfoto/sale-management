@@ -21,7 +21,8 @@ const NGAY_NHAP = {source:"ngayNhap", label: "Ngày Nhập", locales: "vi-VN", o
 
 const NhapHangFilter = (props) => (
     <Filter {...props}>
-        <LocaleDateInput {...NGAY_NHAP}/>
+        <LocaleDateInput {...NGAY_NHAP} alwaysOn/>
+        <TextInput {...MA_PHIEU_NHAP} alwaysOn/>
     </Filter>
 );
 

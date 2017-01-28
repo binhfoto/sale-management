@@ -9,6 +9,7 @@ var router = require('express').Router();
 router.use('/users', require('./user/route'));
 
 router.use('/donhangs', require('./donhang/route'));
+router.use('/donhangchitiets', require('./donhangchitiet/route'));
 router.use('/khachhangs', require('./khachhang/route'));
 
 router.use('/sanphams', require('./sanpham/route'));

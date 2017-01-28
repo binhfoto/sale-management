@@ -18,29 +18,25 @@ var _schema = new Schema({
     maKH: {
         type: Schema.Types.ObjectId,
         ref: 'khachang',
-        required: true        
+        required: true
     },
-    // danh sách sản phẩm
-    sanpham:[
-        {
-            maSP: {
-                type: Schema.Types.ObjectId,
-                ref: 'sanpham',
-                required: true
-            },
-            soLuongXuat: {
-                type: Number,
-                required: true
-            },
-            xuatXuLy: Number,
-            chietKhau: Number,
-            thanhTien: Number
-        }
-    ],
-    thueVAT: Number, // thuế VAT
-    tongTien: Number, // tổng tiền
-    thanhToan: Number, // thanh toán
-    duNo: Number //dư nợ
+
+    thueVAT: { // thuế VAT
+        type: Number,
+        default: 0
+    },
+    tongTien: { // tổng tiền
+        type: Number,
+        default: 0
+    },
+    thanhToan: { // thanh toán
+        type: Number,
+        default: 0
+    }, 
+    duNo: { //dư nợ
+        type: Number,
+        default: 0
+    }
 });
 
 _super(_schema);
@@ -63,7 +59,10 @@ _schema.statics = {
         }
         this.number += 1;
         // HD0001/2/3/2016
-        return 'HD' + formatNumber[('' + this.number).length] + this.number + '/' + this.today.getDate() + '/' + this.today.getMonth() + '/' + this.today.getFullYear();
+        return 'HD' + formatNumber[('' + this.number).length] + this.number + '/' + this.today.getDate() + '/' + (this.today.getMonth() + 1) + '/' + this.today.getFullYear();
+    }, 
+    getIdByDate: function (numberOfReceipt, dateOfReceipt) {
+        return 'HD' + formatNumber[('' + numberOfReceipt).length] + numberOfReceipt + '/' + dateOfReceipt.getDate() + '/' + (dateOfReceipt.getMonth() + 1) + '/' + dateOfReceipt.getFullYear();
     }
 };
 

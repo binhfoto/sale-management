@@ -41,5 +41,271 @@
         "donVi": "Chai",
         "donGia": 7000,
         "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "Mi",
+        "ten": "MILIAN (Chai 18ml)",
+        "quyCach": "Thùng/200",
+        "donVi": "Chai",
+        "donGia": 3000,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "MY",
+        "ten": "MYCOPHAR (Antimycose) (Chai 12ml)",
+        "quyCach": "Thùng/200",
+        "donVi": "Chai",
+        "donGia": 3000,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "ASA",
+        "ten": "ASA (Chai 18ml)",
+        "quyCach": "Thùng/200",
+        "donVi": "Chai",
+        "donGia": 5500,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "DEP",
+        "ten": "DEP (Lọ 5gr)",
+        "quyCach": "Thùng/3200",
+        "donVi": "Chai",
+        "donGia": 4000,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "LH",
+        "ten": "LƯU HUỲNH (Trị mụn trứng cá - chai 60ml)",
+        "quyCach": "Thùng/50",
+        "donVi": "Chai",
+        "donGia": 5500,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "BB",
+        "ten": "BENZYL BENZOAT 25% (Trị ghẻ ngứa - Chai 13g)",
+        "quyCach": "Thùng/200",
+        "donVi": "Chai",
+        "donGia": 6500,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "BO",
+        "ten": "Cồn Boric (Chai 13ml)",
+        "quyCach": "Thùng/200",
+        "donVi": "Chai",
+        "donGia": 3000,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "PO",
+        "ten": "POVIDONE (Chai 12ml)",
+        "quyCach": "Thùng/200",
+        "donVi": "Chai",
+        "donGia": 3000,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "TD",
+        "ten": "Thuốc Đỏ (Chai 12ml)",
+        "quyCach": "Thùng/200",
+        "donVi": "Chai",
+        "donGia": 4000,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "GY60",
+        "ten": "GYNO - Nam Việt (Chai 60ml)",
+        "quyCach": "Thùng/50",
+        "donVi": "Chai",
+        "donGia": 1700,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "GY250",
+        "ten": "GYNO - Nam Việt (Chai 250ml)",
+        "quyCach": "Thùng/25",
+        "donVi": "Chai",
+        "donGia": 4200,
+        "nhom": "Thuốc Dùng Ngoài"
+    },{
+        "maSP": "CAR",
+        "ten": "CARBOMANGO (Viên than - chai 100viên)",
+        "quyCach": "Thùng/200",
+        "donVi": "Chai",
+        "donGia": 7000,
+        "nhom": "Thuốc Đông Dược"
+    },{
+        "maSP": "ART",
+        "ten": "ARTICHOL (Gan mật - chai 40viên)",
+        "quyCach": "Thùng/400",
+        "donVi": "Chai",
+        "donGia": 3000,
+        "nhom": "Thuốc Đông Dược"
+    },{
+        "maSP": "Cốm TRICALCI (Chai gấu - chai 65g)",
+        "ten": "CG",
+        "quyCach": "Thùng/60",
+        "donVi": "Chai",
+        "donGia": 6500,
+        "nhom": "Thuốc Đông Dược"
+    },{
+        "maSP": "CT",
+        "ten": "Cốm Thỏ (chai 15g)",
+        "quyCach": "Thùng/300",
+        "donVi": "Chai",
+        "donGia": 3000,
+        "nhom": "Thuốc Đông Dược"
+    },{
+        "maSP": "KT",
+        "ten": "Kẹo Thỏ (chai 15g)",
+        "quyCach": "Thùng/300",
+        "donVi": "Chai",
+        "donGia": 3000,
+        "nhom": "Thuốc Đông Dược"
+    },{
+        "maSP": "70",
+        "ten": "Cồn y tế 70 độ",
+        "quyCach": "Bình",
+        "donVi": "Lít",
+        "donGia": 24000,
+        "nhom": "Thuốc Đông Dược"
+    },{
+        "maSP": "90",
+        "ten": "Cồn y tế 90 độ",
+        "quyCach": "Bình",
+        "donVi": "Lít",
+        "donGia": 25000,
+        "nhom": "Thuốc Đông Dược"
+    },{
+        "maSP": "98",
+        "ten": "Cồn Thơm",
+        "quyCach": "Bình",
+        "donVi": "Lít",
+        "donGia": 26000,
+        "nhom": "Thuốc Đông Dược"
+    },{
+        "maSP": "MN",
+        "ten": "Hoàn Mật Nghệ (Chai Nhựa)",
+        "quyCach": "Thùng/40",
+        "donVi": "Chai",
+        "donGia": 9500,
+        "nhom": "Thuốc Đông Dược"
+    },{
+        "maSP": "VTN",
+        "ten": "Viên Than Nghệ",
+        "quyCach": "Thùng/200",
+        "donVi": "Type/12",
+        "donGia": 4500,
+        "nhom": "Thuốc Đông Dược"
+    },{
+        "maSP": "TPH",
+        "ten": "Tiêu Phong Nhuận Gan Số 40 (Hoàn cứng)",
+        "quyCach": "Thùng/140",
+        "donVi": "H/10 gói",
+        "donGia": 16000,
+        "nhom": "Thuốc Đông Nam Dược Ngọc Liên"
+    },{
+        "maSP": "TPC",
+        "ten": "Tiêu Phong Nhuận Gan Số 40 (Bao Đường)",
+        "quyCach": "Thùng/140",
+        "donVi": "C/100",
+        "donGia": 16000,
+        "nhom": "Thuốc Đông Nam Dược Ngọc Liên"
+    },{
+        "maSP": "BG",
+        "ten": "Bổ Gân Tê Bại (Bao Đường)",
+        "quyCach": "Thùng/140",
+        "donVi": "C/100",
+        "donGia": 16000,
+        "nhom": "Thuốc Đông Nam Dược Ngọc Liên"
+    },{
+        "maSP": "CNM",
+        "ten": "Cảm Nhức Mỏi ( Viên Bao Đường)",
+        "quyCach": "Thùng/154",
+        "donVi": "C/100",
+        "donGia": 15000,
+        "nhom": "Thuốc Đông Nam Dược Ngọc Liên"
+    },{
+        "maSP": "Ho5",
+        "ten": "Bổ Phế Trị Ho Số 5 ( Viên Bao Đường)",
+        "quyCach": "Thùng/154",
+        "donVi": "C/100",
+        "donGia": 15000,
+        "nhom": "Thuốc Đông Nam Dược Ngọc Liên"
+    },{
+        "maSP": "CH",
+        "ten": "Thuốc Cảm Ho( Viên Bao Đường)",
+        "quyCach": "Thùng/154",
+        "donVi": "C/100",
+        "donGia": 15000,
+        "nhom": "Thuốc Đông Nam Dược Ngọc Liên"
+    },{
+        "maSP": "DD",
+        "ten": "Dạ Dày Số 1 (Viên Bao Đường)",
+        "quyCach": "Thùng/154",
+        "donVi": "C/100",
+        "donGia": 15000,
+        "nhom": "Thuốc Đông Nam Dược Ngọc Liên"
+    },{
+        "maSP": "BT",
+        "ten": "Bổ Thận Ít Tinh Kiện Lực Hoàn",
+        "quyCach": "Thùng/80",
+        "donVi": "C/200",
+        "donGia": 50000,
+        "nhom": "Thuốc Đông Nam Dược Ngọc Liên"
+    },{
+        "maSP": "ST",
+        "ten": "Ngọc Liên Sỏi Thận Hoàn",
+        "quyCach": "Thùng/84",
+        "donVi": "H/10",
+        "donGia": 25000,
+        "nhom": "Thuốc Đông Nam Dược Ngọc Liên"
+    },{
+        "maSP": "HN",
+        "ten": "Hoàn Actiso (Nhỏ)",
+        "quyCach": "",
+        "donVi": "Kg",
+        "donGia": 51000,
+        "nhom": "Sản Phẩm Khác"
+    },{
+        "maSP": "HV",
+        "ten": "Hoàn Actiso (Vừa)",
+        "quyCach": "",
+        "donVi": "Kg",
+        "donGia": 47000,
+        "nhom": "Sản Phẩm Khác"
+    },{
+        "maSP": "HL",
+        "ten": "Hoàn Actiso (Lớn)",
+        "quyCach": "",
+        "donVi": "Kg",
+        "donGia": 49000,
+        "nhom": "Sản Phẩm Khác"
+    },{
+        "maSP": "OxyL",
+        "ten": "Oxy Lít",
+        "quyCach": "Bình",
+        "donVi": "Lít",
+        "donGia": 20000,
+        "nhom": "Sản Phẩm Khác"
+    },{
+        "maSP": "NC1",
+        "ten": "Nước Cất 1 lần",
+        "quyCach": "Bình",
+        "donVi": "Lít",
+        "donGia": 5500,
+        "nhom": "Sản Phẩm Khác"
+    },{
+        "maSP": "NC2",
+        "ten": "Nước Cất 2 lần",
+        "quyCach": "Bình",
+        "donVi": "Lít",
+        "donGia": 8000,
+        "nhom": "Sản Phẩm Khác"
+    },{
+        "maSP": "TPG",
+        "ten": "Tiêu Phong Gói",
+        "quyCach": "Bịch/100 gói",
+        "donVi": "Gói",
+        "donGia": 130000,
+        "nhom": "Sản Phẩm Khác"
+    },{
+        "maSP": "SG",
+        "ten": "Sỏi Gói",
+        "quyCach": "Bịch/50 gói",
+        "donVi": "Gói",
+        "donGia": 95000,
+        "nhom": "Sản Phẩm Khác"
     }
 ]

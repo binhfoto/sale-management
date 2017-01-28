@@ -11,7 +11,7 @@ var create = function(params) {
     
     logger.log('Mongo - Creating', params.sanphamtonkhos.length, MODEL_NAME + '(s)');
 
-    var promises = params.sanphamtonkhos.map(function(item, i){
+    var promises = params.sanphamtonkhos.map(function(item, i) {
         var newItem = {};
         newItem.maSP = item.maSP;
         newItem.soLuong = item.soLuong;

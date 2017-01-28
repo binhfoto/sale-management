@@ -11,7 +11,7 @@ var task = function() {
         if(err) {
             logger.log(err);
         } else {
-            console.log(items.length);
+            
             items.map( item => {
                 
                 var newItem = {};

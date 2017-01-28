@@ -86,3 +86,8 @@ Pending tasks:
         - install 'cron'
         - create 'sanphamtonkhohistory' table and fake data
         - create job to backup 'sanphamtonkho' to 'sanphamtonkhohistory' everyday, except Sunday
+        - add default filters to 'sanphamnhaps'
+        - create more real data for 'sanphams' 
+        - create data for 'donhangs' by using 'async.serial'
+        - create data for 'donhangchitiets' by using 'async.waterfall'
+        - add ui for 'donhangs' and 'donhangchitiets'
