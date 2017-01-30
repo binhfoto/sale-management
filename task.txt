@@ -9,10 +9,18 @@ Pending tasks:
         - datagrid styles={margin: 1em}
         - filter unicode value
         - add default filter at 1st time 
-            filterValues={{"maSP": "AL"}}
-        - validate input(number) at edit and create
-        - date format: DD-MM-YYYY
-            - Create your own components based on moment.js.
+            <Filter {...props} filterValues={{"maSP": "AL"}}/>
+        - remove redundant import package
+        - After pressing Save on Create page, it doesn't browse to List page
+    
+    * logical
+        - 'sanphamnhaps' save -> 'sanphamtonkhos' preSave
+            + ex: create: 1500 -> current + 1500
+            + ex: update: (1500 -> 1600) -> (current + 100), not (current + 1600)
+        - donhangchitiets: pre('save), calculate 'thanhTien' automatically
+            + issue: how to get sanpham.donGia in model.js
+        - create new 'sanphams' postSave -> insert new 'sanphamtonkhos' with soLuong=0
+        
     
     * javascript-boilerplate
         - sagas: dispath action
@@ -20,6 +28,9 @@ Pending tasks:
 
     * general
         - remove commented code snippet
+
+================================================================================
+History:
 
 2016-12-02
     ui-setup
@@ -80,3 +91,22 @@ Pending tasks:
         - Datetime as vi-VN locale
         - add filter for KhachHang
         - add default options in SanPham.js
+
+2017-01-21 -> 2017-01-28
+    logical business
+        - install 'cron'
+        - create 'sanphamtonkhohistory' table and fake data
+        - create job to backup 'sanphamtonkho' to 'sanphamtonkhohistory' everyday, except Sunday
+        - add default filters to 'sanphamnhaps'
+        - create more real data for 'sanphams' 
+        - create data for 'donhangs' by using 'async.serial'
+        - create data for 'donhangchitiets' by using 'async.waterfall'
+        - add ui for 'donhangs' and 'donhangchitiets'
+
+2017-01-29 -> 2017-01-30
+    logical business
+        - donhangchitiets: default UI filter [maDH]
+        - donhangs: default UI filter [ngayTaoDH]
+        - mongoose: use 'populate' to populate ref fields, return ref fields to UI, in order to reduce using ReferenceField
+        - set autoFocus to 'username' at SignIn form
+        - use lodash to clone object, to show left menu

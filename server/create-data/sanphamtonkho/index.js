@@ -1,23 +1,22 @@
 var MODEL_NAME = 'sanphamtonkho';
 
-var fs = require('fs');
 var _ = require('lodash');
 var path = require('path');
 var logger = require('../../util/logger');
-
-var content = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf8');
-var data = JSON.parse(content);
+var random = require('../../util/random');
 
 var createDoc = require('../util/createDocument');
 var model = require('../../api/' + MODEL_NAME + '/model');
 
 var create = function(params) {
     
-    logger.log('Mongo - Creating', data.length, MODEL_NAME + '(s)');
+    logger.log('Mongo - Creating', params.sanphams.length, MODEL_NAME + '(s)');
 
-    var promises = data.map(function(item, i){
-        item.maSP = params.sanphams[i]._id;
-        return createDoc(model, item);
+    var promises = params.sanphams.map(function(item, i){
+        return createDoc(model, {
+            maSP: item._id,
+            soLuong: random(100, 500)
+        });
     });
 
     return Promise.all(promises)

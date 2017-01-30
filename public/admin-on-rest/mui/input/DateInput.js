@@ -4,7 +4,7 @@ import title from 'admin-on-rest/lib/util/title';
 import {Field} from 'redux-form';
 
 // override from admin-on-rest
-// add VN datetime format
+// support VN datetime format
 
 export const datify = input => {
     if (!input) {

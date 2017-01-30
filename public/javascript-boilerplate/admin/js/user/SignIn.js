@@ -76,6 +76,7 @@ class SignIn extends Component {
                         <div style={formStyles.fieldGroup}>
                             <FontIcon className="material-icons" style={formStyles.icon}>face</FontIcon>
                             <Field
+                                autoFocus
                                 name="username"
                                 component={renderInput}
                                 floatingLabelText="Tên Đăng Nhập"

@@ -9,10 +9,12 @@ var router = require('express').Router();
 router.use('/users', require('./user/route'));
 
 router.use('/donhangs', require('./donhang/route'));
+router.use('/donhangchitiets', require('./donhangchitiet/route'));
 router.use('/khachhangs', require('./khachhang/route'));
 
 router.use('/sanphams', require('./sanpham/route'));
 router.use('/sanphamnhaps', require('./sanphamnhap/route'));
 router.use('/sanphamtonkhos', require('./sanphamtonkho/route'));
+router.use('/sanphamtonkhobydates', require('./sanphamtonkhobydate/route'));
 
 module.exports = router;

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -72,7 +73,7 @@ const Layout = ({ isLoading, children, route, title, theme, signOut }) => {
                     {
                         route.resources.map( (resource, index) => {
                             if(resource.children && resource.children.length > 0) {
-                                let menuStyle = MenuStyle;
+                                let menuStyle = _.clone(MenuStyle);
                                 if(index > 0) menuStyle.display = 'none';
                                 return <Menu key={"key_menu_" + resource.name} resource={resource} menuStyle={menuStyle}/>;
                             }

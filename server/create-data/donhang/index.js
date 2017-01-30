@@ -1,9 +1,8 @@
 'use strict'
 var MODEL_NAME = 'donhang';
 
-var fs = require('fs');
 var _ = require('lodash');
-var path = require('path');
+var moment = require('moment');
 var logger = require('../../util/logger');
 var random = require('../../util/random');
 
@@ -12,30 +11,26 @@ var model = require('../../api/' + MODEL_NAME + '/model');
 
 var create = function(params) {
     
-    logger.log('Mongo - Creating', 20, MODEL_NAME + '(s)');
+    logger.log('Mongo - Creating', params.khachhangs.length, MODEL_NAME + '(s)');
 
     var khachhangs = params.khachhangs;
-    var sanphams = params.sanphams;
+    var sanphamtonkhos = params.sanphamtonkhos;
 
     var data = [];
-    for(let i=0; i<20; i++){
-        
-        let now = Date.now();
-        let maKH = khachhangs[random(0, khachhangs.length-1)];
+    
+    for(let i=0; i<params.khachhangs.length; i++) {
+        let ngayTaoDH = moment().subtract(i, 'days').toDate();
+        let maDH = model.getIdByDate(0, ngayTaoDH);
+        let maKH = khachhangs[i]._id;
+        let thueVAT = 10;
 
         data.push({
-            maDH: model.getNextId(),
-            ngayTaoDH: now,
-            maKH: maKH,
-            sanpham: createProduct(sanphams),
-            thueVAT: 10, // thuế VAT
-            tongTien: 100000, // tổng tiền
-            thanhToan: 100000, // thanh toán
-            duNo: 100000 //dư nợ
+            maDH,
+            ngayTaoDH,
+            maKH,
+            thueVAT // thuế VAT
         })
     }
-
-    logger.log('Mongo - Creating', data.length, MODEL_NAME + '(s)');
     
     var promises = data.map(function(item){
         return createDoc(model, item);
@@ -46,23 +41,6 @@ var create = function(params) {
             return _.merge({donhangs: items}, params || {});
         });
 };
-
-var createProduct = function(sanphams) {
-    var number = random(1, sanphams.length-1);
-    var results = [];
-
-    for(let i=0; i<number; i++){
-        results.push({
-            maSP: sanphams[random(0, sanphams.length-1)],
-            soLuongXuat: random(100, 1000),
-            xuatXuLy: random(5, 20),
-            chietKhau: random(5, 10),
-            thanhTien: 1000000
-        });
-    }
-
-    return results;
-}
 
 module.exports = {
     create: create,

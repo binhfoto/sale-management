@@ -19,6 +19,9 @@ if(config.seed){
 }
 
 
+// setup schedule
+require('./schedule');
+
 // setup the global middleware 
 var globalMiddleware = require('./middleware/applicationMiddleware');
 globalMiddleware(app);

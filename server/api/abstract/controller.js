@@ -6,7 +6,7 @@ controller.params = (Model, populate = '') => function(req, res, next, id) {
     
     var query = Model.findById(id);
     
-    if(populate.length > 0 ) {
+    if(populate.length > 0 /*&& req.method == 'GET'*/) {
         query = query.populate(populate);
     }
 
@@ -104,7 +104,18 @@ controller.getOne = () => function(req, res, next) {
     res.json(item);
 };
 
-controller.put = () => function(req, res, next) {
+controller.put = (Model) => function(req, res, next) {
+    var newItem = req.body;
+    Model.findByIdAndUpdate(newItem._id, newItem, function(err, saveditem){
+        if(err){
+            next(err);
+        }else{
+            res.json(saveditem);
+        }
+    });
+};
+
+controller.put1 = () => function(req, res, next) {
     var currentItem = req.item;
     var newItem = req.body;
 
