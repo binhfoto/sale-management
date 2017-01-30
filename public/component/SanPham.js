@@ -8,16 +8,16 @@ import {EditButton} from 'admin-on-rest/lib/mui/button';
 
 import {FieldStyle} from '../style/default';
 
-const TITLE = "Danh Sách Sản Phẩm";
-const MA_SP = {source:"maSP", label: "Mã"};
-const TEN = {source:"ten", label: "Tên"};
-const QUY_CACH = {source:"quyCach", label: "Quy Cách", optionText: 'ten', optionValue: 'ten'};
-const DON_VI = {source:"donVi", label: "Đơn Vị", optionText: 'ten', optionValue: 'ten'};
-const DON_GIA = {source:"donGia", label: "Đơn Giá", options: { type: 'number' }};
-const NHOM = {source:"nhom", label: "Nhóm", optionText: 'ten', optionValue: 'ten'};
+const TITLE = 'Danh Sách Sản Phẩm';
+const MA_SP = {source:'maSP', label: 'Mã'};
+const TEN = {source:'ten', label: 'Tên'};
+const DON_GIA = {source:'donGia', label: 'Đơn Giá', options: { type: 'number' }};
+const QUY_CACH = {source:'quyCach', label: 'Quy Cách'};
+const DON_VI = {source:'donVi', label: 'Đơn Vị'};
+const NHOM = {source:'nhom', label: 'Nhóm'};
 
 
-const LUA_CHON_QUY_CACH = [
+/*const LUA_CHON_QUY_CACH = [
     {ten: 'Thùng/250'},
     {ten: 'Thùng/50'},
     {ten: 'Thùng/100'},
@@ -39,26 +39,24 @@ const LUA_CHON_NHOM = [
     {ten: 'Thuốc Đông Dược'},
     {ten: 'Thuốc Ngọc Liên'},
     {ten: 'Thuốc Khác'}
-];
+];*/
 /*
 Full text search
-    <TextInput label="Tìm kiếm" source="q" alwaysOn />
-    <SelectInput optionText="nhom" />
-
-Default filter value
-    filterValues={{"maSP": "AL"}}
+    <TextInput label='Tìm kiếm' source='q' alwaysOn />
+    <SelectInput optionText='nhom' />
 */
 const SanPhamFilter = (props) => (
     <Filter {...props}>
         <TextInput {...MA_SP}/>
         <TextInput {...TEN}/>
-        <SelectInput {...QUY_CACH} choices={LUA_CHON_QUY_CACH}/>
-        <SelectInput {...DON_VI} choices={LUA_CHON_DON_VI}/>
+        <TextInput {...QUY_CACH}/>
+        <TextInput {...DON_VI}/>
         <NumberInput {...DON_GIA}/>
-        <SelectInput {...NHOM} choices={LUA_CHON_NHOM}/>
+        <TextInput {...NHOM}/>
     </Filter>
 );
 
+/* <List perPage={20}> */
 export const SanPhamList = (props) => (
     <List {...props} title={TITLE} filter={<SanPhamFilter/>}>
         <Datagrid>
@@ -78,10 +76,10 @@ export const SanPhamEdit = (props) => (
         <SimpleForm>
             <TextInput {...MA_SP}/>
             <TextInput {...TEN}/>
-            <SelectInput {...QUY_CACH} choices={LUA_CHON_QUY_CACH}/>
-            <SelectInput {...DON_VI} choices={LUA_CHON_DON_VI}/>
+            <TextInput {...QUY_CACH}/>
+            <TextInput {...DON_VI}/>
             <NumberInput {...DON_GIA}/>
-            <SelectInput {...NHOM} choices={LUA_CHON_NHOM}/>
+            <TextInput {...NHOM}/>
         </SimpleForm>
     </Edit>
 );
@@ -91,10 +89,10 @@ export const SanPhamCreate = (props) => (
         <SimpleForm>
             <TextInput {...MA_SP}/>
             <TextInput {...TEN}/>
-            <SelectInput {...QUY_CACH} choices={LUA_CHON_QUY_CACH}/>
-            <SelectInput {...DON_VI} choices={LUA_CHON_DON_VI}/>
+            <TextInput {...QUY_CACH}/>
+            <TextInput {...DON_VI}/>
             <NumberInput {...DON_GIA}/>
-            <SelectInput {...NHOM} choices={LUA_CHON_NHOM}/>
+            <TextInput {...NHOM}/>
         </SimpleForm>
     </Create>
 );

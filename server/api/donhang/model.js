@@ -17,7 +17,7 @@ var _schema = new Schema({
     // mã khách hàng
     maKH: {
         type: Schema.Types.ObjectId,
-        ref: 'khachang',
+        ref: 'khachhang',
         required: true
     },
 

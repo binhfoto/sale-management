@@ -10,15 +10,13 @@ var logger = require('../../util/logger');
 var _schema = new Schema({
     // mã đơn hàng
     maDH: {
-        selfId: {
-            type: String,
-            required: true
-        },
-        refId: {
-            type: Schema.Types.ObjectId,
-            required: true,
-            ref: 'donhang'
-        }
+        type: String,
+        required: true
+    },
+    refId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'donhang'
     },
     maSP: {
         type: Schema.Types.ObjectId,
@@ -34,6 +32,7 @@ var _schema = new Schema({
     thanhTien: Number
 });
 
+
 _schema.pre('save', function(next) {
     let self = this;
 
@@ -42,7 +41,7 @@ _schema.pre('save', function(next) {
     the next function is not executed, and the main callback is immediately called with the error.*/
     async.waterfall([
         callback => {
-            DonHang.findById(self.maDH.refId, callback);
+            DonHang.findById(self.refId, callback);
         },
         (donHang, callback) => {
             let tongTien = donHang.tongTien;

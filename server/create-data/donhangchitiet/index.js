@@ -19,10 +19,8 @@ var create = function(params) {
     
     for(let i=0; i<donhangs.length; i++) {
         
-        let maDH = {
-            selfId: donhangs[i].maDH,
-            refId: donhangs[i]._id
-        };
+        let maDH = donhangs[i].maDH;
+        let refId = donhangs[i]._id;
 
         for(let j=0; j<10; j++){
 
@@ -35,6 +33,7 @@ var create = function(params) {
 
             data.push({
                 maDH,
+                refId,
                 maSP,
                 soLuongXuat,
                 xuatXuLy,
