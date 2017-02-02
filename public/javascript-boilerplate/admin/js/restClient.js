@@ -99,7 +99,6 @@ export default (apiUrl, jwtSelector, logout) => {
      * @returns {Object} REST response
      */
     const convertHTTPResponseToREST = (response, type, resource, params) => {
-    
         const { headers, json } = response;
         switch (type) {
         case GET_LIST:
@@ -137,7 +136,8 @@ export default (apiUrl, jwtSelector, logout) => {
                 if (error.message === 'Unauthorized') {
                     logout();
                 }
-                return { data: [], total: 0 };
+                throw error; // error will be caught in admin-on-rest/sideEffect/saga/crudFetch.js
+                //return { data: [], total: 0 };
             });
     };
 };

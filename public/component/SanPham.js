@@ -4,7 +4,7 @@ import {List, Filter, Datagrid} from 'admin-on-rest/lib/mui/list';
 import {Create, Edit} from 'admin-on-rest/lib/mui/detail';
 import {TextField, ChipField, NumberField} from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, TextInput, NumberInput, SelectInput, ReferenceInput} from 'admin-on-rest/lib/mui/input';
-import {EditButton} from 'admin-on-rest/lib/mui/button';
+import {EditButton, DeleteButton} from 'admin-on-rest/lib/mui/button';
 
 import {FieldStyle} from '../style/default';
 
@@ -67,6 +67,7 @@ export const SanPhamList = (props) => (
             <NumberField {...DON_GIA} style={FieldStyle}/>
             <ChipField {...NHOM} style={FieldStyle}/>
             <EditButton />
+            <DeleteButton/>
         </Datagrid>
     </List>
 );

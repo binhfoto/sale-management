@@ -5,7 +5,7 @@ import {List, Filter, Datagrid} from 'admin-on-rest/lib/mui/list';
 import {Create, Edit} from 'admin-on-rest/lib/mui/detail';
 import {TextField, ChipField, NumberField, ReferenceField, FunctionField, DateField} from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, TextInput, NumberInput, SelectInput, ReferenceInput, DateInput} from 'admin-on-rest/lib/mui/input';
-import {EditButton} from 'admin-on-rest/lib/mui/button';
+import {EditButton, DeleteButton} from 'admin-on-rest/lib/mui/button';
 
 import LocaleDateInput from '../admin-on-rest/mui/input/DateInput';
 import {FieldStyle} from '../style/default';
@@ -52,6 +52,7 @@ export const DonHangList = (props) => (
             <NumberField {...DU_NO} style={FieldStyle}/>
             <DateField {...NGAY_TAO} style={FieldStyle}/>
             <EditButton />
+            <DeleteButton/>
         </Datagrid>
     </List>
 );

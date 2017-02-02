@@ -58,11 +58,20 @@ _schema.statics = {
             this.today = curDate;
         }
         this.number += 1;
+
         // HD0001/2/3/2016
-        return 'HD' + formatNumber[('' + this.number).length] + this.number + '/' + this.today.getDate() + '/' + (this.today.getMonth() + 1) + '/' + this.today.getFullYear();
+        //return 'HD' + formatNumber[('' + this.number).length] + this.number + '/' + date + '/' + month + '/' + year;
+        return this.getIdByDate(this.number, this.today);
     }, 
     getIdByDate: function (numberOfReceipt, dateOfReceipt) {
-        return 'HD' + formatNumber[('' + numberOfReceipt).length] + numberOfReceipt + '/' + dateOfReceipt.getDate() + '/' + (dateOfReceipt.getMonth() + 1) + '/' + dateOfReceipt.getFullYear();
+
+        let date = '' + dateOfReceipt.getDate();
+        date = date < 10 ? '0' + date : date;
+        let month = '' + (dateOfReceipt.getMonth() + 1);
+        month = month < 10 ? '0' + month : month;
+        let year = '' + dateOfReceipt.getFullYear();
+
+        return 'HD' + formatNumber[('' + numberOfReceipt).length] + numberOfReceipt + '/' + date + '/' + month + '/' + year;
     }
 };
 

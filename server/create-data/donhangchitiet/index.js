@@ -3,10 +3,44 @@ var MODEL_NAME = 'donhangchitiet';
 
 var _ = require('lodash');
 var async = require('async');
+var mongoose = require('mongoose');
 var logger = require('../../util/logger');
 var random = require('../../util/random');
 
 var model = require('../../api/' + MODEL_NAME + '/model');
+
+var getRefId = (donhang) => {
+    
+    let _id = donhang._id.toString();
+    let refId = new mongoose.mongo.ObjectID(_id);
+    
+    refId._id = _id;
+    refId.duNo = donhang.duNo;
+    refId.maDH = donhang.maDH;
+    refId.maKH = donhang.maKH.toString();
+    refId.ngayTaoDH = donhang.ngayTaoDH;
+    refId.thanhToan = donhang.thanhToan;
+    refId.thueVAT = donhang.thueVAT;
+    refId.tongTien = donhang.tongTien;
+
+    return refId;
+};
+
+var getMaSP = (sanpham) => {
+    
+    let _id = sanpham._id.toString();
+    let maSP = new mongoose.mongo.ObjectID(sanpham._id.toString());
+
+    maSP._id = _id;
+    maSP.donVi = sanpham.donVi;
+    maSP.donGia = sanpham.donGia;
+    maSP.quyCach = sanpham.quyCach;
+    maSP.maSP = sanpham.maSP;
+    maSP.nhom = sanpham.nhom;
+    maSP.ten = sanpham.ten;
+
+    return maSP;
+}
 
 var create = function(params) {
     
@@ -20,16 +54,17 @@ var create = function(params) {
     for(let i=0; i<donhangs.length; i++) {
         
         let maDH = donhangs[i].maDH;
-        let refId = donhangs[i]._id;
+        let refId = getRefId(donhangs[i]);
 
-        for(let j=0; j<10; j++){
+        for(let j=0; j<10; j++) {
 
-            let maSP = sanphams[j]._id;
-            let soLuongXuat = random(20, sanphamtonkhos[j].soLuong);
+            let maSP = getMaSP(sanphams[j]);
+            let soLuongXuat = random(10, sanphamtonkhos[j].soLuong);
             let xuatXuLy = random(0, Math.round(soLuongXuat/2));
             let chietKhau = 10;
-            let thanhTien = sanphams[j].donGia * (soLuongXuat - xuatXuLy);
-            thanhTien -= thanhTien*chietKhau/100;
+            let thanhTien = 0;
+            /*let thanhTien = sanphams[j].donGia * (soLuongXuat - xuatXuLy);
+            thanhTien -= thanhTien*chietKhau/100;*/
 
             data.push({
                 maDH,

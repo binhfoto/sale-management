@@ -5,8 +5,9 @@ var controller = {};
 controller.params = (Model, populate = '') => function(req, res, next, id) {
     
     var query = Model.findById(id);
-    
-    if(populate.length > 0 /*&& req.method == 'GET'*/) {
+     
+    // get clean item from PUT, to avoid reference id is object
+    if(populate.length > 0 && req.method !== 'PUT') {
         query = query.populate(populate);
     }
 
@@ -100,27 +101,28 @@ controller.get = (Model, populate = '', select = '', sort = '') => function(req,
 };
 
 controller.getOne = () => function(req, res, next) {
-    var item = req.item;
+    var item = req.item.toObject();
     res.json(item);
 };
 
-controller.put = (Model) => function(req, res, next) {
+/*controller.put = (Model) => function(req, res, next) {
     var newItem = req.body;
-    Model.findByIdAndUpdate(newItem._id, newItem, function(err, saveditem){
+    Model.findOneAndUpdate({_id: newItem._id}, newItem, function(err, saveditem){
         if(err){
             next(err);
         }else{
             res.json(saveditem);
         }
     });
-};
+};*/
 
-controller.put1 = () => function(req, res, next) {
+controller.put = () => function(req, res, next) {
     var currentItem = req.item;
     var newItem = req.body;
 
     _.merge(currentItem, newItem);
 
+    // 'save' event will trigger some mongoose middleware, such as preSave
     currentItem.save(function(err, saveditem){
         if(err){
             next(err);
@@ -133,6 +135,7 @@ controller.put1 = () => function(req, res, next) {
 controller.post = (Model) => function(req, res, next) {
     var newItem = req.body;
     Model
+        // 'create' event will trigger some mongoose middleware, such as preSave
         .create(newItem)
         .then(
             function(item){

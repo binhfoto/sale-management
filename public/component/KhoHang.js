@@ -30,18 +30,16 @@ export const KhoHangList = (props) => (
 );
 
 export const KhoHangEdit = (props) => (
-    <Edit {...props} title='Cập nhật'>
+    <Edit {...props} title='Chỉnh Sửa'>
         <SimpleForm>
-            <ReferenceInput label='Tên' source='maSP._id' reference='sanphams' perPage={100}>
-                <SelectInput optionText='ten' optionValue='_id'/>
-            </ReferenceInput>
+            <DisabledInput {...TEN_SP} style={FieldStyle}/>
             <NumberInput {...SO_LUONG} />
         </SimpleForm>
     </Edit>
 );
 
 export const KhoHangCreate = (props) => (
-    <Create {...props} title='Tạo mới'>
+    <Create {...props} title='Tạo Mới'>
         <SimpleForm>
             <ReferenceInput label='Tên' source='maSP._id' reference='sanphams' perPage={100}>
                 <SelectInput optionText='ten' optionValue='_id'/>

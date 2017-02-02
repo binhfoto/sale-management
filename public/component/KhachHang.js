@@ -4,7 +4,7 @@ import {List, Filter, Datagrid} from 'admin-on-rest/lib/mui/list';
 import {Create, Edit} from 'admin-on-rest/lib/mui/detail';
 import {TextField } from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, LongTextInput, TextInput} from 'admin-on-rest/lib/mui/input';
-import {EditButton} from 'admin-on-rest/lib/mui/button';
+import {EditButton, DeleteButton} from 'admin-on-rest/lib/mui/button';
 
 import {FieldStyle} from '../style/default';
 
@@ -28,6 +28,7 @@ export const KhachHangList = (props) => (
             <TextField {...DIA_CHI} style={FieldStyle}/>
             <TextField {...SO_DIEN_THOAI} style={FieldStyle}/>
             <EditButton />
+            <DeleteButton/>
         </Datagrid>
     </List>
 );

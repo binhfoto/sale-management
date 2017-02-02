@@ -9,6 +9,18 @@ var random = require('../../util/random');
 var createDoc = require('../util/createDocument');
 var model = require('../../api/' + MODEL_NAME + '/model');
 
+var createNgayTaoDH = (number) => {
+    let subtractNumber = 0;
+    if(number%2 == 0) {
+        subtractNumber = 0;
+    }else if(number%3 == 0) {
+        subtractNumber = 1;
+    }else {
+        subtractNumber = 2;
+    }
+    return moment().subtract(subtractNumber, 'days').toDate();
+};
+
 var create = function(params) {
     
     logger.log('Mongo - Creating', params.khachhangs.length, MODEL_NAME + '(s)');
@@ -19,8 +31,8 @@ var create = function(params) {
     var data = [];
     
     for(let i=0; i<params.khachhangs.length; i++) {
-        let ngayTaoDH = moment().subtract(i, 'days').toDate();
-        let maDH = model.getIdByDate(0, ngayTaoDH);
+        let ngayTaoDH = createNgayTaoDH(i);
+        let maDH = model.getIdByDate(i, ngayTaoDH);
         let maKH = khachhangs[i]._id;
         let thueVAT = 10;
 

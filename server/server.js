@@ -49,7 +49,7 @@ app.use(function(err, req, res, next){
     }
     
     logger.log(err);
-    res.status(err.status || 500).send(err.message);
+    res.status(err.status || 500).send({ message: err.message });
 });
 
 //export the app
