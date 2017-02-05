@@ -1,13 +1,11 @@
-var async = require('async');
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
-var DonHang = require('../donhang/model');
-var SanPham = require('../sanpham/model');
-var _super = require('../abstract/model');
-var logger = require('../../util/logger');
+let _super = require('../abstract/model');
+let middleware = require('./middleware');
+let logger = require('../../util/logger');
 
-var _schema = new Schema({
+let _schema = new Schema({
     // mã đơn hàng
     maDH: {
         type: String,
@@ -25,38 +23,27 @@ var _schema = new Schema({
     },
     soLuongXuat: {
         type: Number,
-        required: true
+        required: true,
+        set: function(soLuongXuat){
+            this._soLuongXuat = this.soLuongXuat; // save previous value for later use
+            return soLuongXuat;
+        }
     },
     xuatXuLy: Number,
     chietKhau: Number,
-    thanhTien: Number
-});
-
-
-_schema.pre('save', function(next) {
-    let self = this;
-
-    /* Runs the tasks array of functions in series, each passing their results to the next in the array. 
-    However, if any of the tasks pass an error to their own callback, 
-    the next function is not executed, and the main callback is immediately called with the error.*/
-    async.waterfall([
-        callback => {
-            DonHang.findById(self.refId, callback);
-        },
-        (donHang, callback) => {
-            let tongTien = donHang.tongTien;
-            tongTien += self.thanhTien * (1 + donHang.thueVAT/100);
-            donHang.tongTien = tongTien;
-            callback(null, donHang);
-        },
-        (donHang, callback) => {
-            donHang.save(callback);
+    thanhTien: {
+        type: Number,
+        set: function(thanhTien){
+            this._thanhTien = this.thanhTien; // save previous value for later use
+            return thanhTien;
         }
-    ], function(err, result){
-        if(err) next(err);
-        next();
-    });
+    }
 });
+
+_schema.pre('save', middleware.preSave01);
+_schema.pre('save', middleware.preSave02);
+_schema.pre('remove', middleware.preRemove01);
+_schema.pre('remove', middleware.preRemove02);
 
 _super(_schema);
 

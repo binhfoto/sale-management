@@ -1,10 +1,10 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
-var SanPhamTonKho = require('../sanphamtonkho/model');
-var _super = require('../abstract/model');
+let middleware = require('./middleware')
+let _super = require('../abstract/model');
 
-var _schema = new Schema({
+let _schema = new Schema({
     maSP: {
         type: Schema.Types.ObjectId,
         ref: 'sanpham',
@@ -12,7 +12,11 @@ var _schema = new Schema({
     },
     soLuongNhap: {
         type: Number,
-        required: true
+        required: true,
+        set: function(soLuongNhap) {
+            this._soLuongNhap = this.soLuongNhap;
+            return soLuongNhap;
+        }
     },
     maPhieuNhap: String,
     ngayNhap: {
@@ -21,21 +25,8 @@ var _schema = new Schema({
     }
 });
 
-_schema.pre('save', function(next) {
-    var maSP = this.maSP;
-    var soLuongNhap = this.soLuongNhap;
-
-    SanPhamTonKho.findOne({maSP: maSP}, function(err, item) {
-        if(err) next(err);
-        else {
-            item.soLuong += soLuongNhap;
-            item.save(function(err, item) {
-                if(err) next(err);
-                next();
-            });
-        }
-    });
-});
+_schema.pre('save', middleware.preSave01);
+_schema.pre('remove', middleware.preRemove01);
 
 _super(_schema);
 
