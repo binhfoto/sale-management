@@ -17,6 +17,7 @@ import {FieldStyle} from '../style/default';
 
 const TITLE = 'Danh Sách Nhập Hàng';
 const TEN_SP = {source: 'maSP.ten', label: 'Tên'};
+const MA_SP = {source: 'maSP.maSP', label: 'Mã'};
 const DON_VI = {source: 'maSP.donVi', label: 'Đơn Vị'};
 const QUY_CACH = {source: 'maSP.quyCach', label: 'Quy Cách'};
 const SO_LUONG_NHAP = {source:'soLuongNhap', label: 'Số Lượng'};
@@ -43,6 +44,7 @@ export const NhapHangList = (props) => (
     <List {...props} title={TITLE} filter={<NhapHangFilter/>} defaultSort={defaultSort}>
         <Datagrid>
             <TextField {...MA_PHIEU_NHAP} style={FieldStyle}/>
+            <TextField {...MA_SP} style={FieldStyle}/>
             <TextField {...TEN_SP} style={FieldStyle}/>
             <NumberField {...SO_LUONG_NHAP} style={FieldStyle}/>
             <TextField {...QUY_CACH} style={FieldStyle}/>

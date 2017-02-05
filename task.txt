@@ -15,10 +15,6 @@ Pending tasks:
     
     * logical
         - fix failed tests
-        - 'sanphamnhaps' save -> 'sanphamtonkhos' preSave
-            + ex: create: 1500 -> current + 1500
-            + ex: update: (1500 -> 1600) -> (current + 100), not (current + 1600)
-        - create new 'sanphams' postSave -> insert new 'sanphamtonkhos' with soLuong=0
         
     
     * javascript-boilerplate
@@ -110,14 +106,24 @@ History:
         - set autoFocus to 'username' at SignIn form
         - use lodash to clone object, to show left menu
 
-2017-01-31 -> 2017-02-xx
+2017-01-31 -> 2017-02-02
     - upgrade mongoose to 4.8.0
     - add default filter and default sort to 'maDH'
     - add Edit, Create for 'donhangchitiet'
-    - donhangchitiets: pre('save), calculate 'thanhTien' automatically
+    - donhangchitiets: pre('save'), calculate 'thanhTien' automatically
         + solve issue: how to get sanpham.donGia in model.js
     - add validation to 'donhangchitiet' in server-side(soLuongXuat) and client-side(chietKhau, xuatXuLy)
     - add Delete button to all 'List's
-    - TODO: 
-        + thanhToan, duNo
-        + postRemove DonHangChiTiet
+    
+2017-02-02 -> 2017-02-05
+    - donhangchitiets: pre('remove'), update 'tongTien' in 'donhangs'
+    - add Edit, Create for 'donhang'
+    - refactor maDH to random number, eg. HD2457/01/01/2017
+    - donhang, post('remove'), remove all related 'donhangchitiet', update 'soLuong' in 'sanphamtonkho'
+    - calculate thanhToan, duNo, VAT
+    - create new 'sanphams' postSave -> insert new 'sanphamtonkhos' with soLuong=0
+    - separate mongoose model and middleware to different files
+    - update/create 'sanphamnhaps' -> update 'sanphamtonkhos'
+        + ex: create: 1500 -> current + 1500
+        + ex: update: (1500 -> 1600) -> (current + 100), not (current + 1600)
+    - add reference-value filter to KhoHang.js

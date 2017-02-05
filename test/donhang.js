@@ -3,6 +3,7 @@
 process.env.NODE_ENV = 'testing';
 
 let mongoose = require("mongoose");
+var generateDonHangId = require('../server/util/common').generateDonHangId;
 let User = require('../server/api/user/model');
 let KhachHang = require('../server/api/khachhang/model');
 let SanPham = require('../server/api/sanpham/model');
@@ -94,7 +95,7 @@ describe('Donhang', () => {
             },
             callback => {
                 donhang = {
-                    'maDH': DonHang.getNextId(),
+                    'maDH': generateDonHangId(),
                     'ngayTaoDH': Date.now(),
                     'maKH': khachhang.id,
                     'sanpham': sanphamDonHang,
@@ -188,7 +189,7 @@ describe('Donhang', () => {
 
             let donhang_edited = {
                 '_id': donhang._id,
-                'maDH': DonHang.getNextId(),
+                'maDH': generateDonHangId(),
                 'ngayTaoDH': Date.now(),
                 'maKH': khachhang.id,
                 'sanpham': sanphamDonHang,

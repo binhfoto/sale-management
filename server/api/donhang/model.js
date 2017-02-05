@@ -1,8 +1,10 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var _super = require('../abstract/model');
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
-var _schema = new Schema({
+let _super = require('../abstract/model');
+let middleware = require('./middleware');
+
+let _schema = new Schema({
     // mã đơn hàng
     maDH: {
         type: String,
@@ -23,7 +25,11 @@ var _schema = new Schema({
 
     thueVAT: { // thuế VAT
         type: Number,
-        default: 0
+        default: 0,
+        set: function (thueVAT){
+            this._thueVAT = this.thueVAT;
+            return thueVAT;
+        }
     },
     tongTien: { // tổng tiền
         type: Number,
@@ -39,41 +45,9 @@ var _schema = new Schema({
     }
 });
 
+_schema.pre('save', middleware.preSave);
+_schema.post('remove', middleware.postRemove);
+
 _super(_schema);
-
-var formatNumber = {
-    "1": "000", // 0001
-    "2": "00",  // 0020
-    "3": "0",   // 0300
-    "4": ""     // 4000
-}
-
-_schema.statics = {
-    today: new Date(),
-    number: 0,
-    getNextId: function() {
-        var curDate = new Date();
-        if(curDate.getDate() != this.today.getDate()/* || curDate.getMonth() == today.getMonth() || curDate.getFullYear() == today.getFullYear()*/){
-            this.number = 0;
-            this.today = curDate;
-        }
-        this.number += 1;
-
-        // HD0001/2/3/2016
-        //return 'HD' + formatNumber[('' + this.number).length] + this.number + '/' + date + '/' + month + '/' + year;
-        return this.getIdByDate(this.number, this.today);
-    }, 
-    getIdByDate: function (numberOfReceipt, dateOfReceipt) {
-
-        let date = '' + dateOfReceipt.getDate();
-        date = date < 10 ? '0' + date : date;
-        let month = '' + (dateOfReceipt.getMonth() + 1);
-        month = month < 10 ? '0' + month : month;
-        let year = '' + dateOfReceipt.getFullYear();
-
-        return 'HD' + formatNumber[('' + numberOfReceipt).length] + numberOfReceipt + '/' + date + '/' + month + '/' + year;
-    }
-};
-
 
 module.exports = mongoose.model('donhang', _schema);

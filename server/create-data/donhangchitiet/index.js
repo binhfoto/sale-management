@@ -59,7 +59,7 @@ var create = function(params) {
         for(let j=0; j<10; j++) {
 
             let maSP = getMaSP(sanphams[j]);
-            let soLuongXuat = random(10, sanphamtonkhos[j].soLuong);
+            let soLuongXuat = random(0, sanphamtonkhos[j].soLuong);
             let xuatXuLy = random(0, Math.round(soLuongXuat/2));
             let chietKhau = 10;
             let thanhTien = 0;
@@ -84,10 +84,6 @@ var create = function(params) {
         };
     });
 
-    /* Run the functions in the tasks collection in series, each one running once the previous function has completed. 
-    If any functions in the series pass an error to its callback, no more functions are run, 
-    and callback is immediately called with the value of the error. 
-    Otherwise, callback receives an array of results when tasks have completed.*/
     async.series(serialFunc, function(err, results) {
         return _.merge({donhangchitiets: results}, params || {});
     });

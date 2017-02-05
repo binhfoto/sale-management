@@ -21,7 +21,8 @@ var logger = {
                 if(typeof arg === 'object'){
                     // turn an object to a string so we can log all properties and color it
                     var string = JSON.stringify(arg, 2);
-                    return string.magenta;
+                    //return string.magenta;
+                    return arg;
                 }else{
                     arg += '';
                     return arg.magenta;

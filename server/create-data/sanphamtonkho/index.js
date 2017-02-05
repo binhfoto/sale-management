@@ -1,21 +1,22 @@
-var MODEL_NAME = 'sanphamtonkho';
+let MODEL_NAME = 'sanphamtonkho';
 
-var _ = require('lodash');
-var path = require('path');
-var logger = require('../../util/logger');
-var random = require('../../util/random');
+let _ = require('lodash');
+let async = require('async');
+let logger = require('../../util/logger');
+let random = require('../../util/random');
 
-var createDoc = require('../util/createDocument');
-var model = require('../../api/' + MODEL_NAME + '/model');
+let createDoc = require('../util/createDocument');
+let model = require('../../api/' + MODEL_NAME + '/model');
 
-var create = function(params) {
+let create = function(params) {
     
     logger.log('Mongo - Creating', params.sanphams.length, MODEL_NAME + '(s)');
-
-    var promises = params.sanphams.map(function(item, i){
-        return createDoc(model, {
-            maSP: item._id,
-            soLuong: random(100, 500)
+    
+    let promises = params.sanphams.map(function(item, i){
+        return new Promise(function(resolve, reject){
+            model.findOneAndUpdate({maSP: item._id}, {soLuong: random(100, 500)}, function(err, saved){
+                return err ? reject(err) : resolve(saved);
+            });
         });
     });
 

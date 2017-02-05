@@ -6,9 +6,13 @@ var _schema = new Schema({
     maSP: {
         type: Schema.Types.ObjectId,
         ref: 'sanpham',
-        required: true
+        required: true,
+        unique: true
     },
-    soLuong: Number /* ton kho */
+    soLuong: { /* ton kho */
+        type: Number,
+        default: 0
+    }
 });
 
 _super(_schema);

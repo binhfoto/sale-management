@@ -59,6 +59,10 @@ controller.get = (Model, populate = '', select = '', sort = '') => function(req,
                     var nextDate = moment(date).add(1, 'days');
                     findCondition[key] = {$gte: date.toDate(), $lt: nextDate.toDate()};
                     break;
+                case "ObjectID":
+                    if(value && value !== 'null')
+                        findCondition[key] = value;
+                    break;
                 default:
                     findCondition[key] = { $regex: value, $options: 'i' };
             }
@@ -122,7 +126,7 @@ controller.put = () => function(req, res, next) {
 
     _.merge(currentItem, newItem);
 
-    // 'save' event will trigger some mongoose middleware, such as preSave
+    // 'save' event will trigger some mongoose middlewares, such as preSave
     currentItem.save(function(err, saveditem){
         if(err){
             next(err);

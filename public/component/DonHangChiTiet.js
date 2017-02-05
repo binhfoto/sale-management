@@ -40,29 +40,29 @@ const CHIET_KHAU = {
     }
 };
 
-const defaultSort = {
+const sortDefault = {
     field: 'maDH',
     order: 'DESC'
 };
 
-const filterList = {
+const listFilter = {
     // HD0000/29/1/2017
     //maDH: 'HD0000/' + moment().format('DD/MM/YYYY').toString()
     maDH: moment().format('DD/MM/YYYY').toString()
 };
 
-const filterEdit = {
+const editFilter = {
     ngayTaoDH: moment().second(0).minute(0).hour(0).format('YYYY-MM-DD').toString()
 };
 
 const DonHangChiTietFilter = (props) => (
-    <Filter {...props} filterValues={filterList}>
+    <Filter {...props} filterValues={listFilter}>
         <TextInput {...MA_DH} style={FieldStyle} alwaysOn/>
     </Filter>
 );
 
 export const DonHangChiTietList = (props) => (
-    <List {...props} defaultSort={defaultSort} filter={<DonHangChiTietFilter/>} title={TITLE}>
+    <List {...props} sortDefault={sortDefault} filter={<DonHangChiTietFilter/>} title={TITLE}>
         <Datagrid>
             <TextField {...MA_DH} style={FieldStyle}/>
             <TextField {...MA_SP} style={FieldStyle}/>
@@ -78,10 +78,15 @@ export const DonHangChiTietList = (props) => (
     </List>
 );
 
+/*
+<ReferenceField label='Sản Phẩm Tồn' source='maSP._id' reference='sanphamtonkhos' perPage={100} basePath='/api/sanphamtonkhos/sanpham'>
+                <TextField source='soLuong'/>
+            </ReferenceField>
+*/
 export const DonHangChiTietEdit = (props) => (
     <Edit {...props} title='Chỉnh Sửa'>
         <SimpleForm>
-            <ReferenceInput label='Mã Đơn Hàng' source='refId._id' reference='donhangs' perPage={100} filter={filterEdit}>
+            <ReferenceInput label='Mã Đơn Hàng' source='refId._id' reference='donhangs' perPage={100} filter={editFilter}>
                 <SelectInput optionText='maDH'/>
             </ReferenceInput>
             <ReferenceInput label='Tên Sản Phẩm' source='maSP._id' reference='sanphams' perPage={100}>
@@ -97,7 +102,7 @@ export const DonHangChiTietEdit = (props) => (
 export const DonHangChiTietCreate = (props) => (
     <Create {...props} title='Tạo Mới'>
         <SimpleForm>
-            <ReferenceInput label='Mã Đơn Hàng' source='refId' reference='donhangs' allowEmpty perPage={100} filter={filterEdit}>
+            <ReferenceInput label='Mã Đơn Hàng' source='refId' reference='donhangs' allowEmpty perPage={100} filter={editFilter}>
                 <SelectInput optionText='maDH'/>
             </ReferenceInput>
             <ReferenceInput label='Tên Sản Phẩm' source='maSP' reference='sanphams' allowEmpty perPage={100}>

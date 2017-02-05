@@ -23,7 +23,7 @@ import {SanPhamList, SanPhamCreate, SanPhamEdit} from './SanPham';
 import {KhachHangList, KhachHangCreate, KhachHangEdit} from './KhachHang';
 import {NhapHangList, NhapHangCreate, NhapHangEdit} from './NhapHang';
 import {KhoHangList, KhoHangCreate, KhoHangEdit} from './KhoHang';
-import {DonHangList} from './DonHang';
+import {DonHangList, DonHangEdit, DonHangCreate} from './DonHang';
 import {DonHangChiTietList, DonHangChiTietEdit, DonHangChiTietCreate} from './DonHangChiTiet';
 
 import Layout from './Layout/Layout';
@@ -33,9 +33,9 @@ import Admin from './Layout/Admin';
 ReactDOM.render(
     <Admin appLayout={Layout}>
         <Resource icon={DonHangIcon} name="wrapper_don_hang" options={{label: "Đơn Hàng"}}>
+            <Resource icon={DonHangListIcon} name="donhangs" list={DonHangList} edit={DonHangEdit}  create={DonHangCreate} remove={Delete} options={{label: "Danh Sách"}}/>
             <Resource icon={DonHangDetailIcon} name="donhangchitiets" list={DonHangChiTietList} edit={DonHangChiTietEdit} create={DonHangChiTietCreate} remove={Delete} options={{label: "Chi Tiết"}}/>
-            <Resource icon={DonHangListIcon} name="donhangs" list={DonHangList} remove={Delete} options={{label: "Danh Sách"}}/>
-        </Resource> 
+        </Resource>
         <Resource icon={KhoHangIcon} name="wrapper_kho_hang" options={{label: "Kho Hàng"}}>
             <Resource icon={HangTonIcon} name="sanphamtonkhos" list={KhoHangList} edit={KhoHangEdit} options={{label: "Tồn Kho"}}/>
             <Resource icon={HangNhapIcon} name="sanphamnhaps" list={NhapHangList} edit={NhapHangEdit} remove={Delete} create={NhapHangCreate} options={{label: "Nhập Kho"}}/>

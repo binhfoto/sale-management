@@ -1,8 +1,9 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var _super = require('../abstract/model');
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
+let middleware = require('./middleware');
+let _super = require('../abstract/model');
 
-var _schema = new Schema({
+let _schema = new Schema({
     maSP: {
         type: String,
         unique: true
@@ -16,6 +17,8 @@ var _schema = new Schema({
     donGia: Number,
     nhom: String
 });
+
+_schema.post('save', middleware.postSave);
 
 _super(_schema);
 
