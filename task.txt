@@ -1,9 +1,6 @@
 Pending tasks:
     * UI
-        - basic layout for homepage
-            - remove grid margin
         - try to apply Dashboard in Admin element
-        - use defined colors in mat-ui
 
     * admin-on-rest lib
         - datagrid styles={margin: 1em}
@@ -12,6 +9,7 @@ Pending tasks:
             <Filter {...props} filterValues={{"maSP": "AL"}}/>
         - remove redundant import package
         - after creating, it doesn't browse to List page
+        
     
     * logical
         - fix failed tests
@@ -127,3 +125,8 @@ History:
         + ex: create: 1500 -> current + 1500
         + ex: update: (1500 -> 1600) -> (current + 100), not (current + 1600)
     - add reference-value filter to KhoHang.js
+
+2017-02-06 -> 2017-02-xx
+    - only able remove one 'sanpham' once its 'soLuong' in 'sanphamtonkho' is 0
+    - fix react-router 'history' by degrade from 3.0.0 to 2.8.1
+    - delete page, cannot click No

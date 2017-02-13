@@ -19,6 +19,7 @@ let _schema = new Schema({
 });
 
 _schema.post('save', middleware.postSave);
+_schema.pre('remove', middleware.preRemove);
 
 _super(_schema);
 
