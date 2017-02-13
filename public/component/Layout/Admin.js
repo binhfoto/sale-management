@@ -64,9 +64,8 @@ const Admin = ({ /*restClient,*/ dashboard, children, title = 'Admin on REST', t
 
     const history = syncHistoryWithStore(hashHistory, store);
 
-    var crudRoutes = [];
-    flatResources.map(resource => {
-            crudRoutes.push( <CrudRoute key={resource.name} 
+    let crudRoutes = flatResources.map(resource => {
+        return ( <CrudRoute key={resource.name} 
                             path={resource.name} 
                             list={resource.list} 
                             create={resource.create} 

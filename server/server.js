@@ -52,5 +52,11 @@ app.use(function(err, req, res, next){
     res.status(err.status || 500).send({ message: err.message });
 });
 
+// Handles all routes so you do not get a not found error
+// https://scotch.io/tutorials/routing-react-apps-the-complete-guide
+/*app.get('*', function (req, res){
+    res.sendFile(path.resolve(__dirname, '../public', 'index.html'));
+})*/
+
 //export the app
 module.exports = app;
