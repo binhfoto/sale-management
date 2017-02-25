@@ -22,7 +22,7 @@ import userReducer from '../../javascript-boilerplate/admin/js/user/reducer';
 import { signOut } from '../../javascript-boilerplate/admin/js/user/actions';
 import redirectIfNotAuthenticatedFactory from '../../javascript-boilerplate/admin/js/user/redirectIfNotAuthenticated';
 
-import SignInLayout from './SignInLayout';
+import SignInLayout from './Layout/SignInLayout';
 
 const Admin = ({ /*restClient,*/ dashboard, children, title = 'Admin on REST', theme = {}, appLayout = withProps({ title, theme })(Layout) }) => {
   

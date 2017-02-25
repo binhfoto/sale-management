@@ -6,7 +6,7 @@ import {TextField, ChipField, NumberField} from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, TextInput, NumberInput, SelectInput, ReferenceInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton, DeleteButton} from 'admin-on-rest/lib/mui/button';
 
-import {FieldStyle} from '../style/default';
+import {FieldStyle} from '../../style/default';
 
 const TITLE = 'Danh Sách Sản Phẩm';
 const MA_SP = {source:'maSP', label: 'Mã'};

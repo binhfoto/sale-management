@@ -126,7 +126,12 @@ History:
         + ex: update: (1500 -> 1600) -> (current + 100), not (current + 1600)
     - add reference-value filter to KhoHang.js
 
-2017-02-06 -> 2017-02-xx
+2017-02-06 -> 2017-02-13
     - only able remove one 'sanpham' once its 'soLuong' in 'sanphamtonkho' is 0
     - fix react-router 'history' by degrade from 3.0.0 to 2.8.1
     - delete page, cannot click No
+
+2017-02-25 -> 2017-??
+    - 
+
+    

@@ -6,7 +6,7 @@ import {TextField } from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, LongTextInput, TextInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton, DeleteButton} from 'admin-on-rest/lib/mui/button';
 
-import {FieldStyle} from '../style/default';
+import {FieldStyle} from '../../style/default';
 
 const TITLE = "Danh Sách Khách Hàng";
 const TEN = {source:"ten", label: "Tên"};

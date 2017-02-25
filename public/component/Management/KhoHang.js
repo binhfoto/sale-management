@@ -6,7 +6,7 @@ import {TextField, ReferenceField, DateField, NumberField} from 'admin-on-rest/l
 import {DisabledInput, NumberInput, TextInput, DateInput, ReferenceInput, SelectInput, AutocompleteInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton} from 'admin-on-rest/lib/mui/button';
 
-import {FieldStyle} from '../style/default';
+import {FieldStyle} from '../../style/default';
 
 /*
  * KhoHang is for 'sanphamtonkho' table

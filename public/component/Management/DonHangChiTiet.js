@@ -7,7 +7,7 @@ import {TextField, NumberField, ReferenceField, FunctionField} from 'admin-on-re
 import {DisabledInput, TextInput, NumberInput, SelectInput, ReferenceInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton, DeleteButton} from 'admin-on-rest/lib/mui/button';
 
-import {FieldStyle} from '../style/default';
+import {FieldStyle} from '../../style/default';
 
 const TITLE = 'Đơn Hàng Chi Tiết';
 const MA_DH = {source:'maDH', label: 'Mã Đơn Hàng'};

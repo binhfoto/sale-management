@@ -81,7 +81,7 @@ class SignIn extends Component {
                                 component={renderInput}
                                 floatingLabelText="Tên Đăng Nhập"
                                 type="username"
-                                hintText="abcxyz"
+                                hintText="admin"
                             />
                         </div>
                         <div style={formStyles.fieldGroup}>
@@ -91,7 +91,7 @@ class SignIn extends Component {
                                 component={renderInput}
                                 floatingLabelText="Mật Khẩu"
                                 type="password"
-                                hintText="123456"
+                                hintText="changeit"
                             />
                         </div>
                     </div>

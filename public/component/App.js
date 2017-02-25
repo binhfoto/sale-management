@@ -19,16 +19,15 @@ import withProps from 'admin-on-rest/lib/withProps';
 import {Resource} from 'admin-on-rest/lib';
 import {Delete} from 'admin-on-rest/lib/mui';
 
-import {SanPhamList, SanPhamCreate, SanPhamEdit} from './SanPham';
-import {KhachHangList, KhachHangCreate, KhachHangEdit} from './KhachHang';
-import {NhapHangList, NhapHangCreate, NhapHangEdit} from './NhapHang';
-import {KhoHangList, KhoHangCreate, KhoHangEdit} from './KhoHang';
-import {DonHangList, DonHangEdit, DonHangCreate} from './DonHang';
-import {DonHangChiTietList, DonHangChiTietEdit, DonHangChiTietCreate} from './DonHangChiTiet';
+import {SanPhamList, SanPhamCreate, SanPhamEdit} from './Management/SanPham';
+import {KhachHangList, KhachHangCreate, KhachHangEdit} from './Management/KhachHang';
+import {NhapHangList, NhapHangCreate, NhapHangEdit} from './Management/NhapHang';
+import {KhoHangList, KhoHangCreate, KhoHangEdit} from './Management/KhoHang';
+import {DonHangList, DonHangEdit, DonHangCreate} from './Management/DonHang';
+import {DonHangChiTietList, DonHangChiTietEdit, DonHangChiTietCreate} from './Management/DonHangChiTiet';
 
-import Layout from './Layout/Layout';
-import Admin from './Layout/Admin';
-
+import Layout from './Management/Layout/Layout';
+import Admin from './Management/Admin';
 
 ReactDOM.render(
     <Admin appLayout={Layout}>

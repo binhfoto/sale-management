@@ -15,8 +15,14 @@ import FontIcon from 'material-ui/FontIcon';
 import {white, pinkA200} from 'material-ui/styles/colors';
 import Menu from './Menu';
 
-import { signOut as signOutAction } from '../../javascript-boilerplate/admin/js/user/actions';
-import {MenuStyle, FlexDisplay, IconAppBar} from '../../style/default';
+import { signOut as signOutAction } from '../../../javascript-boilerplate/admin/js/user/actions';
+import {MenuStyle, FlexDisplay, IconAppBar} from '../../../style/default';
+
+import RaisedButton from 'material-ui/RaisedButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import ListIcon from 'material-ui/svg-icons/action/list';
+import Assessment from 'material-ui/svg-icons/action/assessment';
 
 const showMenu = (menuId) => {
     let menus = document.getElementsByClassName("menuInTab");
@@ -35,28 +41,33 @@ const Layout = ({ isLoading, children, route, title, theme, signOut }) => {
         : <ActionExit />;
 
     const LeftElement = <FontIcon color={white} className="material-icons" style={{paddingTop: '8px', fontSize: '2em'}}>bubble_chart</FontIcon>;
-    const RightElement = <FlatButton label="Đăng Xuất" onClick={signOut} icon={LoadingIcon} hoverColor={pinkA200} />;
-
-    
-    const TITLE = 'Tên Công Ty';
+    const RightElement = <FlatButton label="Đăng Xuất" onClick={signOut} icon={LoadingIcon} hoverColor={pinkA200} style={{color: white}}/>;
+                        
+    const Title = <div>
+                        <span>Tên Công Ty</span>
+                        <div style={{marginLeft: '40px', display: 'inline'}}>
+                            <FlatButton label="Biểu đồ" icon={<Assessment/>} style={{color: white}}/>
+                            <FlatButton label="Quản lý" icon={<ListIcon/>} style={{color: white}}/>
+                        </div>
+                 </div>
     const muiTheme = getMuiTheme(theme);
 
     return (
         <MuiThemeProvider muiTheme={ muiTheme }>
             <div style={FlexDisplay}>
                 <AppBar 
-                    title={TITLE}
                     iconElementLeft={LeftElement}
+                    title={Title}
                     iconElementRight={RightElement}
                 />
                 <Tabs>
                     {route.resources.map(resource => {
                             var linkTo = (resource.name.startsWith('wrapper') && resource.children) ? resource.children[0].props.name : resource.name;
+                            /*icon={<resource.icon />}*/
                             return (
                                 <Tab key={resource.name} 
                                     id={resource.name} 
                                     label={resource.options.label || inflection.humanize(inflection.pluralize(resource.name))} 
-                                    icon={<resource.icon />}
                                     containerElement={<Link to={`/${linkTo}`}/>}
                                     onActive={ (tab) => {
                                         let menuId = "menu_".concat(tab.props.id);
