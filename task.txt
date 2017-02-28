@@ -132,6 +132,6 @@ History:
     - delete page, cannot click No
 
 2017-02-25 -> 2017-??
-    - 
+    - Restructure project to add dashboard
+    - todo: fix sending double request
 
-    

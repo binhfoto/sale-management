@@ -15,7 +15,6 @@ import DonHangIcon from 'material-ui/svg-icons/action/receipt';
 import DonHangListIcon from 'material-ui/svg-icons/action/list';
 import DonHangDetailIcon from 'material-ui/svg-icons/image/details';
 
-import withProps from 'admin-on-rest/lib/withProps';
 import {Resource} from 'admin-on-rest/lib';
 import {Delete} from 'admin-on-rest/lib/mui';
 

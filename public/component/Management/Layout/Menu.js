@@ -9,7 +9,7 @@ const Menu = ({ resource, menuStyle = { flex: '0 0 15em', order: -1 } }) => (
         <Paper style={{height: '100%'}}>
             <List>
                 {React.Children.map(resource.children, ({props}) => {
-                    return <ListItem key={props.name} containerElement={<Link to={`/${props.name}`} />} primaryText={props.options.label || inflection.humanize(inflection.pluralize(props.name))} leftIcon={<props.icon />} />
+                    return <ListItem key={props.name} containerElement={<Link to={`/mgmt/${props.name}`} />} primaryText={props.options.label || inflection.humanize(inflection.pluralize(props.name))} leftIcon={<props.icon />} />
                 })}
             </List>
         </Paper>
