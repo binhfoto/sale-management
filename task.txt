@@ -133,5 +133,6 @@ History:
 
 2017-02-25 -> 2017-??
     - Restructure project to add dashboard
+    - Refactor code to add dashboard
     - todo: fix sending double request
 
