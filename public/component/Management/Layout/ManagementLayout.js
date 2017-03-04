@@ -59,7 +59,9 @@ const ManagementLayout = ({ children, route }) => {
             </Tabs>
 
             <div className="body" style={{ display: 'flex', flex: '1'}}>
-                <div style={{ flex: 1 }}>{children}</div>
+                <div style={{ flex: 1 }}>
+                    {children}
+                </div>
                 {
                     route.resources.map( (resource, index) => {
                         if(resource.children && resource.children.length > 0) {

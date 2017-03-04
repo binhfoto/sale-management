@@ -4,7 +4,7 @@ var DefinePlugin = require('webpack').DefinePlugin;
 
 var webpackConfig = {
     devtool: 'eval',
-    entry: ['babel-register', 'babel-polyfill', path.join(__dirname, 'public/component/App.1.js')],
+    entry: ['babel-register', 'babel-polyfill', path.join(__dirname, 'public/component/App.js')],
     output: {
         path: path.join(__dirname, 'dist/js'),
         filename: 'bundle.js',
