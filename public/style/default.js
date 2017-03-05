@@ -8,10 +8,20 @@ export const IconAppBar = {
     marginTop: '3px'
 }
 
-export const FlexDisplay = {
+const Flex = {
     display: 'flex', 
-    flexDirection: 'column', 
+    flexDirection: 'column'
+}
+
+export const AppFlex = {
+    ...Flex,
     minHeight: '100vh'
+}
+
+export const SubFlex = {
+    ...Flex,
+    height: '100%',
+    flex: "1 1 auto"
 }
 
 export const MenuStyle = {

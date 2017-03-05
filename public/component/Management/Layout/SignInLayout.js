@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Notification from 'admin-on-rest/lib/mui/layout/Notification';
 
-import signInStyle from '../../style/signin';
+import signInStyle from '../../../style/signin';
 
 const SignInLayout = ({ isLoading, children }) => {
     

@@ -7,9 +7,9 @@ import {TextField, NumberField, DateField} from 'admin-on-rest/lib/mui/field';
 import {DisabledInput, LongTextInput, TextInput, ReferenceInput, SelectInput, AutocompleteInput, NumberInput} from 'admin-on-rest/lib/mui/input';
 import {EditButton, DeleteButton} from 'admin-on-rest/lib/mui/button';
 
-import LocaleDateInput from '../admin-on-rest/mui/input/DateInput';
+import LocaleDateInput from '../../admin-on-rest/mui/input/DateInput';
 
-import {FieldStyle} from '../style/default';
+import {FieldStyle} from '../../style/default';
 
 /*
  * NhapHang is for 'sanphamnhap' table

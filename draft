@@ -1,0 +1,16 @@
+<Provider store={store}>
+            <Router history={history}>
+                <Redirect from="/" to={`/dashboard`} />
+                <Route path="/auth/signin" component={SignInLayout}>
+                    <IndexRoute component={SignIn} />
+                </Route>
+                <Route path="/" component={appLayout}>
+                    <Route path="dashboard" component={dashboardLayout} onEnter={redirectIfNotAuthenticated}>
+                        <IndexRoute component={firstDashboard} restClient={restClient} />            
+                    </Route>
+                    <Route path="mgmt" component={mgmtLayout} resources={treeResources} onEnter={redirectIfNotAuthenticated}>
+                        {crudRoutes}
+                    </Route>
+                </Route>
+            </Router>
+        </Provider>
