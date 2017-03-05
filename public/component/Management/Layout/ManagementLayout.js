@@ -16,7 +16,7 @@ import {white, pinkA200} from 'material-ui/styles/colors';
 import Menu from './Menu';
 
 import { signOut as signOutAction } from '../../../javascript-boilerplate/admin/js/user/actions';
-import {MenuStyle, FlexDisplay, IconAppBar} from '../../../style/default';
+import {MenuStyle, SubFlex, IconAppBar} from '../../../style/default';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -37,7 +37,7 @@ const showMenu = (menuId) => {
 const ManagementLayout = ({ children, route }) => {
 
     return (
-        <div style={FlexDisplay}>
+        <div style={SubFlex}>
             <Tabs>
                 {route.resources.map(resource => {
                         let linkTo = (resource.name.startsWith('wrapper') && resource.children) ? resource.children[0].props.name : resource.name;

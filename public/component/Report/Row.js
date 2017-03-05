@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 
 const Row = ({children}) => {
     return (
-        <div className="row">
-            <span>Row</span>
+        <div className="row around-lg">
             {children}
         </div>
     )

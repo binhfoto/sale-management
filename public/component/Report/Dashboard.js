@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 
 const Dashboard = ({title, name, route}) => {
     return(
-        <div>
-            <span>{title}</span>
+        <div className="dashboard-fill-height">
             {route.rows}
         </div>
     )

@@ -1,6 +1,7 @@
 import 'flexboxgrid/dist/flexboxgrid.min.css';
 import '../css/reset.css';
 import '../css/table.css';
+import '../css/report.css';
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
@@ -147,6 +148,11 @@ const App = ({appLayout, children}) => {
                 <Route path="/" component={appLayout} onEnter={redirectIfNotAuthenticated}>
                     <Route path="report" component={report.props.appLayout} dashboards={report.props.children} onEnter={redirectIfNotAuthenticated}>
                         {
+                            Array.isArray(report.props.children) ? 
+                                <IndexRoute component={withProps(...report.props.children[0].props)(Dashboard)} rows={report.props.children[0].props.children}/> :
+                                <IndexRoute component={withProps(...report.props.children.props)(Dashboard)} rows={report.props.children.props.children}/>
+                        }
+                        {
                             React.Children.map(report.props.children, (child) => {
                                 return <Route path={`dashboard/${child.props.name}`} component={withProps({...child.props})(Dashboard)} rows={child.props.children}/>
                             })
@@ -167,7 +173,10 @@ ReactDOM.render(
         <Report appLayout={ReportLayout}>
             <Dashboard name="dashboard1" title="title1">
                 <Row>
-                    <Panel className="col-lg-12">
+                    <Panel>
+                        
+                    </Panel>
+                    <Panel>
                         
                     </Panel>
                 </Row>
@@ -175,9 +184,12 @@ ReactDOM.render(
                     <Panel>
                         
                     </Panel>
+                    <Panel>
+                        
+                    </Panel>
                 </Row>
             </Dashboard>
-            <Dashboard  name="dashboard2" title="title2">
+            <Dashboard name="dashboard2" title="title2">
                 <Row>
                     <Panel>
                         

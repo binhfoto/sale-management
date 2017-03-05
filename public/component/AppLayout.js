@@ -15,7 +15,7 @@ import FontIcon from 'material-ui/FontIcon';
 import {white, pinkA200} from 'material-ui/styles/colors';
 
 import { signOut as signOutAction } from '../javascript-boilerplate/admin/js/user/actions';
-import {MenuStyle, FlexDisplay, IconAppBar} from '../style/default';
+import {MenuStyle, AppFlex, IconAppBar} from '../style/default';
 
 import ListIcon from 'material-ui/svg-icons/action/list';
 import Assessment from 'material-ui/svg-icons/action/assessment';
@@ -45,7 +45,7 @@ const AppLayout = ({ isLoading, children, title, theme, signOut, history }, cont
 
     return (
         <MuiThemeProvider muiTheme={ muiTheme }>
-            <div style={FlexDisplay}>
+            <div style={AppFlex}>
                 <AppBar 
                     iconElementLeft={LeftElement}
                     title={Title}

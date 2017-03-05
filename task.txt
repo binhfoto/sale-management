@@ -135,5 +135,7 @@ History:
     - Restructure project to add dashboard
     - Refactor code to add dashboard
     - Add redirect event for onClick in BieuDo and QuanLy
+    - Using Flex to make responsive layout, remove scroll bar
+    - 
     - todo: fix sending double request
 

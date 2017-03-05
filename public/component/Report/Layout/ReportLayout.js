@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs , Tab } from 'material-ui/Tabs';
 import { Link } from 'react-router';
-import {FlexDisplay} from '../../../style/default';
+import {SubFlex} from '../../../style/default';
 
 const ReportLayout = ({children, route}) => {
 
@@ -19,7 +19,7 @@ const ReportLayout = ({children, route}) => {
                 </Tabs>
 
     return (
-        <div style={FlexDisplay}>
+        <div style={SubFlex}>
             {tabs}
             {children}
         </div>
