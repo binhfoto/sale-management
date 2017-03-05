@@ -36,7 +36,7 @@ const AppLayout = ({ isLoading, children, title, theme, signOut, history }, cont
     const Title = <div>
                         <span>Tên Công Ty</span>
                         <div style={{marginLeft: '40px', display: 'inline'}}>
-                            <FlatButton onClick={redirectPage('/dashboard')} label="Biểu Đồ" icon={<Assessment/>} style={{color: white}}/>
+                            <FlatButton onClick={redirectPage('/report')} label="Biểu Đồ" icon={<Assessment/>} style={{color: white}}/>
                             <FlatButton onClick={redirectPage('/mgmt')} label="Quản Lý" icon={<ListIcon/>} style={{color: white}} />
                         </div>
                  </div>

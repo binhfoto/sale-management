@@ -76,9 +76,9 @@ const ManagementLayout = ({ children, route }) => {
     );
 };
 
-/*ManagementLayout.componentWillMount = () => {
+ManagementLayout.componentWillMount = () => {
     injectTapEventPlugin();
-}*/
+}
 
 ManagementLayout.propTypes = {
     children: PropTypes.node,

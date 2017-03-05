@@ -1,3 +1,4 @@
+import 'flexboxgrid/dist/flexboxgrid.min.css';
 import '../css/reset.css';
 import '../css/table.css';
 
@@ -45,24 +46,27 @@ import {DonHangList, DonHangEdit, DonHangCreate} from './Management/DonHang';
 import {DonHangChiTietList, DonHangChiTietEdit, DonHangChiTietCreate} from './Management/DonHangChiTiet';
 
 import AppLayout from './AppLayout';
-import Dashboard from './Dashboard';
-import DashboardLayout from './Dashboard/Layout/DashboardLayout';
+import Report from './Report';
+import ReportLayout from './Report/Layout/ReportLayout';
+import Dashboard from './Report/Dashboard';
+import Row from './Report/Row';
+import Panel from './Report/Panel';
 import Management from './Management';
 import ManagementLayout from './Management/Layout/ManagementLayout';
 
 const mapChildren = (children) => {
-    let dashboard, mgmt;
+    let report, mgmt;
     React.Children.map(children, (child) => {
         switch(child.type.name) {
-            case 'Dashboard':
-                dashboard = child;
+            case 'Report':
+                report = child;
                 break;
             case 'Management':
                 mgmt = child;
                 break;
         }
     });
-    return {dashboard, mgmt};
+    return {report, mgmt};
 };
 
 const managementBuilder = (mgmt) => {
@@ -99,7 +103,7 @@ const managementBuilder = (mgmt) => {
 
 const App = ({appLayout, children}) => {
 
-    const {dashboard, mgmt} = mapChildren(children);
+    const {report, mgmt} = mapChildren(children);
     const {flatResources, treeResources, crudRoutes} = managementBuilder(mgmt);
 
     const sagaMiddleware = createSagaMiddleware();
@@ -136,13 +140,17 @@ const App = ({appLayout, children}) => {
     return (
         <Provider store={store}>
             <Router history={hashHistory}>
-                <Redirect from="/" to={`/mgmt`} />
+                <Redirect from="/" to={`/report`} />
                 <Route path="/auth/signin" component={SignInLayout}>
                     <IndexRoute component={SignIn} />
                 </Route>
                 <Route path="/" component={appLayout} onEnter={redirectIfNotAuthenticated}>
-                    <Route path="dashboard" component={dashboard.props.appLayout} onEnter={redirectIfNotAuthenticated}>
-                        {/*<IndexRoute component={firstDashboard} restClient={restClient} />            */}
+                    <Route path="report" component={report.props.appLayout} dashboards={report.props.children} onEnter={redirectIfNotAuthenticated}>
+                        {
+                            React.Children.map(report.props.children, (child) => {
+                                return <Route path={`dashboard/${child.props.name}`} component={withProps({...child.props})(Dashboard)} rows={child.props.children}/>
+                            })
+                        }
                     </Route>
                     <Route path="mgmt" component={mgmt.props.appLayout} resources={treeResources} onEnter={redirectIfNotAuthenticated}>
                         <IndexRoute component={withProps(indexComponent)(flatResources[0].list)}/>
@@ -156,7 +164,32 @@ const App = ({appLayout, children}) => {
 
 ReactDOM.render(
     <App appLayout={AppLayout}>
-        <Dashboard appLayout={DashboardLayout}/>
+        <Report appLayout={ReportLayout}>
+            <Dashboard name="dashboard1" title="title1">
+                <Row>
+                    <Panel className="col-lg-12">
+                        
+                    </Panel>
+                </Row>
+                <Row>
+                    <Panel>
+                        
+                    </Panel>
+                </Row>
+            </Dashboard>
+            <Dashboard  name="dashboard2" title="title2">
+                <Row>
+                    <Panel>
+                        
+                    </Panel>
+                </Row>
+                <Row>
+                    <Panel>
+                        
+                    </Panel>
+                </Row>
+            </Dashboard>
+        </Report>
         <Management appLayout={ManagementLayout}>
             <Resource icon={DonHangIcon} name="wrapper_don_hang" options={{label: "Đơn Hàng"}}>
                 <Resource icon={DonHangListIcon} name="donhangs" list={DonHangList} edit={DonHangEdit}  create={DonHangCreate} remove={Delete} options={{label: "Danh Sách"}}/>
@@ -171,5 +204,5 @@ ReactDOM.render(
         </Management>
     </App>
     ,
-    document.getElementsByClassName('container')[0]
+    document.getElementById('root')
 );
