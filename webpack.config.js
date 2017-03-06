@@ -3,7 +3,7 @@ var config = require('./server/config/config');
 var DefinePlugin = require('webpack').DefinePlugin;
 
 var webpackConfig = {
-    devtool: 'eval',
+    devtool: 'cheap-module-eval-source-map',
     entry: ['babel-register', 'babel-polyfill', path.join(__dirname, 'public/component/App.js')],
     output: {
         path: path.join(__dirname, 'dist/js'),

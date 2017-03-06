@@ -7,7 +7,7 @@
   "scripts": {
     "postinstall": "npm run build",
     "start": "node index.js",
-    "build": "webpack",
+    "build": "webpack --config webpack.production.config.js",
     "test": "mocha"
   },
   "author": "binhnguyen",
