@@ -1,4 +1,3 @@
-var webpack = require('webpack');
 var path = require('path');
 var config = require('./server/config/config');
 var DefinePlugin = require('webpack').DefinePlugin;
