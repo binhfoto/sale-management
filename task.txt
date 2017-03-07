@@ -9,10 +9,13 @@ Pending tasks:
             <Filter {...props} filterValues={{"maSP": "AL"}}/>
         - remove redundant import package
         - after creating, it doesn't browse to List page
+        - apply built-in login screen from admin-on-rest
+        - Fix endless spinning Save button after log in
         
     
     * logical
         - fix failed tests
+        - fix webpack cannot using -p with redux-form 6.2.0
         
     
     * javascript-boilerplate
@@ -136,6 +139,5 @@ History:
     - Refactor code to add dashboard
     - Add redirect event for onClick in BieuDo and QuanLy
     - Using Flex to make responsive layout, remove scroll bar
-    - 
     - todo: fix sending double request
 

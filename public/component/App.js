@@ -149,8 +149,8 @@ const App = ({appLayout, children}) => {
                     <Route path="report" component={report.props.appLayout} dashboards={report.props.children} onEnter={redirectIfNotAuthenticated}>
                         {
                             Array.isArray(report.props.children) ? 
-                                <IndexRoute component={withProps(...report.props.children[0].props)(Dashboard)} rows={report.props.children[0].props.children}/> :
-                                <IndexRoute component={withProps(...report.props.children.props)(Dashboard)} rows={report.props.children.props.children}/>
+                                <IndexRoute component={withProps(...report.props.children[0].props)(Dashboard)} rows={report.props.children[0].props.children} onEnter={redirectIfNotAuthenticated}/> :
+                                <IndexRoute component={withProps(...report.props.children.props)(Dashboard)} rows={report.props.children.props.children} onEnter={redirectIfNotAuthenticated}/>
                         }
                         {
                             React.Children.map(report.props.children, (child) => {
