@@ -32,14 +32,17 @@
     "moment": "^2.17.1",
     "mongoose": "^4.8.0",
     "quill": "^1.1.5",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.1",
+    "react": "~15.4.0",
+    "react-dom": "~15.4.0",
+    "react-redux": "~4.4.5",
     "react-router": "~2.8.1",
-    "react-tap-event-plugin": "^2.0.1",
-    "redux-actions": "^1.2.0",
-    "redux-form": "^6.2.0",
+    "react-router-redux": "~4.0.6",
+    "react-tap-event-plugin": "~2.0.0",
+    "redux": "~3.6.0",
+    "redux-actions": "^0.12.0",
+    "redux-form": "~6.2.0",
     "redux-form-schema": "0.0.3",
-    "redux-saga": "^0.14.0"
+    "redux-saga": "~0.13.0"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
