@@ -35,7 +35,7 @@
     "react-router": "~2.8.1",
     "react-tap-event-plugin": "^2.0.1",
     "redux-actions": "^1.2.0",
-    "redux-form": "^6.4.3",
+    "redux-form": "^6.2.0",
     "redux-form-schema": "0.0.3",
     "redux-saga": "^0.14.0"
   },
