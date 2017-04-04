@@ -1,1 +1,1 @@
-Sale Management app for Pharmacy Caompany
+Sale Management app for Pharmacy Company
